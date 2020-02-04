@@ -6,6 +6,19 @@ ja:
       restrict_dependent_destroy:
       has_one: '%{record}が存在しているので削除できません'
       has_many: '%{record}が存在しているので削除できません'
+    models:
+      task:
+    attributes:
+      shop:
+        id: ID
+        name: 店名
+        address: 住所
+        map: 地図
+        image_1: 画像_１
+        image_2: 画像_2
+        image_3: 画像_3
+        created_at: 登録日時
+        updated_at: 更新日時
   date:
     abbr_day_names:
       - 日

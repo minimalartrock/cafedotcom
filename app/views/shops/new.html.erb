@@ -1,2 +1,26 @@
-<h1>Shops#new</h1>
-<p>Find me in app/views/shops/new.html.erb</p>
+<h1>店登録</h1>
+<%= form_with model: @shop, local: true do |f| %>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <%= f.label :name, for: "inputName" %>
+      <%= f.text_field :name, class: "form-control", id: "inputName" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :address, for: "inputAddress" %>
+    <%= f.text_field :address, class: "form-control", id: "inputAddress", placeholder: "1234 Main St" %>
+  </div>
+	<div class="form-group">
+    <% f.label :image_1, for: "exampleFormControlFile1" %>
+    <%= f.file_field :image_1, class: "form-control-file", id: "exampleFormControlFile1" %>
+  </div>
+	<div class="form-group">
+    <% f.label :image_2, for: "exampleFormControlFile2" %>
+    <%= f.file_field :image_2, class: "form-control-file", id: "exampleFormControlFile2" %>
+  </div>
+	<div class="form-group">
+    <% f.label :image_3, for: "exampleFormControlFile3" %>
+    <%= f.file_field :image_3, class: "form-control-file", id: "exampleFormControlFile3" %>
+  </div>
+  <%= f.submit "登録", class: "btn btn-primary" %>
+<% end %>
