@@ -8,7 +8,7 @@ class CreateShops < ActiveRecord::Migration[5.2]
       t.string :image_2
       t.string :image_3
 
-			t.timestamps
+      t.timestamps
     end
   end
 end
