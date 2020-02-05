@@ -1,2 +1,33 @@
-<h1>Shops#show</h1>
-<p>Find me in app/views/shops/show.html.erb</p>
+<h1>店詳細</h1>
+<table class="table table-hover">
+  <tbody>
+    <tr>
+      <th scope="row"><%= Shop.human_attribute_name(:id) %></th>
+      <td><%= @shop.id %></td>
+    </tr>
+    <tr>
+      <th scope="row"><%= Shop.human_attribute_name(:name) %></th>
+      <td><%= @shop.name %></td>
+    </tr>
+    <tr>
+      <th scope="row"><%= Shop.human_attribute_name(:address) %></th>
+      <td><%= @shop.address %></td>
+    </tr>
+    <tr>
+      <th scope="row"><%= Shop.human_attribute_name(:map) %></th>
+      <td><%= @shop.map %></td>
+    </tr>
+    <tr>
+      <th scope="row"><%= Shop.human_attribute_name(:image) %></th>
+      <td><%= image_tag @shop.image if @shop.image.attached? %></td>
+    </tr>
+    <tr>
+      <th scope="row"><%= Shop.human_attribute_name(:updated_at) %></th>
+      <td><%= @shop.updated_at %></td>
+    </tr>
+    <tr>
+      <th scope="row"><%= Shop.human_attribute_name(:created_at) %></th>
+      <td><%= @shop.created_at %></td>
+    </tr>
+  </tbody>
+</table>

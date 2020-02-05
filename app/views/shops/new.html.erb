@@ -11,16 +11,8 @@
     <%= f.text_field :address, class: "form-control", id: "inputAddress", placeholder: "1234 Main St" %>
   </div>
 	<div class="form-group">
-    <% f.label :image_1, for: "exampleFormControlFile1" %>
-    <%= f.file_field :image_1, class: "form-control-file", id: "exampleFormControlFile1" %>
-  </div>
-	<div class="form-group">
-    <% f.label :image_2, for: "exampleFormControlFile2" %>
-    <%= f.file_field :image_2, class: "form-control-file", id: "exampleFormControlFile2" %>
-  </div>
-	<div class="form-group">
-    <% f.label :image_3, for: "exampleFormControlFile3" %>
-    <%= f.file_field :image_3, class: "form-control-file", id: "exampleFormControlFile3" %>
+    <% f.label :image, for: "exampleFormControlFile" %>
+    <%= f.file_field :image, class: "form-control-file", id: "exampleFormControlFile" %>
   </div>
   <%= f.submit "登録", class: "btn btn-primary" %>
 <% end %>
