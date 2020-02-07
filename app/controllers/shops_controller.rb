@@ -23,6 +23,12 @@ class ShopsController < ApplicationController
 		@shop = Shop.find(params[:id])
 	end
 
+	def update
+		shop = Shop.find(params[:id])
+		shop.update(shop_params)
+		redirect_to shops_path(@shop), notice: "「#{shop.name}」を更新しました。"
+	end
+
 	private
 
 	def shop_params
