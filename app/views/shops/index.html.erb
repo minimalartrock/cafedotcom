@@ -1,4 +1,23 @@
-<h1>Shops#index</h1>
-<p>Find me in app/views/shops/index.html.erb</p>
+<h1>店一覧</h1>
 
-<%= link_to 'Twitterログイン', user_twitter_omniauth_authorize_path %>
+<%= link_to '新規登録', new_shop_path, class: 'btn btn-primary' %>
+
+<div class="mb-3">
+</div>
+
+<table class="table table-hover">
+	<thead class="thead-default">
+		<tr>
+			<th><%= Shop.human_attribute_name(:name) %></th>
+			<th><%= Shop.human_attribute_name(:created_at) %></th>
+		</tr>
+	</thead>
+  <tbody>
+		<% @shops.each do |shop| %>
+			<tr>
+				<td><%= link_to shop.name, shop_path(shop.id) %></td>
+				<td><%= shop.created_at %></td>
+			</tr>
+		<% end %>
+  </tbody>
+</table>

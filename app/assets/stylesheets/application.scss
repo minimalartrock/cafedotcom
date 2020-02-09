@@ -1,1 +1,17 @@
 @import 'bootstrap';
+
+.commonNavIcon
+{
+    width: 24px;
+    height: 24px;
+
+    vertical-align: middle;
+
+    border-radius: 50%;
+    background-repeat: no-repeat;
+    background-size: 22px !important;
+}
+.profile-icon
+{
+    background-image: image-url('no-image.png');
+}
