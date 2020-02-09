@@ -17,7 +17,14 @@ ja:
         image: 画像
         created_at: 登録日時
         updated_at: 更新日時
-  date:
+      user:
+        id: ID
+        name: お名前
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード（確認用）
+        admin: 管理者権限
+    date:
     abbr_day_names:
       - 日
       - 月

@@ -1,0 +1,32 @@
+<h1>ユーザー編集</h1>
+
+<%= form_with url: user_registration_path, method: :put, scope: @user, local: true do |f| %>
+  <div class="form-group">
+    <%= f.label :name, for: "exampleInputName1" %>
+    <%= f.text_field :name, class: "form-control", id: "exampleInputName1", placeholder: "山田　太郎" %>
+  </div>
+	<div class="form-group">
+    <%= f.label :email, for: "exampleInputEmail1" %>
+    <%= f.text_field :email, class: "form-control", id: "exampleInputEmail1", placeholder: "sample@example.com" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :password, for: "exampleInputPassword1" %>
+    <%= f.password_field :password, class: "form-control", id: "exampleInputPassword1", placeholder: "８文字以上" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :password_confirmation, for: "exampleInputPasswordConfirmation1" %>
+    <%= f.password_field :password, class: "form-control", id: "exampleInputPasswordConfirmation1", placeholder: "８文字以上" %>
+  </div>
+  <div class="form-group form-check">
+    <%= f.label :admin, class: "form-check-label", for: "exampleCheck1" do %>
+	    <%= f.check_box :admin, class: "form-check-input", id: "exampleCheck1" %>
+			<%= :admin %>
+		<% end %>
+  </div>
+	<%= image_tag @user.avatar if @user.avatar.attached? %>
+	<div class="form-group">
+    <% f.label :avatar, for: "exampleFormControlFile1" %>
+    <%= f.file_field :avatar, class: "form-control-file", id: "exampleFormControlFile1" %>
+  </div>
+  <%= f.submit '登録する', class: "btn btn-primary" %>
+<% end %>

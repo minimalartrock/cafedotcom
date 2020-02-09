@@ -1,0 +1,19 @@
+<h1>ログイン</h1>
+
+<%= form_with url: user_session_path, scope: @user, local: true do |f| %>
+	<div class="form-group">
+    <%= f.label :email, for: "exampleInputEmail1" %>
+    <%= f.text_field :email, class: "form-control", id: "exampleInputEmail1", placeholder: "sample@example.com" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :password, for: "exampleInputPassword1" %>
+    <%= f.password_field :password, class: "form-control", id: "exampleInputPassword1", placeholder: "８文字以上" %>
+  </div>
+  <%= f.submit 'ログインする', class: "btn btn-primary" %>
+	<div>
+		<%= link_to 'アカウントを登録する', new_user_registration_path %>
+	</div>
+	<div>
+		<%= link_to 'Twitterでログインする', user_twitter_omniauth_authorize_path %>
+	</div>
+<% end %>
