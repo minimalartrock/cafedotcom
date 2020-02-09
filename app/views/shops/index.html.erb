@@ -10,6 +10,8 @@
 		<tr>
 			<th><%= Shop.human_attribute_name(:name) %></th>
 			<th><%= Shop.human_attribute_name(:created_at) %></th>
+			<th></th>
+			<th></th>
 		</tr>
 	</thead>
   <tbody>
@@ -17,6 +19,8 @@
 			<tr>
 				<td><%= link_to shop.name, shop_path(shop.id) %></td>
 				<td><%= shop.created_at %></td>
+				<td><%= link_to '編集', edit_shop_path(shop.id), class: "btn btn-primary mr-3" %></td>
+				<td><%= link_to '削除', shop_path(shop.id), method: :delete, data: { confirm: "店「#{shop.name}」を削除します。よろしいですか？" }, class: "btn btn-danger" %></td>
 			</tr>
 		<% end %>
   </tbody>
