@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :omniauthable
 
   has_one_attached :avatar
+  has_many :comments
   validates :name, presence: true, length: { maximum: 50 }
 
   def update_without_current_password(params, *options)
