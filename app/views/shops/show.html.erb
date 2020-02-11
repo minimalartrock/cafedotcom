@@ -38,3 +38,41 @@
 </table>
 
 <%= link_to '編集', edit_shop_path, class: 'btn btn-primary mr-3' %>
+<%= link_to '削除', shop_path(@shop.id), method: :delete, data: { confirm: "店「#{@shop.name}」を削除します。よろしいですか？" }, class: "btn btn-danger" %>
+
+<div>
+	<h2>コメント</h2>
+	<table class="table table-striped" >
+		<% if @shop.comments.any? %>
+			<thead class="thead-light">
+				<tr>
+					<td>コメント</td>
+					<td></td>
+					<td></td>
+				</tr>
+			</thead>
+			<tbody>
+				<% @shop.comments.each do |comment| %>
+					<tr>
+						<td><%= comment.comment %></td>
+							<td><%= link_to '削除', shop_comment_path(@shop.id, comment.id), method: :delete, data: { confirm: "コメント「#{comment.comment}」を削除します。よろしいですか？" }, class: "btn btn-danger" %></td>
+					</tr>
+				<% end %>
+			</tbody>
+		<% else %>
+			<p>コメントがありません。</p>
+		<% end %>
+
+	</table>
+</div>
+
+<h2>コメントを入力する</h2>
+
+<%= form_with model: [@shop, Comment.new], local: true do |f|  %>
+	<%= f.hidden_field :user_id, value: current_user.id %>
+	<%= f.hidden_field :shop_id, value: @shop.id %>
+	<%= f.text_field :comment, class: "form-control comment-input border-0", placeholder: "コメント ...", autocomplete: :off %>
+	<div class="text-center">
+		<%= f.submit "コメントする", class: "btn btn-primary" %>
+	</div>
+<% end %>
