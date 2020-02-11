@@ -1,0 +1,4 @@
+$('#like-icon-comment-<%= @comment.id.to_s %>').
+  html('<%= link_to "いいね", shop_comment_like_path(@shop.id, @comment.id, @like.id), method: :delete, remote: true, class: "loved hide-text" %>');
+$('#like-text-comment-<%= @comment.id.to_s %>').
+  html('<%= j render "comments/like_text", { likes: @comment.likes } %>');

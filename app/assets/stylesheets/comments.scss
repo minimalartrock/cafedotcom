@@ -1,3 +1,28 @@
-// Place all the styles related to the comments controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.love
+{
+    width: 36px;
+    height: 36px;
+
+    background-image: image-url('not-love');
+    background-repeat: no-repeat;
+    background-size: 36px !important;
+}
+
+.loved
+{
+    width: 36px;
+    height: 36px;
+
+    background-image: image-url('love');
+    background-repeat: no-repeat;
+    background-size: 36px !important;
+}
+
+.hide-text
+{
+    display: block;
+    overflow: hidden;
+
+    white-space: nowrap;
+    text-indent: 110%;
+}
