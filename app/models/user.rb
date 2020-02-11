@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
   has_many :comments
+  has_many :likes
   validates :name, presence: true, length: { maximum: 50 }
 
   def update_without_current_password(params, *options)
