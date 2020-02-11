@@ -1,6 +1,7 @@
 <h1>ユーザー登録</h1>
 
 <%= form_with url: user_registration_path, scope: @user, local: true do |f| %>
+	<%= devise_error_messages! %>
   <div class="form-group">
     <%= f.label :name, for: "exampleInputName1" %>
     <%= f.text_field :name, class: "form-control", id: "exampleInputName1", placeholder: "山田　太郎" %>
