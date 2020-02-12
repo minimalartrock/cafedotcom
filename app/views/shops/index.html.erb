@@ -21,6 +21,7 @@
 	<thead class="thead-default">
 		<tr>
 			<th><%= sort_link(@q, :name, [:name, "created_at desc"]) %></th>
+			<th><%= Comment.human_attribute_name(:rate) %></th>
 			<th><%= Shop.human_attribute_name(:created_at) %></th>
 			<th></th>
 			<th></th>
@@ -30,6 +31,19 @@
 		<% @shops.each do |shop| %>
 			<tr>
 				<td><%= link_to shop.name, shop_path(shop.id) %></td>
+				<th>
+					<% if (rate = shop.comments.average(:rate).to_f.round(1)) >= 4.0 then %>
+						<i class="far fa-dizzy"></i>
+						<% elsif rate >= 3.0 then %>
+							<i class="far fa-surprise"></i>
+						<% elsif rate >= 2.0 then %>
+							<i class="far fa-laugh"></i>
+						<% elsif rate >= 1.0 then %>
+							<i class="far fa-smile"></i>
+						<% else %>
+							<i class="far fa-laugh-squint"></i>
+					 <% end %>
+				</th>
 				<td><%= shop.created_at %></td>
 				<td><%= link_to '編集', edit_shop_path(shop.id), class: "btn btn-primary mr-3" %></td>
 				<td><%= link_to '削除', shop_path(shop.id), method: :delete, data: { confirm: "店「#{shop.name}」を削除します。よろしいですか？" }, class: "btn btn-danger" %></td>

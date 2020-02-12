@@ -26,6 +26,10 @@
       <th scope="row"><%= Shop.human_attribute_name(:image) %></th>
       <td><%= image_tag @shop.image if @shop.image.attached? %></td>
     </tr>
+		<tr>
+			<th scope="row"><%= Comment.human_attribute_name(:rate) %></th>
+			<td><%= @shop.comments.average(:rate).to_f.round(1) %></td>
+		</tr>
     <tr>
       <th scope="row"><%= Shop.human_attribute_name(:updated_at) %></th>
       <td><%= @shop.updated_at %></td>
@@ -89,7 +93,22 @@
 	<%= f.hidden_field :user_id, value: current_user.id %>
 	<%= f.hidden_field :shop_id, value: @shop.id %>
 	<%= f.text_field :comment, class: "form-control comment-input border-0", placeholder: "コメント ...", autocomplete: :off %>
+	<div id="star" class="form-group" >
+		<%= f.label :rate %>
+		<%= f.hidden_field :rate, id: :review_star %>
+	</div>
 	<div class="text-center">
 		<%= f.submit "コメントする", class: "btn btn-primary" %>
 	</div>
 <% end %>
+
+<script>
+ $('#star').raty({
+   size: 36,
+   starOff: '<%= asset_path('star-off.png') %>',
+   starOn: '<%= asset_path('star-on.png') %>',
+   starHalf: '<%= asset_path('star-half.png') %>',
+   scoreName: 'comment[rate]',
+   half: true,
+ });
+ </script>
