@@ -11,10 +11,11 @@ ja:
     attributes:
       shop:
         id: ID
-        name: 店名
+        name: 店舗名
         address: 住所
         map: 地図
         image: 画像
+        url: URL
         created_at: 登録日時
         updated_at: 更新日時
       user:

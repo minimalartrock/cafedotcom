@@ -13,5 +13,10 @@
     <%= f.label :image, for: "exampleFormControlFile" %>
     <%= f.file_field :image, class: "form-control-file", id: "exampleFormControlFile" %>
   </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <%= f.label :url, for: "inputUrl" %>
+      <%= f.text_field :url, class: "form-control", id: "inputUrl" %>
+    </div>
   <%= f.submit "登録", class: "btn btn-primary" %>
 <% end %>
