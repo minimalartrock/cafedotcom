@@ -73,3 +73,5 @@ gem 'omniauth-twitter'
 gem 'ransack'
 
 gem 'font-awesome-sass', '~> 5.4.1'
+
+gem 'geocoder'
