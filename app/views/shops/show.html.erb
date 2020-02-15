@@ -19,17 +19,21 @@
       <td><%= @shop.address %></td>
     </tr>
     <tr>
-      <th scope="row"><%= Shop.human_attribute_name(:map) %></th>
-      <td><div id="map"></div></td>
-    </tr>
-    <tr>
       <th scope="row"><%= Shop.human_attribute_name(:image) %></th>
       <td><%= image_tag @shop.image if @shop.image.attached? %></td>
+    </tr>
+    <tr>
+      <th scope="row"><%= Shop.human_attribute_name(:map) %></th>
+      <td><div id="map"></div></td>
     </tr>
 		<tr>
 			<th scope="row"><%= Comment.human_attribute_name(:rate) %></th>
 			<td><%= @shop.comments.average(:rate).to_f.round(1) %></td>
 		</tr>
+    <tr>
+      <th scope="row"><%= Shop.human_attribute_name(:url) %></th>
+      <td><%= text_url_to_link(h(@shop.url)).html_safe %></td>
+    </tr>
     <tr>
       <th scope="row"><%= Shop.human_attribute_name(:updated_at) %></th>
       <td><%= @shop.updated_at %></td>
