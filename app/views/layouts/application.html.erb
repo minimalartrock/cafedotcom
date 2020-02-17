@@ -27,9 +27,10 @@
 				</div>
 			<% end %>
 			<%= yield %>
+			<a type="button" class="btn-pen" data-toggle="modal" data-target="#exampleModal">
+				<i class="fas fa-pen"></i>
+			</a>
 		</div>
-		<a type="button" class="btn-pen" data-toggle="modal" data-target="#exampleModal">
-			<i class="fas fa-pen"></i>
-		</a>
+		<%= render "partial/footer" %>
   </body>
 </html>

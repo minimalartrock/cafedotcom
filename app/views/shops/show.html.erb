@@ -32,10 +32,16 @@
 </div>
 
 <!-- SNS Share -->
-<div class="float-right">
+<div>
 	<%= render partial: "sns" %>
 </div>
 
 <%= render partial: "comments/form", locals: {shop: @shop} %>
 
-<%= render partial: "comments" %>
+<% if @shop.comments.any? %>
+	<% @shop.comments.each do |comment| %>
+		<%= render partial: "comments", :locals => { comment: comment } %>
+	<% end %>
+<% else %>
+	<p>レビューがありません。</p>
+<% end %>
