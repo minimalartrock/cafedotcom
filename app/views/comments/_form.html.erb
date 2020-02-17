@@ -1,8 +1,8 @@
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">コメント</h5>
+        <h5 class="modal-title" id="exampleModalLabel">レビュー</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -10,20 +10,36 @@
       <div class="modal-body">
 
 				<%= form_with model: [shop, Comment.new], local: true do |f|  %>
-					<%= f.hidden_field :user_id, value: current_user.id %>
-					<%= f.hidden_field :shop_id, value: @shop.id %>
-					<%= f.text_field :comment, class: "form-control comment-input border-0", placeholder: "コメント ...", autocomplete: :off %>
+
+					<%= render 'layouts/error_messages', model: f.object %>
+
+					<h6>お店は混んでいましたか？</h6>
+
+					<div class="form-check">
+						<%= f.radio_button :status, :vacant %>
+						<i class="far fa-laugh"></i><span> </span><%= f.label :vacant, class: "form-check-label"%>
+					</div>
+					<div class="form-check">
+						<%= f.radio_button :status, :usually, checked: true %>
+						<i class="far fa-smile"></i><span> </span><%= f.label :usually, class: "form-check-label" %>
+					</div>
+					<div class="form-check">
+						<%= f.radio_button :status, :crowded %>
+						<i class="far fa-dizzy"></i><span> </span><%= f.label :crowded, class: "form-check-label" %>
+					</div>
+
+					<h6>評価</h6>
+
 					<div id="star" class="form-group" >
-						<%= f.label :rate %>
 						<%= f.hidden_field :rate, id: :review_star %>
 					</div>
-					<div class="text-center">
+					<%= f.text_area :comment, class: "form-control", placeholder: "コメント ...", autocomplete: :off %>
+					<%= f.hidden_field :user_id, value: current_user.id %>
+					<%= f.hidden_field :shop_id, value: @shop.id %>
+					<div class="text-center mt-3">
 						<%= f.submit "コメントする", class: "btn btn-primary" %>
 					</div>
 				<% end %>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
       </div>
     </div>
   </div>

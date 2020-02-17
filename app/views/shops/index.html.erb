@@ -16,22 +16,22 @@
 </div>
 
 <div class="card-deck">
-	<div class="row">
+	<div class="row row-cols-1 row-cols-md-3">
 		<% @shops.each do |shop| %>
-			<div class="col-sm-6 col-md-4">
-				<div class="card mb-3">
+			<div class="col mb-4">
+				<div class="card h-100">
 					<%= link_to shop_path(shop.id) do %>
 						<%= image_tag shop.image, class: 'card-img-top', width: "100%", height: "180" if shop.image.attached? %>
 					<% end %>
 					<div class="card-body">
 						<h5 class="card-title"><%= shop.name.truncate(20, omission: '...') %></h5>
 						<p class="card-text">
-							<% if (rate = shop.comments.average(:rate).to_f.round(1)) >= 2.0 then %>
-								<p style="color: #BE4BDB"><i class="far fa-dizzy"></i>混んでいる</p>
-							<% elsif rate >= 1.0 then %>
-								<p style="color: #82c91e"><i class="far fa-smile"></i>普通</p>
+							<% if (status = shop.comments.average(:status).to_f.round(1)) >= 2.0 then %>
+								<p style="color: #BE4BDB"><i class="far fa-dizzy"></i><%= :crowded %></p>
+							<% elsif status >= 1.0 then %>
+								<p style="color: #82c91e"><i class="far fa-smile"></i><%= :usually %></p>
 							<% else %>
-								<p style="color: #F783AC"><i class="far fa-laugh"></i>空いている</p>
+								<p style="color: #F783AC"><i class="far fa-laugh"></i><%= :vacant %></p>
 							<% end %>
 						</p>
 						<p class="card-text"><small class="text-muted"><%= shop.updated_at.strftime("%Y年%-m月%-d日 更新") %></small></p>
