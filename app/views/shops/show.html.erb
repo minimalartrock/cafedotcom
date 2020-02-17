@@ -1,148 +1,41 @@
-<h1>店詳細</h1>
+<% if current_user&.admin? %>
+	<%= link_to '編集', edit_shop_path, class: 'btn btn-primary mr-3' %>
+	<%= link_to '削除', shop_path(@shop.id), method: :delete, data: { confirm: "店「#{@shop.name}」を削除します。よろしいですか？" }, class: "btn btn-danger" %>
+<% end %>
 
-<div class="nav justify-content-end">
-	<%= link_to '一覧', shops_path, class: 'nav-link' %>
+<div id="shop" class="jumbotron" style="background-image: url('<%= rails_blob_url(@shop.image) if @shop.image.attached? %>'); background-size: cover;" >
+	<div class="shop-content">
+		<h1 id="shop-name"><%= @shop.name %></h1>
+		<div i="shop-status">
+			<% if (status = @shop.comments.average(:status).to_f.round(1)) >= 2.0 then %>
+				<p style="color: #BE4BDB"><i class="far fa-dizzy"></i><%= :crowded %></p>
+			<% elsif status >= 1.0 then %>
+				<p style="color: #82c91e"><i class="far fa-smile"></i><%= :usually %></p>
+			<% else %>
+				<p style="color: #F783AC"><i class="far fa-laugh"></i><%= :vacant %></p>
+			<% end %>
+		</div>
+		<div id="shop-address" class="mb-2">
+			<i class="fas fa-map-marker-alt"></i>
+			<address><%= @shop.address %></address>
+		</div>
+		<div id="shop-search" class="mb-2">
+			<i class="fas fa-map-marked-alt"></i>
+			<a data-toggle="modal" data-target="#modalWindow">地図を確認する</a>
+			<%= render partial: "map" %>
+		</div>
+		<div id="shop-url" class="mb-2">
+			<i class="fas fa-globe-asia"></i>
+			<%= link_to 'お店のサイトを確認する', @shop.url, target: "_blank" %>
+		</div>
+	</div>
 </div>
 
-<table class="table table-hover">
-  <tbody>
-    <tr>
-      <th scope="row"><%= Shop.human_attribute_name(:id) %></th>
-      <td><%= @shop.id %></td>
-    </tr>
-    <tr>
-      <th scope="row"><%= Shop.human_attribute_name(:name) %></th>
-      <td><%= @shop.name %></td>
-    </tr>
-    <tr>
-      <th scope="row"><%= Shop.human_attribute_name(:address) %></th>
-      <td><%= @shop.address %></td>
-    </tr>
-    <tr>
-      <th scope="row"><%= Shop.human_attribute_name(:image) %></th>
-      <td><%= image_tag @shop.image if @shop.image.attached? %></td>
-    </tr>
-    <tr>
-      <th scope="row"><%= Shop.human_attribute_name(:map) %></th>
-      <td><div id="map"></div></td>
-    </tr>
-		<tr>
-			<th scope="row"><%= Comment.human_attribute_name(:rate) %></th>
-			<td><%= @shop.comments.average(:rate).to_f.round(1) %></td>
-		</tr>
-    <tr>
-      <th scope="row"><%= Shop.human_attribute_name(:url) %></th>
-      <td><%= text_url_to_link(h(@shop.url)).html_safe %></td>
-    </tr>
-    <tr>
-      <th scope="row"><%= Shop.human_attribute_name(:updated_at) %></th>
-      <td><%= @shop.updated_at %></td>
-    </tr>
-    <tr>
-      <th scope="row"><%= Shop.human_attribute_name(:created_at) %></th>
-      <td><%= @shop.created_at %></td>
-    </tr>
-  </tbody>
-</table>
-
-<%= link_to '編集', edit_shop_path, class: 'btn btn-primary mr-3' %>
-<%= link_to '削除', shop_path(@shop.id), method: :delete, data: { confirm: "店「#{@shop.name}」を削除します。よろしいですか？" }, class: "btn btn-danger" %>
-
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-  コメントする
-</button>
-
-<%# SNS Share %>
-<ul class="shareList">
-  <li class="shareList-item">
-		<%= link_to "https://twitter.com/share?url=#{request.url}&text=#{@shop.name}", class: 'icon icon-twitter', title: 'Twitter', target: '_blank' do %>
-      <i class="fab fa-twitter"></i>
-    <% end %>
-  </li>
-  <li class="shareList-item">
-		<%= link_to "https://www.facebook.com/sharer/sharer.php?u=#{request.url}&text=#{@shop.name}", class: 'icon icon-facebook', title: 'Facebook', target: '_blank' do %>
-      <i class="fab fa-facebook"></i>
-    <% end %>
-  </li>
-  <li class="shareList-item">
-		<%= link_to "http://line.me/R/msg/text/?#{request.url}&text=#{@shop.name}", class: 'icon icon-line', title: 'LINE', target: '_blank' do %>
-      <i class="fab fa-line"></i>
-    <% end %>
-  </li>
-</ul>
-
-<div>
-	<h2>コメント</h2>
-	<table class="table table-striped" >
-		<% if @shop.comments.any? %>
-			<thead class="thead-light">
-				<tr>
-					<td>コメント</td>
-					<td></td>
-					<td></td>
-				</tr>
-			</thead>
-			<tbody>
-				<% @shop.comments.each do |comment| %>
-					<tr>
-						<td>
-							<%= comment.comment %>
-						</td>
-						<td><%= link_to '削除', shop_comment_path(@shop.id, comment.id), method: :delete, data: { confirm: "コメント「#{comment.comment}」を削除します。よろしいですか？" }, class: "btn btn-danger" %>
-						</td>
-						<td>
-							<div id="like-icon-comment-<%= comment.id.to_s %>">
-								<% if comment.liked_by(current_user).present? %>
-									<%= link_to 'いいねを取り消す', shop_comment_like_path(@shop.id, comment.id, comment.liked_by(current_user)), method: :delete, remote: true, class: "loved hide-text" %>
-								<% else %>
-									<%= link_to 'いいね', shop_comment_likes_path(@shop.id, comment.id), method: :post, remote: true, class: "love hide-text" %>
-								<% end %>
-							</div>
-						</td>
-						<td>
-							<div id="like-text-comment-<%= comment.id.to_s %>">
-								<%= render "comments/like_text", { likes: comment.likes } %>
-							</div>
-						</td>
-					</tr>
-				<% end %>
-			</tbody>
-		<% else %>
-			<p>コメントがありません。</p>
-		<% end %>
-
-	</table>
+<!-- SNS Share -->
+<div class="float-right">
+	<%= render partial: "sns" %>
 </div>
 
-<script>
-function initMap(latlng) {
-  var map = new google.maps.Map(document.getElementById('map'), {
-    center: latlng,
-    zoom: 16
-  });
+<%= render partial: "comments/form", locals: {shop: @shop} %>
 
-  var marker = new google.maps.Marker({
-    position: latlng,
-    map: map
-  });
-}
-
-function getLatLng() {
-  var geocoder = new google.maps.Geocoder();
-
-  geocoder.geocode({
-    address: "<%= @shop.address %>"
-  }, function(results, status) {
-    if (status == google.maps.GeocoderStatus.OK) {
-      for (var i in results) {
-        if (results[i].geometry) {
-          var latlng = results[i].geometry.location;
-          initMap(latlng)
-        }
-      }
-    }
-  });
-}
-</script>
-
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBH4RpZgnxvD42m_wjodP4tX7CPWFnZZt8&callback=getLatLng" type="text/javascript"></script>
+<%= render partial: "comments" %>

@@ -1,4 +1,5 @@
 class Comment < ApplicationRecord
+  enum status: { vacant: 0, usually: 1, crowded: 2 }
   belongs_to :user
   belongs_to :shop
   has_many :likes, -> { order(created_at: :desc) }, dependent: :destroy

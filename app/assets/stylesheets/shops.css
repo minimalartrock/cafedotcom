@@ -1,4 +1,41 @@
-#map
-{
-    height: 400px;
+#shop {
+  padding-left: 0;
+}
+
+#shop .shop-content {
+  width: 80%;
+  padding: 2rem;
+  background: white;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.24);
+}
+
+#shop address {
+  display: inline-block;
+  margin-bottom: 0;
+}
+
+#shop #shop-search a {
+  cursor: pointer;
+  user-select: none;
+  text-decoration: none;
+  color: #00b5ad;
+}
+
+#shop #shop-search a:hover {
+  opacity: .5;
+}
+
+#shop #shop-url a {
+  cursor: pointer;
+  user-select: none;
+  text-decoration: none;
+  color: #00b5ad;
+}
+
+#shop #shop-url a:hover {
+  opacity: .5;
+}
+
+#shop #map {
+  height: 400px;
 }
