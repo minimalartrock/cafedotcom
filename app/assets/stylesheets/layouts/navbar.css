@@ -1,10 +1,14 @@
-.commonNavIcon {
-  width: 24px;
-  height: 24px;
-  background-repeat: no-repeat;
-  background-size: 22px !important;
+.navbar {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.0975);
 }
 
-.profile-icon {
-  background-image: image-url("no-image.png");
+.navbar-brand {
+  width: 200px;
+}
+
+.header-avatar {
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  border-radius: 50%;
 }
