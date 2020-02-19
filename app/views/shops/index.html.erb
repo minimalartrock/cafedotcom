@@ -15,8 +15,8 @@
 <div class="mb-3">
 </div>
 
-<div class="card-deck">
-	<div class="row row-cols-1 row-cols-md-3">
+<% if @shops.any? %>
+	<div class="card-columns">
 		<% @shops.each do |shop| %>
 			<div class="col mb-4">
 				<div class="card h-100">
@@ -43,4 +43,7 @@
 				</div>
 			</div>
 		<% end %>
-</div>
+	<div>
+<% else %>
+	<p>該当する店舗がありませんでした</p>
+<% end %>
