@@ -3,7 +3,7 @@ class Shop < ApplicationRecord
   has_many :comments, dependent: :destroy
 
   def self.ransackable_attributes(auth_object = nil)
-    ["name"]
+    ["name", "address"]
   end
 
   def self.ransackable_assosiations(auth_object = nil)
