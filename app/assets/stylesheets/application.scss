@@ -1,8 +1,11 @@
 @import 'bootstrap';
 @import 'common';
 @import 'users/devise';
+@import 'users/show';
+@import 'users/edit';
 @import 'layouts/navbar';
-@import 'shops';
+@import 'shops/shops';
+@import 'shops/show';
 @import 'comments';
 @import 'sns';
 @import 'font-awesome-sprockets';
