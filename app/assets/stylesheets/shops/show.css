@@ -1,0 +1,31 @@
+@charset "UTF-8";
+.btn-pen {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  display: block;
+  width: 120px;
+  height: 120px;
+  transition: .3s;
+  text-align: center;
+  border-radius: 50%;
+  background: #00b5ad;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.24);
+}
+
+.btn-pen:hover {
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+}
+
+.btn-pen i {
+  font-size: 20px;
+  line-height: 28px;
+  color: white;
+}
+
+.btn-pen::after {
+  font-size: 10px;
+  display: block;
+  content: 'レビューする';
+  color: white;
+}
