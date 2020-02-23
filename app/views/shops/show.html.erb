@@ -6,15 +6,6 @@
 <div id="shop" class="jumbotron" style="background-image: url('<%= rails_blob_url(@shop.image) if @shop.image.attached? %>'); background-size: cover;" >
 	<div class="shop-content">
 		<h1 id="shop-name"><%= @shop.name %></h1>
-		<div i="shop-status">
-			<% if (status = @shop.comments.average(:status).to_f.round(1)) >= 2.0 then %>
-				<p style="color: #BE4BDB"><i class="far fa-dizzy"></i><%= :crowded %></p>
-			<% elsif status >= 1.0 then %>
-				<p style="color: #82c91e"><i class="far fa-smile"></i><%= :usually %></p>
-			<% else %>
-				<p style="color: #F783AC"><i class="far fa-laugh"></i><%= :vacant %></p>
-			<% end %>
-		</div>
 		<div id="shop-address" class="mb-2">
 			<i class="fas fa-map-marker-alt"></i>
 			<address><%= @shop.address %></address>
@@ -38,12 +29,10 @@
 
 <%= render partial: "comments/form", locals: {shop: @shop} %>
 
-<% if @shop.comments.any? %>
-	<% @shop.comments.each do |comment| %>
-		<%= render partial: "comments", :locals => { comment: comment } %>
-	<% end %>
-<% else %>
-	<p>レビューがありません。</p>
+<h5>コメント（<%= @shop.comments.size %>件）</h5>
+
+<% @shop.comments.each do |comment| %>
+	<%= render partial: "comments", :locals => { comment: comment } %>
 <% end %>
 
 <div>
