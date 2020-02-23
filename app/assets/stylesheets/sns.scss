@@ -22,12 +22,49 @@
     text-align: center;
 }
 
+.shareList-item-title
+{
+    line-height: 40px;
+
+    height: 40px;
+
+    text-align: center;
+}
+
+.icon-title::before
+{
+    font-size: 16px;
+}
+
+.icon-title::after
+{
+    font-size: 14px;
+    font-weight: 700;
+
+    margin-left: 5px;
+
+    content: attr(title);
+    vertical-align: top;
+}
+
 .icon
 {
     display: block;
 
     color: #fff;
     border-radius: 15px;
+}
+
+.icon-title
+{
+    display: block;
+
+    padding: 0 20px;
+
+    text-decoration: none;
+
+    color: #fff;
+    border-radius: 5px;
 }
 
 .icon-twitter

@@ -39,13 +39,3 @@
   white-space: nowrap;
   text-indent: 110%;
 }
-
-.delete-comment {
-  float: right;
-  width: 11px;
-  height: 11px;
-  margin: 5px 0 0 10px;
-  background-image: image-url("close-icon");
-  background-repeat: no-repeat;
-  background-size: 11px !important;
-}
