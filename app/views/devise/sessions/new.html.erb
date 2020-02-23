@@ -21,9 +21,15 @@
 
       <br>
 
-      <p class="devise-link">
-        <%= link_to 'Twitterでログインする', user_twitter_omniauth_authorize_path %>
-      </p>
+			<ul class="shareList">
+				<li class="shareList-item-title">
+					<%= link_to(user_twitter_omniauth_authorize_path, class: "icon icon-title icon-twitter", title: 'Twitterでログインする') do %>
+						<i class="fab fa-twitter"></i>
+					<% end %>
+					</a>
+				</li>
+			</ul>
+
       <p class="devise-link">
         アカウントをお持ちでないですか？
         <%= link_to "登録する", new_user_registration_path %>

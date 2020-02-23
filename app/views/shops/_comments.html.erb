@@ -18,7 +18,7 @@
 			<%= render "comments/like_text", { likes: comment.likes } %>
 		</div>
 
-		<%= link_to "", shop_comment_path(@shop.id, comment.id), method: :delete, data: { confirm: "コメント「#{comment.comment}」を削除します。よろしいですか？" }, class: "delete-comment" %>
+		<%= link_to "", shop_comment_path(@shop.id, comment.id), method: :delete, data: { confirm: "コメント「#{comment.comment}」を削除します。よろしいですか？" }, class: "delete-icon" %>
 	</div>
 </div>
 
