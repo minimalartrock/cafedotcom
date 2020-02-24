@@ -21,4 +21,12 @@ class Shop < ApplicationRecord
   def number_of_people_saying_vacant(shop)
     Comment.where(shop_id: shop.id).vacant.count
   end
+
+  def rate_average()
+    if self.comments.any?
+      self.comments.average(:rate).floor(1).to_f
+    else
+      return 0.0
+    end
+  end
 end
