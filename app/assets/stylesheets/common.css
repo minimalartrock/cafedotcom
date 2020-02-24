@@ -12,7 +12,7 @@ body {
   width: 11px;
   height: 11px;
   margin: 5px 0 0 10px;
-  background-image: image-url("close-icon");
+  background-image: image-url("trash");
   background-repeat: no-repeat;
   background-size: 11px !important;
 }
