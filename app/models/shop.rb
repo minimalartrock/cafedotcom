@@ -9,4 +9,16 @@ class Shop < ApplicationRecord
   def self.ransackable_assosiations(auth_object = nil)
     []
   end
+
+  def number_of_people_saying_crowded(shop)
+    Comment.where(shop_id: shop.id).crowded.count
+  end
+
+  def number_of_people_saying_usually(shop)
+    Comment.where(shop_id: shop.id).usually.count
+  end
+
+  def number_of_people_saying_vacant(shop)
+    Comment.where(shop_id: shop.id).vacant.count
+  end
 end
