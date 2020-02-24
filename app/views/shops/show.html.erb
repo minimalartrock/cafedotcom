@@ -1,8 +1,3 @@
-<% if current_user&.admin? %>
-	<%= link_to '編集', edit_shop_path, class: 'btn btn-primary mr-3' %>
-	<%= link_to '削除', shop_path(@shop.id), method: :delete, data: { confirm: "店「#{@shop.name}」を削除します。よろしいですか？" }, class: "btn btn-danger" %>
-<% end %>
-
 <div id="shop" class="jumbotron" style="background-image: url('<%= rails_blob_url(@shop.image) if @shop.image.attached? %>'); background-size: cover;" >
 	<div class="shop-content">
 		<h1 id="shop-name"><%= @shop.name %></h1>
