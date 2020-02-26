@@ -1,11 +1,18 @@
+# frozen_string_literal: true
+
 class RegistrationsController < Devise::RegistrationsController
+  def create
+    super
+    NotificationMailer.creation_email(@user).deliver_now
+  end
+
   protected
 
   def update_resource(resource, params)
     resource.update_without_current_password(params)
-	end
+  end
 
-	def after_update_path_for(resource)
+  def after_update_path_for(resource)
     user_path(resource)
   end
 end
