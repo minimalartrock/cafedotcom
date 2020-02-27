@@ -16,3 +16,14 @@ body {
   background-repeat: no-repeat;
   background-size: 11px !important;
 }
+
+footer {
+  line-height: 70px;
+  height: 70px;
+  color: white;
+  background-color: #212121;
+}
+
+footer a {
+  color: white;
+}
