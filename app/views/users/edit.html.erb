@@ -1,72 +1,75 @@
+<% breadcrumb :edit_user %>
+<%= render "layouts/breadcrumbs" %>
+
 <div class="col-md-offset-2 mb-4 edit-profile-wrapper">
-  <div class="row">
-    <div class="col-md-8 mx-auto">
-      <div class="profile-form-wrap">
-        <%= form_with url: user_registration_path, method: :put, scope: @user, local: true do |f| %>
-					<div class="profile-image form-group preview text-center">
-						<%= image_tag @user.avatar, class: "round-img" if @user.avatar.attached? %>
+	<div class="row">
+		<div class="col-md-8 mx-auto">
+			<div class="profile-form-wrap">
+				<%= form_with url: user_registration_path, method: :put, scope: @user, local: true do |f| %>
+				<div class="profile-image form-group preview text-center">
+					<%= image_tag @user.avatar, class: "round-img" if @user.avatar.attached? %>
+				</div>
+				<div class="text-center">
+					<div class="form-group">
+						<label>
+							<span class="btn btn-outline-dark common-btn edit-image-btn">
+								プロフィール写真を変更する
+								<%= f.file_field :avatar, autofocus: true, class: "form-control-file", style: "display:none" %>
+							</span>
+						</label>
 					</div>
-					<div class="text-center">
-						<div class="form-group">
-							<label>
-								<span class="btn btn-outline-dark common-btn edit-image-btn">
-									プロフィール写真を変更する
-									<%= f.file_field :avatar, autofocus: true, class: "form-control-file", style: "display:none" %>
-								</span>
-							</label>
-						</div>
-					</div>
-          <div class="form-group">
-            <%= f.label :name %>
-            <%= f.text_field :name, autofocus: true, class: "form-control" %>
-          </div>
+				</div>
+				<div class="form-group">
+					<%= f.label :name %>
+					<%= f.text_field :name, autofocus: true, class: "form-control" %>
+				</div>
 
-          <div class="form-group">
-            <%= f.label :email %>
-            <%= f.email_field :email, autofocus: true, class: "form-control" %>
-          </div>
+				<div class="form-group">
+					<%= f.label :email %>
+					<%= f.email_field :email, autofocus: true, class: "form-control" %>
+				</div>
 
-          <div class="form-group">
-            <%= f.label :password %>
-            <%= f.password_field :password, autofocus: "off", class: "form-control" %>
-          </div>
+				<div class="form-group">
+					<%= f.label :password %>
+					<%= f.password_field :password, autofocus: "off", class: "form-control" %>
+				</div>
 
-          <div class="form-group">
-            <%= f.label :password_confirmation %>
-            <%= f.password_field :password_confirmation, autofocus: "off", class: "form-control" %>
-          </div>
+				<div class="form-group">
+					<%= f.label :password_confirmation %>
+					<%= f.password_field :password_confirmation, autofocus: "off", class: "form-control" %>
+				</div>
 
-          <%= f.submit "変更する", class: "btn btn-primary w-100" %>
-        <% end %>
-      </div>
-    </div>
-  </div>
+				<%= f.submit "変更する", class: "btn btn-primary w-100" %>
+				<% end %>
+			</div>
+		</div>
+	</div>
 </div>
 
 <script>
-$(function(){
-  $('form').on('change', 'input[type="file"]', function(e) {
-    var file = e.target.files[0],
-        reader = new FileReader(),
-        $preview = $(".preview");
-        t = this;
+	$(function () {
+		$('form').on('change', 'input[type="file"]', function (e) {
+			var file = e.target.files[0],
+				reader = new FileReader(),
+				$preview = $(".preview");
+			t = this;
 
-    if(file.type.indexOf("image") < 0){
-      return false;
-    }
+			if (file.type.indexOf("image") < 0) {
+				return false;
+			}
 
-    reader.onload = (function(file) {
-      return function(e) {
-        $preview.empty();
-        $preview.append($('<img>').attr({
-					src: e.target.result,
-					class: "preview round-img",
-					title: file.name
-				}));
-      };
-    })(file);
+			reader.onload = (function (file) {
+				return function (e) {
+					$preview.empty();
+					$preview.append($('<img>').attr({
+						src: e.target.result,
+						class: "preview round-img",
+						title: file.name
+					}));
+				};
+			})(file);
 
-    reader.readAsDataURL(file);
-  });
-});
+			reader.readAsDataURL(file);
+		});
+	});
 </script>

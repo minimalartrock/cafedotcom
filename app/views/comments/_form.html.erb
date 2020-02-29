@@ -1,57 +1,58 @@
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">レビュー</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+	aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">レビュー</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
 
 				<%= form_with model: [shop, Comment.new], local: true do |f|  %>
 
-					<%= render 'layouts/error_messages', model: f.object %>
+				<%= render 'layouts/error_messages', model: f.object %>
 
-					<h6>お店は混んでいましたか？</h6>
+				<h6>お店は混んでいましたか？</h6>
 
-					<div class="form-check">
-						<%= f.radio_button :status, :vacant %>
-						<i class="far fa-laugh"></i><span> </span><%= f.label :vacant, class: "form-check-label"%>
-					</div>
-					<div class="form-check">
-						<%= f.radio_button :status, :usually, checked: true %>
-						<i class="far fa-smile"></i><span> </span><%= f.label :usually, class: "form-check-label" %>
-					</div>
-					<div class="form-check">
-						<%= f.radio_button :status, :crowded %>
-						<i class="far fa-dizzy"></i><span> </span><%= f.label :crowded, class: "form-check-label" %>
-					</div>
+				<div class="form-check">
+					<%= f.radio_button :status, :vacant %>
+					<i class="far fa-laugh"></i><span> </span><%= f.label :vacant, class: "form-check-label"%>
+				</div>
+				<div class="form-check">
+					<%= f.radio_button :status, :usually, checked: true %>
+					<i class="far fa-smile"></i><span> </span><%= f.label :usually, class: "form-check-label" %>
+				</div>
+				<div class="form-check">
+					<%= f.radio_button :status, :crowded %>
+					<i class="far fa-dizzy"></i><span> </span><%= f.label :crowded, class: "form-check-label" %>
+				</div>
 
-					<h6>評価</h6>
+				<h6>評価</h6>
 
-					<div id="star" class="form-group" >
-						<%= f.hidden_field :rate, id: :review_star %>
-					</div>
-					<%= f.text_area :comment, class: "form-control", placeholder: "コメント ...", autocomplete: :off %>
-					<%= f.hidden_field :user_id, value: current_user.id %>
-					<%= f.hidden_field :shop_id, value: @shop.id %>
-					<div class="text-center mt-3">
-						<%= f.submit "コメントする", class: "btn btn-primary" %>
-					</div>
+				<div id="star" class="form-group">
+					<%= f.hidden_field :rate, id: :review_star %>
+				</div>
+				<%= f.text_area :comment, class: "form-control", placeholder: "コメント ...", autocomplete: :off %>
+				<%= f.hidden_field :user_id, value: current_user&.id %>
+				<%= f.hidden_field :shop_id, value: @shop.id %>
+				<div class="text-center mt-3">
+					<%= f.submit "コメントする", class: "btn btn-primary" %>
+				</div>
 				<% end %>
-      </div>
-    </div>
-  </div>
+			</div>
+		</div>
+	</div>
 </div>
 
 <script>
- $('#star').raty({
-   size: 36,
-   starOff: '<%= asset_path('star-off.png') %>',
-   starOn: '<%= asset_path('star-on.png') %>',
-   starHalf: '<%= asset_path('star-half.png') %>',
-   scoreName: 'comment[rate]',
-   half: true,
- });
- </script>
+	$('#star').raty({
+		size: 36,
+		starOff: '<%= asset_path('star_off.png') %>',
+		starOn: '<%= asset_path('star_on.png') %>',
+		starHalf: '<%= asset_path('star_half.png') %>',
+		scoreName: 'comment[rate]',
+		half: true,
+	});
+</script>
