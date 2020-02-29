@@ -5,18 +5,18 @@ crumb :root do
 end
 
 crumb :show_shop do |shop|
-	link shop.name, shop_path(shop_id:shop.id)
-	parent :root
+  link shop.name, shop_path(shop_id: shop.id)
+  parent :root
 end
 
 crumb :edit_shop do |shop|
-	link '店編集', edit_shop_path(shop_id:shop.id)
-	parent :show_shop, shop
+  link '店編集', edit_shop_path(shop_id: shop.id)
+  parent :show_shop, shop
 end
 
-crumb :new_shop do |shop|
-	link '店登録', new_shop_path
-	parent :root
+crumb :new_shop do |_shop|
+  link '店登録', new_shop_path
+  parent :root
 end
 
 crumb :index_user do

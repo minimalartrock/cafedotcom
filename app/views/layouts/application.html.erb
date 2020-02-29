@@ -1,34 +1,36 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Cafedotcom</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
 
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+	<title>Cafedotcom</title>
+	<%= csrf_meta_tags %>
+	<%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <body>
-		<div id="wrapper">
-			<%= render "partial/navbar" %>
+	<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+	<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-			<div class="container">
-				<% if flash[:notice] %>
-					<div class="alert alert-info">
-						<%= flash[:notice] %>
-					</div>
-				<% end %>
-				<% if flash[:alert] %>
-					<div class="alert alert-danger">
-						<%= flash[:alert] %>
-					</div>
-				<% end %>
-				<%= yield %>
+<body>
+	<div id="wrapper">
+		<%= render "partial/navbar" %>
+
+		<div class="container">
+			<% if flash.notice.present? %>
+			<div class="alert alert-info">
+				<%= flash.notice %>
 			</div>
-			<%= render "partial/footer" %>
+			<% end %>
+			<% if flash.alert.present? %>
+			<div class="alert alert-danger">
+				<%= flash.alert %>
+			</div>
+			<% end %>
+			<%= yield %>
 		</div>
-  </body>
+		<%= render "partial/footer" %>
+	</div>
+</body>
+
 </html>
