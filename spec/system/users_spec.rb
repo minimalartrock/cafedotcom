@@ -38,5 +38,17 @@ describe 'ユーザー情報管理機能', type: :system do
         expect(page).to have_selector '.alert.alert-danger', text: 'メールアドレスまたはパスワードが違います。'
       end
     end
+
+    context 'Twitterでログインするとき' do
+      before do
+        visit user_session_path
+        click_button 'icon-twitter'
+      end
+
+      it 'Twitterへ遷移する' do
+        # Twitterへ遷移することを確認する
+        current_url.to eq('http://localhost:3000/users/auth/twitter')
+      end
+    end
   end
 end
