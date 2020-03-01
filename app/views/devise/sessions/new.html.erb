@@ -1,40 +1,38 @@
 <div class="main">
-  <div class="card devise-card">
-    <div class="form-wrap">
-      <div class="form-group text-center">
-        <h2 class="logo-img mx-auto"></h2>
-      </div>
-      <%= form_with url: user_session_path, scope: @user, local: true do |f| %>
-        <%= devise_error_messages! %>
-        <div class="form-group">
-          <%= f.email_field :email, autofocus: true, placeholder: "メールアドレス", class: "form-control" %>
-        </div>
+	<div class="card devise-card">
+		<div class="form-wrap">
+			<div class="form-group text-center">
+				<h2 class="logo-img mx-auto"></h2>
+			</div>
+			<%= form_with url: login_path, scope: @user, local: true do |f| %>
+			<%= devise_error_messages! %>
+			<div class="form-group">
+				<%= f.email_field :email, autofocus: true, placeholder: "メールアドレス", class: "form-control" %>
+			</div>
+			<div class="form-group">
+				<%= f.password_field :password, autocomplete: "off", placeholder: "パスワード", class: "form-control" %>
+			</div>
+			<div class="actions">
+				<%= f.submit "ログインする", class: "btn btn-primary w-100" %>
+			</div>
+			<% end %>
 
-        <div class="form-group">
-          <%= f.password_field :password, autocomplete: "off", placeholder: "パスワード", class: "form-control" %>
-        </div>
-
-        <div class="actions">
-          <%= f.submit "ログインする", class: "btn btn-primary w-100" %>
-        </div>
-      <% end %>
-
-      <br>
-
-			<ul class="shareList">
-				<li class="shareList-item-title">
-					<%= link_to(user_twitter_omniauth_authorize_path, class: "icon icon-title icon-twitter", title: 'Twitterでログインする') do %>
+			<div class="sns-container my-3">
+				<ul class="shareList">
+					<li class="shareList-item-title">
+						<%= link_to(user_twitter_omniauth_authorize_path, class: "icon icon-title icon-twitter", title: 'Twitterでログインする') do %>
 						<i class="fab fa-twitter"></i>
-					<% end %>
-					</a>
-				</li>
-			</ul>
+						<% end %>
+						</a>
+					</li>
+				</ul>
+			</div>
 
-      <p class="devise-link">
-        アカウントをお持ちでないですか？
-        <%= link_to "登録する", new_user_registration_path %>
-      </p>
+			<p class="devise-link">
+				アカウントをお持ちでないですか？
+				<%= link_to "登録する", new_user_registration_path %>
+			</p>
 
-    </div>
-  </div>
+		</div>
+	</div>
 </div>

@@ -1,22 +1,22 @@
-// Shop List
-.shops-wrap
-{
-    margin: 40px 0;
-}
-
 .search-container
 {
-    width: 50%;
-    margin: 0 auto;
+    margin-top: 30px;
+    padding: 50px;
 }
 
-.search-input
+#search-input
 {
+    font-size: 18px;
+
     position: relative;
 
     display: inline-block;
 
-    border: solid 2px black;
+    padding: 12px 24px;
+
+    border: solid 2px #343a40;
+    border-radius: 0;
+    box-shadow: 2px 2px 4px #343a40;
 }
 
 .search-icon
@@ -42,8 +42,11 @@
 
 .search-btn
 {
-    color: white;
-    background-color: black;
+    font-size: 18px;
+
+    border-radius: 0;
+    background-color: #000;
+    box-shadow: 2px 2px 4px #343a40;
 }
 
 .page-link
@@ -57,6 +60,11 @@
     color: #262625;
     border-color: #262625;
     background-color: transparent;
+}
+
+.shops-wrap
+{
+    margin: 40px 0;
 }
 
 .shop-list
