@@ -46,6 +46,11 @@
     margin: 16px 0;
 
     text-align: center;
+
+    a
+    {
+        border-bottom: solid 1px #222;
+    }
 }
 
 #wrapper
@@ -67,6 +72,7 @@ footer
     {
         padding: 75px 0;
     }
+
     .devise-card
     {
         background-color: #fafafa;

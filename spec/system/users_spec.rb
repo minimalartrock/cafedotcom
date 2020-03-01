@@ -42,7 +42,7 @@ describe 'ユーザー情報管理機能', type: :system do
     context 'Twitterでログインするとき' do
       before do
         visit user_session_path
-        click_button 'icon-twitter'
+        click_button 'shareList-item-title'
       end
 
       it 'Twitterへ遷移する' do

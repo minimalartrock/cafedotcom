@@ -38,6 +38,10 @@
   text-align: center;
 }
 
+.devise-link a {
+  border-bottom: solid 1px #222;
+}
+
 #wrapper {
   display: flex;
   flex-direction: column;
