@@ -4,23 +4,29 @@
 <div class="users-wrap">
 	<div class="card-columns">
 		<% @users.each do |user| %>
-			<div class="card text-center p-4">
-				<% if user.avatar.attached? %>
-					<div>
-						<%= image_tag user.avatar, class: 'round-img' %>
-					</div>
-				<% else %>
-					<%= image_tag 'no-image', class: 'round-img' %>
-				<% end %>
-				<hr>
-				<h5 class="card-title"><%= link_to user.name, user_path(user.id) %></h5>
-				<div class="card-body">
-					<p class="card-text"><%= user.email %></p>
-					<p class="card-text"><%= user.admin? ? '管理者' : '一般ユーザ' %></p>
-					<p class="card-text text-muted"><%= user.created_at.strftime("%Y年%-m月%-d日") %></p>
-				</div>
-				<%= link_to '', users_path, method: :delete, data: { confirm: "ユーザー「#{user.name}」を削除します。よろしいですか？" }, class: "delete-icon" %>
+		<div class="card text-center p-4">
+			<% if user.avatar.attached? %>
+			<div>
+				<%= image_tag user.avatar, class: 'round-img' %>
 			</div>
+			<% else %>
+			<%= image_tag 'no-image', class: 'round-img' %>
+			<% end %>
+			<hr>
+			<h5 class="card-title"><%= link_to user.name, user_path(user.id) %></h5>
+			<div class="card-body">
+				<p class="card-text"><%= user.email %></p>
+				<p class="card-text"><%= user.admin? ? '管理者' : '一般ユーザ' %></p>
+				<p class="card-text text-muted"><%= user.created_at.strftime("%Y年%-m月%-d日") %></p>
+			</div>
+			<%= link_to '', users_path, method: :delete, data: { confirm: "ユーザー「#{user.name}」を削除します。よろしいですか？" }, class: "delete-icon" %>
+		</div>
 		<% end %>
 	</div>
 </div>
+
+<script>
+	$(function () {
+		$('#users-link').addClass('active')
+	})
+</script>
