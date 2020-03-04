@@ -67,7 +67,7 @@
     margin: 40px 0;
 }
 
-.shop-list
+.shop
 {
     margin-top: 20px;
 }
@@ -78,7 +78,7 @@
     height: 180px;
 }
 
-.shop-description
+.shops-description
 {
     width: 100%;
     height: 180px;
@@ -168,4 +168,11 @@
 .star-rate
 {
     display: inline-block;
+}
+
+.shop-description
+{
+    padding: 30px;
+
+    background: #fff;
 }

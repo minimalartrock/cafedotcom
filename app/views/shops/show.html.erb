@@ -3,19 +3,19 @@
 
 <div id="shop" class="jumbotron"
 	style="background-image: url('<%= rails_blob_url(@shop.image) if @shop.image.attached? %>'); background-size: cover;">
-	<div class="shop-content">
+	<div class="shop-description">
 		<h1 id="shop-name"><%= @shop.name %></h1>
 		<div id="shop-address" class="mb-2">
-			<i class="fas fa-map-marker-alt"></i>
+			<i class="fas fa-map-marker-alt mr-2"></i>
 			<address><%= @shop.address %></address>
 		</div>
 		<div id="shop-search" class="mb-2">
-			<i class="fas fa-map-marked-alt"></i>
+			<i class="fas fa-map-marked-alt mr-2"></i>
 			<a data-toggle="modal" data-target="#modalWindow">地図を確認する</a>
 			<%= render partial: "map" %>
 		</div>
 		<div id="shop-url" class="mb-2">
-			<i class="fas fa-globe-asia"></i>
+			<i class="fas fa-globe-asia mr-2"></i>
 			<%= link_to 'お店のサイトを確認する', @shop.url, target: "_blank" %>
 		</div>
 	</div>

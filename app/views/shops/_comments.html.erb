@@ -1,7 +1,7 @@
-<div id="comments" class="card">
+<div id="comments" class="card comment">
 	<div class="card-body">
 		<%= image_tag comment.user.avatar, class: "profile-icon" if comment.user.avatar.attached? %>
-		<div class="card-title"><%= comment.user.name %></div>
+		<div class="card-title comment-user-name"><%= comment.user.name %></div>
 		<p class="card-text">
 			<%= comment.status_i18n %>
 		</p>
@@ -24,6 +24,9 @@
 			<%= render "comments/like_text", { likes: comment.likes } %>
 		</div>
 	</div>
+	<% if comment.user == current_user %>
+		<%= link_to '', shop_comment_path(@shop, comment.id), method: :delete, data: { confirm: "コメントを削除します。よろしいですか？" }, class: "delete-btn" %>
+	<% end %>
 </div>
 
 <script>
