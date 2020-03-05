@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ShopsController < ApplicationController
-  skip_before_action :login_required, only: %i[index show]
+  # skip_before_action :login_required, only: %i[index show]
 
   def index
     @q = Shop.ransack(params[:q])
