@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to shop_path(@shop.id), notice: 'コメントを登録しました'
     else
-      flash[:alert] = 'コメントに失敗しました'
+      render :error
     end
   end
 

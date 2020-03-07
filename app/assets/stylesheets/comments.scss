@@ -1,14 +1,47 @@
+.comment-title
+{
+    margin-bottom: 20px;
+}
+
+.input-status
+{
+    margin-bottom: 20px;
+}
+
+.status-icon
+{
+    margin-right: 2px;
+}
+
+.input-rate
+{
+    margin-bottom: 20px;
+}
+
+.input-comment
+{
+    margin-bottom: 20px;
+}
+
 .comment
 {
     margin-bottom: 10px;
+
+    :hover
+    {
+        background: #efefef;
+    }
 }
 
-.comment-user-name
+.comment-user-avatar
 {
-    font-weight: bold;
+    display: inline-block;
+
+    margin-right: 2px;
+    margin-bottom: 20px;
 }
 
-.profile-icon
+.avatar
 {
     width: 50px;
     height: 50px;
@@ -16,15 +49,36 @@
     border-radius: 50%;
 }
 
-.card-title
+.comment-user-name
 {
+    font-weight: bold;
+
     display: inline-block;
 }
 
-.card-text
+.comment-user-status
 {
-    margin-top: 1rem;
-    margin-bottom: 0;
+    display: inline-block;
+
+    margin-right: 2px;
+    margin-bottom: 20px;
+}
+
+.comment-user-rate
+{
+    display: inline-block;
+
+    margin-bottom: 20px;
+}
+
+.comment-user-comment
+{
+    margin-bottom: 20px;
+}
+
+.comment-user-created_at
+{
+    margin-bottom: 20px;
 }
 
 .love

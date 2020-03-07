@@ -6,7 +6,7 @@
 		<h5 class="card-title font-weight-bold"><%= shop.name.truncate(20, omission: '...') %></h5>
 		<div>
 			<p class="shop-status"><i class="far fa-dizzy" data-toggle="tooltip" data-placement="top"
-					title="混んでいた"></i>&nbsp<%= shop.number_of_people_saying_crowded(shop) %>人</p>
+					title="<%= :混んでいた %>"></i>&nbsp<%= shop.number_of_people_saying_crowded(shop) %>人</p>
 			<p class="shop-status"><i class="far fa-smile" data-toggle="tooltip" data-placement="top"
 					title="普通だった"></i>&nbsp<%= shop.number_of_people_saying_usually(shop) %>人</p>
 			<p class="shop-status"><i class="far fa-laugh" data-toggle="tooltip" data-placement="top"
