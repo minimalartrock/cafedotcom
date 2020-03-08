@@ -19,12 +19,14 @@ class UsersController < ApplicationController
   private
 
   def correct_user?
-    unless user_signed_in? && current_user.id == params[:id].to_i
-      redirect_to root_path
-    end
+    render_404 unless user_signed_in? && current_user.id == params[:id].to_i
   end
 
   def admin?
-    redirect_to root_path unless user_signed_in? && current_user.admin?
+    render_404 unless user_signed_in? && current_user.admin?
   end
+end
+
+def render_404
+  render template: 'errors/not_found', status: 404, layout: 'application', content_type: 'text/html'
 end
