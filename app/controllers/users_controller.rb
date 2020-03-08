@@ -1,33 +1,32 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
+  before_action :correct_user?, only: %i[show edit]
+  before_action :admin?, only: [:index]
+
   def index
-    require_admin
     @users = User.all
   end
 
   def show
-    redirect_to root_path unless have_privilege
+    @user = User.find(params[:id])
   end
 
   def edit
-    redirect_to root_path unless have_privilege
-  end
-
-  def destroy
-    redirect_to root_path unless have_privilege
-    @user.destroy
-    redirect_to user_url, notice: "ユーザー「#{@user.name}」を削除しました。"
+    @user = User.find(params[:id])
   end
 
   private
 
-  def require_admin
-    redirect_to root_path unless current_user.admin?
+  def correct_user?
+    render_404 unless user_signed_in? && current_user.id == params[:id].to_i
   end
 
-  def have_privilege
-    @user = User.find(params[:id])
-    current_user == @user || current_user.admin?
+  def admin?
+    render_404 unless user_signed_in? && current_user.admin?
   end
+end
+
+def render_404
+  render template: 'errors/not_found', status: 404, layout: 'application', content_type: 'text/html'
 end

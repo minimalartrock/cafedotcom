@@ -1,36 +1,81 @@
-.card {
-  margin-bottom: .5rem;
+.comment-title {
+  margin-bottom: 20px;
 }
 
-.profile-icon {
+.input-status {
+  margin-bottom: 20px;
+}
+
+.status-icon {
+  margin-right: 2px;
+}
+
+.input-rate {
+  margin-bottom: 20px;
+}
+
+.input-comment {
+  margin-bottom: 20px;
+}
+
+.comment {
+  margin-bottom: 10px;
+}
+
+.comment :hover {
+  background: #efefef;
+}
+
+.comment-user-avatar {
+  display: inline-block;
+  margin-right: 2px;
+  margin-bottom: 20px;
+}
+
+.avatar {
   width: 50px;
   height: 50px;
   border-radius: 50%;
 }
 
-.card-title {
+.comment-user-name {
+  font-weight: bold;
   display: inline-block;
 }
 
-.card-text {
-  margin-top: 1rem;
-  margin-bottom: 0;
+.comment-user-status {
+  display: inline-block;
+  margin-right: 2px;
+  margin-bottom: 20px;
+}
+
+.comment-user-rate {
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+.comment-user-comment {
+  margin-bottom: 20px;
+}
+
+.comment-user-created_at {
+  margin-bottom: 20px;
 }
 
 .love {
-  width: 36px;
-  height: 36px;
+  width: 20px;
+  height: 20px;
   background-image: image-url("not-love");
   background-repeat: no-repeat;
-  background-size: 36px !important;
+  background-size: 20px !important;
 }
 
 .loved {
-  width: 36px;
-  height: 36px;
+  width: 20px;
+  height: 20px;
   background-image: image-url("love");
   background-repeat: no-repeat;
-  background-size: 36px !important;
+  background-size: 20px !important;
 }
 
 .hide-text {
@@ -38,4 +83,40 @@
   overflow: hidden;
   white-space: nowrap;
   text-indent: 110%;
+}
+
+.btn-pen {
+  position: fixed;
+  z-index: 1000;
+  right: -20px;
+  bottom: -20px;
+  display: inline-block;
+  width: 130px;
+  height: 130px;
+  transition: .4s;
+  text-align: center;
+  border-bottom: solid 3px #2db696;
+  border-radius: 50%;
+  background: #2db696;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.29);
+}
+
+.btn-pen span {
+  font-weight: bold;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  display: inline-block;
+  width: 130px;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  text-align: center;
+  color: #fff;
+}
+
+.btn-pen:active {
+  -webkit-transform: translateY(2px);
+  transform: translateY(2px);
+  border-bottom: none;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
 }

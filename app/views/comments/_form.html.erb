@@ -2,46 +2,57 @@
 	aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered" role="document">
 		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">レビュー</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-			<div class="modal-body">
+			<a data-dismiss="modal">
+        <i class="fa fa-times close-btn"></i>
+      </a>
+			<% if user_signed_in? %>
+				<div class="modal-body">
+					<%= form_with model: [shop, Comment.new], local: true do |f|  %>
+						<div class="error-message"></div>
 
-				<%= form_with model: [shop, Comment.new], local: true do |f|  %>
+						<h5 class="comment-title">お店は混んでいましたか？</h5>
+						<div class="input-status">
+							<div class="form-check">
+								<%= f.radio_button :status, :vacant %>
+								<i class="far fa-laugh status-icon"></i><span> </span><%= f.label '空いていた', class: "form-check-label"%>
+							</div>
+							<div class="form-check">
+								<%= f.radio_button :status, :usually, checked: true %>
+								<i class="far fa-smile status-icon"></i><span> </span><%= f.label '普通だった', class: "form-check-label" %>
+							</div>
+							<div class="form-check">
+								<%= f.radio_button :status, :crowded %>
+								<i class="far fa-dizzy status-icon"></i><span> </span><%= f.label '混んでいた', class: "form-check-label" %>
+							</div>
+						</div>
 
-				<%= render 'layouts/error_messages', model: f.object %>
+						<h5 class="comment-title">評価</h5>
+						<div id="star" class="form-group input-rate">
+							<%= f.hidden_field :rate, id: :review_star %>
+						</div>
 
-				<h6>お店は混んでいましたか？</h6>
+						<div class="input-comment">
+							<%= f.text_area :comment, class: "form-control", placeholder: "コメント ...", autocomplete: :off %>
+							<%= f.hidden_field :user_id, value: current_user&.id %>
+							<%= f.hidden_field :shop_id, value: @shop.id %>
+						</div>
 
-				<div class="form-check">
-					<%= f.radio_button :status, :vacant %>
-					<i class="far fa-laugh"></i><span> </span><%= f.label :vacant, class: "form-check-label"%>
+						<div class="modal-footer">
+							<div class="input-comment-btn">
+								<%= f.submit "コメントする", class: "btn btn-primary w-100" %>
+							</div>
+						</div>
+					<% end %>
 				</div>
-				<div class="form-check">
-					<%= f.radio_button :status, :usually, checked: true %>
-					<i class="far fa-smile"></i><span> </span><%= f.label :usually, class: "form-check-label" %>
+			<% else %>
+				<div class="modal-body">
+					<p class="logo-img mx-auto"></p>
+					<p>コメントするにはログインが必要です。</p>
+					<div class="modal-footer">
+						<%= link_to "ログイン", login_path, class: "btn btn-primary" %>
+					</div>
 				</div>
-				<div class="form-check">
-					<%= f.radio_button :status, :crowded %>
-					<i class="far fa-dizzy"></i><span> </span><%= f.label :crowded, class: "form-check-label" %>
-				</div>
-
-				<h6>評価</h6>
-
-				<div id="star" class="form-group">
-					<%= f.hidden_field :rate, id: :review_star %>
-				</div>
-				<%= f.text_area :comment, class: "form-control", placeholder: "コメント ...", autocomplete: :off %>
-				<%= f.hidden_field :user_id, value: current_user&.id %>
-				<%= f.hidden_field :shop_id, value: @shop.id %>
-				<div class="text-center mt-3">
-					<%= f.submit "コメントする", class: "btn btn-primary" %>
-				</div>
-				<% end %>
-			</div>
+			<% end %>
 		</div>
 	</div>
 </div>

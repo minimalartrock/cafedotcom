@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'errors/show'
   get 'maps/map'
   get 'users/show'
   devise_for :users, controllers: {
