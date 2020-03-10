@@ -4,7 +4,7 @@
 <div class="profile-wrap">
 	<div class="row">
 		<div class="col-md-4 text-center">
-			<%= image_tag @user.avatar, class: "round-img" if @user.avatar.attached? %>
+			<%= image_tag(avatar_for(@user), alt: @user.name, class: "round-img") %>
 		</div>
 		<div class="col-md-8">
 			<div class="row">
