@@ -2,11 +2,13 @@
 	<%= search_form_for @q do |f| %>
 	<div class="form-group row">
 		<div class="col-8">
-			<%= f.search_field :address_cont, id: 'search-input', class: "form-control", placeholder: 'お店の名前または住所を入力してください' %>
-			<button class="search-icon"><i class="fa fa-search"></i></button>
+			<%= f.search_field :address_cont, id: 'search-input', class: "form-control", placeholder: 'お店の名前を入力してください' %>
 		</div>
 		<div class="col-4">
-			<%= f.submit 'お店を検索する', class: 'btn btn-primary search-btn' %>
+			<%= button_tag type: 'submit', class: 'btn btn-primary search-btn' do %>
+				<i class="fa fa-search"></i>
+				検索
+			<% end %>
 		</div>
 	</div>
 	<% end %>
