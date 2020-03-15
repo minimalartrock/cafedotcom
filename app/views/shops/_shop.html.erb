@@ -3,7 +3,9 @@
 	<%= lazy_image_tag url_for(shop.image), class: 'card-img-top shop-image' if shop.image.attached? %>
 	<% end %>
 	<div class="card-body shops-description">
-		<h5 class="card-title font-weight-bold"><%= shop.name.truncate(20, omission: '...') %></h5>
+		<%= link_to shop_path(shop.id) do %>
+			<h5 class="card-title font-weight-bold"><%= shop.name.truncate(20, omission: '...') %></h5>
+		<% end %>
 		<div>
 			<p class="shop-status"><i class="far fa-dizzy" data-toggle="tooltip" data-placement="top"
 					title="<%= :混んでいた %>"></i>&nbsp<%= shop.number_of_people_saying_crowded(shop) %>人</p>
