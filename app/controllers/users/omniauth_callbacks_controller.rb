@@ -1,10 +1,11 @@
-class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
+# frozen_string_literal: true
 
-	def twitter
-		callback_from :twitter
+class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
+  def twitter
+    callback_from :twitter
   end
 
-	private
+  private
 
   def callback_from(provider)
     provider = provider.to_s

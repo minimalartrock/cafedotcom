@@ -9,7 +9,7 @@ class ShopsController < ApplicationController
   end
 
   def show
-    @shop = Shop.find(params[:id])
+		@shop = Shop.find(params[:id])
   end
 
   def new
