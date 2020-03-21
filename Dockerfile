@@ -1,7 +1,6 @@
 FROM ruby:2.6.5
 RUN apt-get update -qq && \
-	apt-get install -y build-essential libpq-dev nodejs \
-	apt-get install -y vim
+	apt-get install -y build-essential libpq-dev nodejs
 
 # Rails App
 RUN mkdir /cafedotcom
@@ -11,6 +10,7 @@ ADD Gemfile $APP_HOME/Gemfile
 ADD Gemfile.lock $APP_HOME/Gemfile.lock
 RUN gem install bundler
 RUN bundle install
+RUN apt-get install -y vim
 ADD . $APP_HOME
 RUN mkdir -p tmp/sockets
 
