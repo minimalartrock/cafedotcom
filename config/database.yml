@@ -18,6 +18,7 @@ default: &default
   adapter: postgresql
   encoding: unicode
   host: db
+  username: postgres
   password:
   # For details on connection pooling, see Rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
@@ -25,10 +26,7 @@ default: &default
 
 development:
   <<: *default
-  host: db
-  port: 5432
-  username: postgres
-  password: <%= ENV['CAFEDOTCOM_PASSWORD'] %>
+  database: cafedotcom_development
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
