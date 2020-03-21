@@ -1,21 +1,21 @@
-version: '3'
+version: '2'
 services:
-  db:
-    image: postgres
-    ports:
-      - 5432:5432
-    volumes:
-      - ./postgres/volumes:/var/lib/postgresql/data
-    environment:
-      POSTGRES_PASSWORD: 'root'
   web:
     build: .
-    environment:
-      RAILS_ENV: development
-    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    image: web_multicontainer
     volumes:
-      - .:/cafedotcom
-    ports:
-      - '3000:3000'
+      - /app/log # persist logs
     depends_on:
       - db
+
+  nginx:
+    build: containers/nginx
+    ports:
+      - '80:80'
+    volumes_from:
+      - web
+    depends_on:
+      - web
+
+  db:
+    image: postgres
