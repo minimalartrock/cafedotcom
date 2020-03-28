@@ -1,23 +1,26 @@
 FROM ruby:2.6.5
-RUN apt-get update -qq && \
-	apt-get install -y build-essential libpq-dev nodejs
 
-# Rails App
+RUN apt-get update -qq && apt-get install -y nodejs postgresql-client
+
 RUN mkdir /cafedotcom
 ENV APP_HOME /cafedotcom
 WORKDIR $APP_HOME
-ADD Gemfile $APP_HOME/Gemfile
-ADD Gemfile.lock $APP_HOME/Gemfile.lock
+
+COPY Gemfile $APP_HOME/Gemfile
+COPY Gemfile.lock $APP_HOME/Gemfile.lock
+
 RUN gem install bundler
 RUN bundle install
-RUN apt-get install -y vim
-ADD . $APP_HOME
-RUN mkdir -p tmp/sockets
 
-# Expose volumes to frontend
-VOLUME $APP_HOME/public
-VOLUME $APP_HOME/tmp
+COPY . $APP_HOME
 
-# Start Server
-# TODO: environment
-CMD bundle exec puma
+RUN mkdir -p $APP_HOME/tmp/sockets
+
+# Add a script to be executed every time the container starts.
+COPY entrypoint.sh /usr/bin/
+RUN chmod +x /usr/bin/entrypoint.sh
+ENTRYPOINT ["entrypoint.sh"]
+EXPOSE 3000
+
+# Start the main process.
+CMD ["rails", "server", "-b", "0.0.0.0"]
