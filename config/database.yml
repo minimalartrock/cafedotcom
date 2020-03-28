@@ -17,9 +17,10 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  host: db
-  username: postgres
-  password:
+  host: <%= ENV.fetch("DATABASE_HOST") { "127.0.0.1" } %>
+  port: <%= ENV.fetch("DATABASE_PORT") { 5432 } %>
+  username: <%= ENV.fetch("POSTGRES_USER") { "postgres" } %>
+  password: <%= ENV.fetch("POSTGRES_PASSWORD") { "postgres" } %>
   # For details on connection pooling, see Rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
@@ -77,7 +78,4 @@ test:
 #
 production:
   <<: *default
-  host: <%= Rails.application.credentials.rds[:host] %>
-  database: <%= Rails.application.credentials.rds[:database] %>
-  username: <%= Rails.application.credentials.rds[:username] %>
-  password: <%= Rails.application.credentials.rds[:password] %>
+  database: cafedotcom_production

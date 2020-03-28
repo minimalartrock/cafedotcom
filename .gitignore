@@ -27,3 +27,6 @@
 /config/master.key
 .env
 postgres
+log-data
+postgresql/data
+tmp-data
