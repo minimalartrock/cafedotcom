@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_13_064109) do
+ActiveRecord::Schema.define(version: 2020_03_28_082835) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 2020_03_13_064109) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.float "rate", default: 0.0
+    t.float "rate", default: 1.0
     t.integer "status", default: 1
     t.index ["shop_id"], name: "index_comments_on_shop_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
@@ -60,7 +60,6 @@ ActiveRecord::Schema.define(version: 2020_03_13_064109) do
   create_table "shops", force: :cascade do |t|
     t.string "name", null: false
     t.string "address", null: false
-    t.string "map"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "url"
@@ -77,8 +76,8 @@ ActiveRecord::Schema.define(version: 2020_03_13_064109) do
     t.string "provider"
     t.string "uid"
     t.string "name"
+    t.boolean "admin", default: false, null: false
     t.string "profile_photo"
-    t.boolean "admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

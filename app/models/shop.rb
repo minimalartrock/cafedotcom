@@ -1,12 +1,18 @@
+# frozen_string_literal: true
+
 class Shop < ApplicationRecord
   has_one_attached :image
   has_many :comments, dependent: :destroy
 
-  def self.ransackable_attributes(auth_object = nil)
-    ["name", "address"]
+  validates :name, presence: true, length: { maximum: 30 }
+  validates :address, presence: true, length: { maximum: 30 }
+  validates :address, presence: true, length: { maximum: 30 }
+
+  def self.ransackable_attributes(_auth_object = nil)
+    %w[name address]
   end
 
-  def self.ransackable_assosiations(auth_object = nil)
+  def self.ransackable_assosiations(_auth_object = nil)
     []
   end
 
@@ -22,11 +28,11 @@ class Shop < ApplicationRecord
     Comment.where(shop_id: shop.id).vacant.count
   end
 
-  def rate_average()
-    if self.comments.any?
-      self.comments.average(:rate).floor(1).to_f
+  def rate_average
+    if comments.any?
+      comments.average(:rate).floor(1).to_f
     else
-      return 0.0
+      0.0
     end
   end
 end
