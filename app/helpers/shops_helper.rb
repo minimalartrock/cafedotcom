@@ -8,6 +8,6 @@ module ShopsHelper
       options[:class] = "lazy #{options[:class]}"
     end
 
-    image_tag("loading.gif", options)
+    image_tag("/rolling.gif", options)
   end
 end
