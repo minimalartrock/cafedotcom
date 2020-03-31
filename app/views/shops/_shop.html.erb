@@ -1,6 +1,14 @@
-<div class="card shop">
+<div class="card border-light shop">
 	<%= link_to shop_path(shop.id) do %>
-	<%= lazy_image_tag url_for(shop.image), class: 'card-img-top shop-image' if shop.image.attached? %>
+	<% if shop.images.attached? %>
+		<div class="shop-image">
+			<%= image_tag url_for(shop.images[0]), class: 'card-img-top inner-img-left' %>
+			<%= image_tag url_for(shop.images[1]), class: 'card-img-top inner-img-right-top' %>
+			<%= image_tag url_for(shop.images[2]), class: 'card-img-top inner-img-right-bottom' %>
+		</div>
+	<% else %>
+		<%= image_tag '/no-image.png', class: 'card-img-top shop-image' %>
+	<% end %>
 	<div class="card-body shops-description">
 		<h5 class="card-title font-weight-bold"><%= shop.name.truncate(20, omission: '...') %></h5>
 		<div>

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Shop < ApplicationRecord
-  has_one_attached :image
+  has_many_attached :images
   has_many :comments, dependent: :destroy
 
   validates :name, presence: true, length: { maximum: 30 }

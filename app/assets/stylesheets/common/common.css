@@ -3,7 +3,6 @@ body {
   font-family: Lato, Noto Sans JP, 游ゴシック Medium, 游ゴシック体, Yu Gothic Medium, YuGothic, ヒラギノ角ゴ ProN, Hiragino Kaku Gothic ProN, メイリオ, Meiryo, ＭＳ Ｐゴシック, MS PGothic, sans-serif;
   font-size: 14px;
   color: #262626;
-  background: #f8f9f9;
 }
 
 .close-btn {
@@ -27,11 +26,11 @@ body {
   position: absolute;
   right: 10px;
   bottom: 10px;
-  width: 10px;
-  height: 10px;
+  width: 15px;
+  height: 15px;
   background-image: image-url("trash");
   background-repeat: no-repeat;
-  background-size: 10px !important;
+  background-size: 15px !important;
 }
 
 footer {
