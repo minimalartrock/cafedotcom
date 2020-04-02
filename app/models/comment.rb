@@ -5,6 +5,7 @@ class Comment < ApplicationRecord
   belongs_to :user
   belongs_to :shop
   has_many :likes, -> { order(created_at: :desc) }, dependent: :destroy
+  # scope :recent, ->(count) { order(updated_at: :desc).limit(count) }
 
   validates :comment, presence: true, length: { maximum: 300 }
 

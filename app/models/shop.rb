@@ -5,8 +5,9 @@ class Shop < ApplicationRecord
   has_many :comments, dependent: :destroy
 
   validates :name, presence: true, length: { maximum: 30 }
-  validates :address, presence: true, length: { maximum: 30 }
-  validates :address, presence: true, length: { maximum: 30 }
+  validates :address, presence: true, length: { maximum: 50 }
+
+  scope :recent, ->(count) { order(updated_at: :desc).limit(count) }
 
   def self.ransackable_attributes(_auth_object = nil)
     %w[name address]
