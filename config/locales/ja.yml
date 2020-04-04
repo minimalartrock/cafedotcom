@@ -32,6 +32,8 @@ ja:
         password_confirmation: パスワード（確認用）
         admin: 管理者権限
       comment:
+        comment: コメント
+        status: 混雑状況
         rate: 評価
     date:
     abbr_day_names:

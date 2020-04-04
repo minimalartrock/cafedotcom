@@ -1,6 +1,6 @@
 @import 'theme';
 @import 'bootstrap';
-@import 'common';
+@import 'common/common';
 @import 'form';
 @import 'users/devise';
 @import 'users/index';
@@ -9,8 +9,6 @@
 @import 'layouts/navbar';
 @import 'layouts/breadcrumb';
 @import 'shops/shops';
-@import 'shops/show';
 @import 'comments';
-@import 'sns';
 @import 'font-awesome-sprockets';
 @import 'font-awesome';

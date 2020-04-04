@@ -25,12 +25,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/edit
   def edit
-    super
+    @user = User.find(params[:id])
   end
 
   # PUT /resource
   def update
-    super
+    @user = User.find(params[:id])
+		if @user.update(user_params)
+			redirect_to users_show_path(@user), notice: "「#{@user.name}」を更新しました。"
+		else
+			render :edit
+		end
   end
 
   # DELETE /resource
@@ -67,6 +72,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # The path used after sign up for inactive accounts.
   def after_inactive_sign_up_path_for(resource)
     super(resource)
+  end
+
+	def update_resource(resource, params)
+    resource.update_without_password(params)
   end
 
   private

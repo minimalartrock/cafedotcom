@@ -1,11 +1,14 @@
 # frozen_string_literal: true
 
 class ShopsController < ApplicationController
-  # skip_before_action :login_required, only: %i[index show]
+	include ApplicationHelper
+	before_action :admin?, only: %i[new create edit update destroy]
 
   def index
     @q = Shop.ransack(params[:q])
-    @shops = @q.result(distinct: true).page(params[:page])
+		@shops = @q.result(distinct: true).page(params[:page])
+		# 今空いているお店を検索する
+		@recently = Shop.recent(4)
   end
 
   def show
@@ -30,9 +33,12 @@ class ShopsController < ApplicationController
   end
 
   def update
-    shop = Shop.find(params[:id])
-    shop.update(shop_params)
-    redirect_to shops_path(@shop), notice: "「#{shop.name}」を更新しました。"
+    @shop = Shop.find(params[:id])
+		if @shop.update(shop_params)
+			redirect_to shops_path(@shop), notice: "「#{@shop.name}」を更新しました。"
+		else
+			render :edit
+		end
   end
 
   def destroy
@@ -44,6 +50,6 @@ class ShopsController < ApplicationController
   private
 
   def shop_params
-    params.require(:shop).permit(:name, :address, :map, :image, :url)
+    params.require(:shop).permit(:name, :address, :map, :url, images: [])
   end
 end

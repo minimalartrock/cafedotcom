@@ -7,7 +7,7 @@
       </a>
 			<% if user_signed_in? %>
 				<div class="modal-body">
-					<%= form_with model: [shop, Comment.new], local: true do |f|  %>
+					<%= form_with model: [shop, Comment.new] do |f|  %>
 						<div class="error-message"></div>
 
 						<h5 class="comment-title">お店は混んでいましたか？</h5>
@@ -66,4 +66,8 @@
 		scoreName: 'comment[rate]',
 		half: true,
 	});
+
+	$('#exampleModal').on('hide.bs.modal', function () {
+		$('input[type="text"]').val('');
+	})
 </script>

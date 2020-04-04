@@ -5,7 +5,7 @@
 	<div class="row">
 		<div class="col-md-8 mx-auto">
 			<div class="profile-form-wrap">
-				<%= form_with url: user_registration_path, method: :put, scope: @user, local: true do |f| %>
+				<%= form_with url: user_registration_path(@user.id), method: :put, scope: @user, local: true do |f| %>
 				<div class="profile-image form-group preview text-center">
 					<%= image_tag avatar_for(@user), class: "round-img" %>
 				</div>
@@ -40,6 +40,7 @@
 				</div>
 
 				<%= f.submit "変更する", class: "btn btn-primary w-100" %>
+				<%= hidden_field_tag :id, @user.id %>
 				<% end %>
 			</div>
 		</div>

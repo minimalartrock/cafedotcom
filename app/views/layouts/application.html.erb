@@ -6,7 +6,10 @@
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag "https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;400&display=swap" %>
+    <%= stylesheet_link_tag "https://unpkg.com/swiper/css/swiper.min.css" %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag "https://unpkg.com/swiper/js/swiper.min.js" %>
   </head>
   <body>
     <div id="wrapper">
@@ -21,10 +24,11 @@
           <%= flash.alert %>
         </div>
       <% end %>
-      <div class="container">
+      <div>
         <%= yield %>
       </div>
       <%= render "partial/footer" %>
     </div>
+    <%= render "partial/second_header" %>
   </body>
 </html>
