@@ -85,3 +85,5 @@ gem 'kaminari'
 gem 'gretel'
 
 gem 'dotenv-rails'
+
+gem 'rails_autolink'

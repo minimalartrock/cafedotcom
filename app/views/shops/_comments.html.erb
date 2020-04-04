@@ -18,7 +18,7 @@
 
 		<div class="comment-user-comment">
 			<p class="card-text">
-				<%= comment.comment %>
+				<%= auto_link(simple_format(h(comment.comment), {}, sanitize: false, wrapper_tag: "div")) %>
 			</p>
 		</div>
 		<p class="card-text comment-user-created_at"><small class="text-muted"><%= comment.created_at.strftime("%Y/%-m/%-d %-H:%-M ") %></small>

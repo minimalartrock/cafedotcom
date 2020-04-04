@@ -1,0 +1,15 @@
+<section id="vacant-shops">
+	<div class="container text-center mt-5">
+		<h3>今空いているお店</h3>
+		<div class="swiper-container mt-4">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide"><%= image_tag url_for(@recently[0].images[0]), class: "recently-shop" %></div>
+				<div class="swiper-slide"><%= image_tag url_for(@recently[1].images[0]), class: "recently-shop" %></div>
+				<div class="swiper-slide"><%= image_tag url_for(@recently[2].images[0]), class: "recently-shop" %></div>
+			</div>
+			<div class="swiper-pagination"></div>
+			<div class="swiper-button-prev"></div>
+			<div class="swiper-button-next"></div>
+		</div>
+	</div>
+</section>

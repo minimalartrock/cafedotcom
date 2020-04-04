@@ -30,9 +30,7 @@
 					<%= image_tag(avatar_for(current_user), alt: current_user.name, class: "header-avatar") %>
 					<% end %>
 					<% else %>
-					<%= link_to login_path do %>
-					<%= image_tag 'no-image', class: 'header-avatar' %>
-					<% end %>
+					<%= link_to 'ログイン', login_path, class: 'btn btn-outline-success my-2 my-sm-0'%>
 					<% end %>
 				</li>
 			</ul>

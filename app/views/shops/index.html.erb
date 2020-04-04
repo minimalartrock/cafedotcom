@@ -2,12 +2,12 @@
 	<div class="search-container overlay">
 		<%= search_form_for @q do |f| %>
 		<div class="form-group search-input">
-			<div class="container-fluid w-70">
+			<div class="container">
 				<div class="row">
-					<div class="col-sm-12 col-md-8">
+					<div class="col-sm-6 col-md-8">
 						<%= f.search_field :address_cont, id: 'search-text', class: "form-control", placeholder: 'お店の名前を入力してください' %>
 					</div>
-					<div class="col-sm-12 col-md-4">
+					<div class="col-sm-6 col-md-4">
 						<%= button_tag type: 'submit', class: 'btn btn-primary search-btn' do %>
 							<i class="fa fa-search"></i>
 							検索
@@ -20,42 +20,40 @@
 	</div>
 </section>
 
-<div class="wrapper container">
-	<section id="vacant-shops">
-		<div class="container m-5">
-			<h3>今空いているお店</h3>
-			<div class="swiper-container mt-4">
-				<div class="swiper-wrapper">
-					<div class="swiper-slide"><%= image_tag url_for(@recently[0].images[0]), class: "recently-shop" %></div>
-					<div class="swiper-slide"><%= image_tag url_for(@recently[1].images[0]), class: "recently-shop" %></div>
-					<div class="swiper-slide"><%= image_tag url_for(@recently[2].images[0]), class: "recently-shop" %></div>
-				</div>
-				<div class="swiper-pagination"></div>
-				<div class="swiper-button-prev"></div>
-				<div class="swiper-button-next"></div>
+<!--メニュー-->
+<%= render partial: "menu" %>
+
+<hr>
+
+<!--今空いているお店-->
+<%= render partial: "now_available_shops" %>
+
+<hr>
+
+<div class="container main">
+	<!--pagination-->
+	<div class="container pagination mt-3">
+		<%= paginate @shops %>
+	</div>
+	<div class="row">
+		<!--検索結果-->
+		<div class="search-results mr-2 col-sm-12 col-md-9">
+			<div class="card-columns mt-3">
+				<% @shops.each do |shop| %>
+				<%= render partial: "shop", locals: {shop: shop} %>
+				<% end %>
 			</div>
 		</div>
-	</section>
-
-	<hr>
-
-	<div class="container">
-		<div class="mt-3">
-			<%= paginate @shops %>
-			<%= page_entries_info @shops, entry_name: '店舗' %>
-		</div>
-
-		<div class="card-columns mt-3">
-			<% @shops.each do |shop| %>
-			<%= render partial: "shop", locals: {shop: shop} %>
-			<% end %>
+		<!--人気のお店-->
+		<div class="popular-shops mt-3 col-sm-12 col-md-3">
+			<aside>
+			</aside>
 		</div>
 	</div>
-
-	<%# ページトップへ %>
-	<div id="page_top"><a href="#top"></a></div>
-
 </div>
+
+<%# ページトップへ %>
+<div id="page_top"><a href="#top"></a></div>
 
 <script>
 	$(function () {
