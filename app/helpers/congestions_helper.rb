@@ -1,0 +1,2 @@
+module CongestionsHelper
+end

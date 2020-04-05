@@ -3,17 +3,10 @@
 	<% if shop.images.attached? %>
 		<div class="shop-image">
 			<%= image_tag url_for(shop.images[0]), class: 'card-img-top shop-image' %>
-			<div id="favorite-shop-<%= shop.id.to_s %>">
-				<% if user_signed_in? %>
-					<% if !Favorite.exists?(user_id: current_user.id, shop_id: shop.id) %>
-						<%= link_to '', shop_favorite_path(shop), method: :post, remote: true, class: "unfavorite" %>
-					<% else %>
-						<%= link_to '', shop_favorite_path(shop), method: :delete, remote: true, class: "favorite" %>
-					<% end %>
-				<% else %>
-					<div class="unfavorite"></div>
-				<% end %>
-			</div>
+			<!--混雑状況-->
+			<%= render partial: 'congestions/partial', locals: { shop: shop} %>
+			<!--お気に入り-->
+			<%= render partial: 'favorites/partial', locals: { shop: shop} %>
 		</div>
 	<% else %>
 		<%= image_tag '/no-image.png', class: 'card-img-top shop-image' %>
