@@ -13,7 +13,7 @@
   </head>
   <body>
     <div id="wrapper">
-      <%= render "partial/navbar" %>
+      <%= render "layouts/navbar" %>
       <% if flash.notice.present? %>
         <div class="alert alert-info">
           <%= flash.notice %>
@@ -27,8 +27,8 @@
       <div>
         <%= yield %>
       </div>
-      <%= render "partial/footer" %>
+      <%= render "layouts/footer" %>
     </div>
-    <%= render "partial/second_header" %>
+    <%= render "layouts/second_header" %>
   </body>
 </html>
