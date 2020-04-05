@@ -22,7 +22,7 @@
 .logo-img {
   width: 180px;
   height: 56px;
-  background-image: image-url("logo-black.png");
+  background-image: image-url("/logo-black.png");
   background-repeat: no-repeat;
   background-size: 160px;
   background-size: 180px !important;

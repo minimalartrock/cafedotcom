@@ -1,0 +1,2 @@
+$('#favorite-shop-<%= @shop.id.to_s %>').
+html('<%= link_to '', shop_favorite_path(@shop), method: :delete, remote: true, class: "favorite" %>');

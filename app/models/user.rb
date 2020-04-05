@@ -8,7 +8,9 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
   has_many :comments
-  has_many :likes
+	has_many :likes
+	has_many :favorites
+	has_many :shops, through: :favorites
 
   validates :name, presence: true, length: { maximum: 50 }
 

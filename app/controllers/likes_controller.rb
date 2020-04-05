@@ -18,5 +18,5 @@ class LikesController < ApplicationController
 
   def like_params
     params.permit(:comment_id)
-   end
+  end
 end
