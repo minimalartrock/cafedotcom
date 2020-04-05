@@ -3,6 +3,17 @@
 	<% if shop.images.attached? %>
 		<div class="shop-image">
 			<%= image_tag url_for(shop.images[0]), class: 'card-img-top shop-image' %>
+			<div id="favorite-shop-<%= shop.id.to_s %>">
+				<% if user_signed_in? %>
+					<% if !Favorite.exists?(user_id: current_user.id, shop_id: shop.id) %>
+						<%= link_to '', shop_favorite_path(shop), method: :post, remote: true, class: "unfavorite" %>
+					<% else %>
+						<%= link_to '', shop_favorite_path(shop), method: :delete, remote: true, class: "favorite" %>
+					<% end %>
+				<% else %>
+					<div class="unfavorite"></div>
+				<% end %>
+			</div>
 		</div>
 	<% else %>
 		<%= image_tag '/no-image.png', class: 'card-img-top shop-image' %>
@@ -33,9 +44,9 @@
 	$('[data-toggle="tooltip"]').tooltip();
 	$('#star-rate-<%= shop.id %>').raty({
 		size: 36,
-		starOff: '<%= asset_path('star_off.png') %>',
-		starOn: '<%= asset_path('star_on.png') %>',
-		starHalf: '<%= asset_path('star_half.png') %>',
+		starOff: '<%= asset_path('/star_off.png') %>',
+		starOn: '<%= asset_path('/star_on.png') %>',
+		starHalf: '<%= asset_path('/star_half.png') %>',
 		score: '<%= shop.comments.average(:rate) %>',
 		half: true,
 		readOnly: true

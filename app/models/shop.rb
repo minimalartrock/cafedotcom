@@ -3,6 +3,8 @@
 class Shop < ApplicationRecord
   has_many_attached :images
   has_many :comments, dependent: :destroy
+  has_many :favorites
+  has_many :users, through: :favorites
 
   validates :name, presence: true, length: { maximum: 30 }
   validates :address, presence: true, length: { maximum: 50 }

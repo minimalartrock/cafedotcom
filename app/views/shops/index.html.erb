@@ -2,7 +2,7 @@
 	<div class="search-container overlay">
 		<%= search_form_for @q do |f| %>
 		<div class="form-group search-input">
-			<div class="container">
+			<div>
 				<div class="row">
 					<div class="col-sm-6 col-md-8">
 						<%= f.search_field :address_cont, id: 'search-text', class: "form-control", placeholder: 'お店の名前を入力してください' %>
@@ -30,19 +30,26 @@
 
 <hr>
 
-<div class="container main">
+<div>
 	<!--pagination-->
-	<div class="container pagination mt-3">
+	<div class="pagination mt-3">
 		<%= paginate @shops %>
 	</div>
 	<div class="row">
 		<!--検索結果-->
 		<div class="search-results mr-2 col-sm-12 col-md-9">
-			<div class="card-columns mt-3">
-				<% @shops.each do |shop| %>
-				<%= render partial: "shop", locals: {shop: shop} %>
-				<% end %>
-			</div>
+			<% if @shops.present? %>
+				<div class="card-columns mt-3">
+					<% @shops.each do |shop| %>
+					<%= render partial: "shop", locals: {shop: shop} %>
+					<% end %>
+				</div>
+			<% else %>
+				<div>
+					<h3>お探しのお店は見つかりませんでした</h3>
+					<%= image_tag '/no_records_found.png', class: "w-100" %>
+				</div>
+			<% end %>
 		</div>
 		<!--人気のお店-->
 		<div class="popular-shops mt-3 col-sm-12 col-md-3">

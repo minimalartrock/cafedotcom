@@ -1,0 +1,24 @@
+<!--お気に入りのお店一覧-->
+<% if @user.shops.present? %>
+	<div class="search-results mr-2 col-sm-12 col-md-9">
+		<div class="card-columns mt-3">
+			<% @user.shops.each do |shop| %>
+				<%= render partial: "shops/shop", locals: {shop: shop} %>
+			<% end %>
+		</div>
+	</div>
+<% else %>
+	<div class="container">
+		<h3>お気に入りのお店を登録してみましょう</h3>
+		<%= image_tag '/no_records_found.png', class: "w-100" %>
+	</div>
+<% end %>
+
+<%# ページトップへ %>
+<div id="page_top"><a href="#top"></a></div>
+
+<script>
+	$(function () {
+		$('#favorites-link').addClass('active')
+	})
+</script>

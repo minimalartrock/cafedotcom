@@ -65,7 +65,7 @@
 .love {
   width: 20px;
   height: 20px;
-  background-image: image-url("not-love");
+  background-image: image-url("/not-love.png");
   background-repeat: no-repeat;
   background-size: 20px !important;
 }
@@ -73,7 +73,7 @@
 .loved {
   width: 20px;
   height: 20px;
-  background-image: image-url("love");
+  background-image: image-url("/love.png");
   background-repeat: no-repeat;
   background-size: 20px !important;
 }

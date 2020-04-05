@@ -1,0 +1,21 @@
+.favorite {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 20px;
+  height: 20px;
+  background-image: image-url("/bookmarked.png");
+  background-repeat: no-repeat;
+  background-size: 20px !important;
+}
+
+.unfavorite {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 20px;
+  height: 20px;
+  background-image: image-url("/not_bookmarked.png");
+  background-repeat: no-repeat;
+  background-size: 20px !important;
+}

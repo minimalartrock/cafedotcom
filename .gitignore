@@ -31,3 +31,4 @@ log-data
 postgresql/data
 tmp-data
 logfile
+*.tmp

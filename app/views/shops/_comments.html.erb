@@ -46,9 +46,9 @@
 <script>
 	$('#star-rate-<%= comment.id %>').raty({
 		size: 36,
-		starOff: '<%= asset_path('star_off.png') %>',
-		starOn: '<%= asset_path('star_on.png') %>',
-		starHalf: '<%= asset_path('star_half.png') %>',
+		starOff: '<%= asset_path('/star_off.png') %>',
+		starOn: '<%= asset_path('/star_on.png') %>',
+		starHalf: '<%= asset_path('/star_half.png') %>',
 		score: '<%= comment.rate %>',
 		half: true,
 		readOnly: true
