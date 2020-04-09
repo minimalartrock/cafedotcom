@@ -1,33 +1,39 @@
 <div class="congestion">
-	<ul class="list-group list-group-horizontal">
-		<li class="list-group-item d-flex justify-content-between align-items-center">
-			<%= link_to shop_congestion_path(:status => Congestion.statuses.key(0), :shop_id => shop.id, :user_id => current_user.id), method: :post, remote: true do %>
-				<i class="far fa-laugh" data-toggle="tooltip" data-placement="top" title="<%= Congestion.statuses_i18n[:vacant] %>"></i>
-				<span class="badge badge-primary badge-pill">1</span>
-			<% end %>
-		</li>
-		<li class="list-group-item d-flex justify-content-between align-items-center">
-			<%= link_to shop_congestion_path(:status => Congestion.statuses.key(1), :shop_id => shop.id, :user_id => current_user.id), method: :post, remote: true do %>
-				<i class="far fa-smile" data-toggle="tooltip" data-placement="top" title="<%= Congestion.statuses_i18n[:usually] %>"></i>
-				<span class="badge badge-primary badge-pill">2</span>
-			<% end %>
-		</li>
-		<li class="list-group-item d-flex justify-content-between align-items-center">
-			<%= link_to shop_congestion_path(:status => Congestion.statuses.key(2), :shop_id => shop.id, :user_id => current_user.id), method: :post, remote: true do %>
-				<i class="far fa-dizzy" data-toggle="tooltip" data-placement="top" title="<%= Congestion.statuses_i18n[:crowded] %>"></i>
-				<span class="badge badge-primary badge-pill">14</span>
-			<% end %>
-		</li>
-	</ul>
-</div>
-
-<!--
-<div>
-	<p class="shop-status"><i class="far fa-dizzy" data-toggle="tooltip" data-placement="top"
-			title="<%= :混んでいた %>"></i>&nbsp<%= shop.number_of_people_saying_crowded(shop) %>人</p>
-	<p class="shop-status"><i class="far fa-smile" data-toggle="tooltip" data-placement="top"
-			title="普通だった"></i>&nbsp<%= shop.number_of_people_saying_usually(shop) %>人</p>
-	<p class="shop-status"><i class="far fa-laugh" data-toggle="tooltip" data-placement="top"
-			title="空いていた"></i>&nbsp<%= shop.number_of_people_saying_vacant(shop) %>人</p>
-</div>
--->
+  <% if user_signed_in? %>
+    <ul class="list-group list-group-horizontal congestion-list">
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <%= link_to shop_congestion_path(:status => Congestion.statuses.key(0), :shop_id => shop.id, :user_id => current_user.id), method: :post, class: "btn btn-primary congestion-btn", remote: true do %>
+          <i class="far fa-laugh congestion-status" data-toggle="tooltip" data-placement="top" title="<%= Congestion.statuses_i18n[:vacant] %>"></i>
+          <span id="congestion-vacant-<%= shop.id.to_s %>" class="badge badge-primary badge-pill congestion-count"><%= Congestion.within_hour.status_count(shop.id, Congestion.statuses[:vacant]) %></span>
+        <% end %>
+      </li>
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <%= link_to shop_congestion_path(:status => Congestion.statuses.key(1), :shop_id => shop.id, :user_id => current_user.id), method: :post, class: "btn btn-primary congestion-btn", remote: true do %>
+          <i class="far fa-smile congestion-status" data-toggle="tooltip" data-placement="top" title="<%= Congestion.statuses_i18n[:usually] %>"></i>
+          <span id="congestion-usually-<%= shop.id.to_s %>" class="badge badge-primary badge-pill congestion-count"><%= Congestion.within_hour.status_count(shop.id, Congestion.statuses[:usually]) %></span>
+        <% end %>
+      </li>
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <%= link_to shop_congestion_path(:status => Congestion.statuses.key(2), :shop_id => shop.id, :user_id => current_user.id), method: :post, class: "btn btn-primary congestion-btn", remote: true do %>
+          <i class="far fa-dizzy congestion-status" data-toggle="tooltip" data-placement="top" title="<%= Congestion.statuses_i18n[:crowded] %>"></i>
+          <span id="congestion-crowded-<%= shop.id.to_s %>" class="badge badge-primary badge-pill congestion-count"><%= Congestion.within_hour.status_count(shop.id, Congestion.statuses[:crowded]) %></span>
+        <% end %>
+      </li>
+    </ul>
+    <%= get_congestion_status(shop.id) %>
+  <% else %>
+    <ul class="list-group list-group-horizontal">
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <i class="far fa-laugh" data-toggle="tooltip" data-placement="top" title="<%= Congestion.statuses_i18n[:vacant] %>"></i>
+        <span id="congestion-vacant-<%= shop.id.to_s %>" class="badge badge-primary badge-pill congestion-count"><%= Congestion.within_hour.status_count(shop.id, Congestion.statuses[:vacant]) %></span>
+      </li>
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <i class="far fa-smile" data-toggle="tooltip" data-placement="top" title="<%= Congestion.statuses_i18n[:usually] %>"></i>
+        <span id="congestion-usually-<%= shop.id.to_s %>" class="badge badge-primary badge-pill congestion-count"><%= Congestion.within_hour.status_count(shop.id, Congestion.statuses[:usually]) %></span>
+      </li>
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <i class="far fa-dizzy" data-toggle="tooltip" data-placement="top" title="<%= Congestion.statuses_i18n[:crowded] %>"></i>
+        <span id="congestion-crowded-<%= shop.id.to_s %>" class="badge badge-primary badge-pill congestion-count"><%= Congestion.within_hour.status_count(shop.id, Congestion.statuses[:crowded]) %></span>
+      </ul>
+    <% end %>
+  </div>

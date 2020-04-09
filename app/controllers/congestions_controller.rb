@@ -1,16 +1,12 @@
 class CongestionsController < ApplicationController
 	before_action :login_required
+	before_action :already_posted?
 
 	def create
-    congestion = Congestion.new(congestion_params)
-    respond_to :js if congestion.save
+		@status = Shop.find(params[:shop_id])
+		@congestion = Congestion.new(congestion_params)
+		respond_to :js if @congestion.save
   end
-
-  def destroy
-    shop = Shop.find(params[:shop_id])
-    congestion = Congestion.find_by(user_id: current_user.id, shop_id: shop.id)
-    respond_to :js if congestion.destroy
-	end
 
 	private
 
@@ -20,5 +16,10 @@ class CongestionsController < ApplicationController
 
 	def login_required
     redirect_to login_path, notice: 'ログインが必要です' unless current_user
+	end
+
+	def already_posted?
+    redirect_to login_path, notice: 'ログインが必要です' unless current_user if Congestion.already_posted(current_user) > 0
   end
+
 end

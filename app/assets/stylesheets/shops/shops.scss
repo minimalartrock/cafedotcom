@@ -60,7 +60,6 @@
     line-height: 24px;
 
     width: 100%;
-    max-width: 540px;
     height: 50px;
     margin-bottom: 20px;
     padding: 0 10px;
@@ -161,11 +160,9 @@
 
 .shops-description
 {
-    top: 0;
-    left: 0;
-
     width: 100%;
     height: 180px;
+    padding: 0;
 }
 
 .carousel-item > img

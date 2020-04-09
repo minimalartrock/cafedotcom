@@ -10,6 +10,7 @@
     <%= stylesheet_link_tag "https://unpkg.com/swiper/css/swiper.min.css" %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag "https://unpkg.com/swiper/js/swiper.min.js" %>
+    <%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.2.0/lazysizes.min.js' %>
   </head>
   <body>
     <div id="wrapper">
@@ -27,8 +28,8 @@
       <div>
         <%= yield %>
       </div>
-      <%= render "layouts/footer" %>
     </div>
+    <%= render "layouts/footer" %>
     <%= render "layouts/second_header" %>
   </body>
 </html>

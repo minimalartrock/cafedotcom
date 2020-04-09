@@ -1,5 +1,17 @@
-.congestion {
-  position: absolute;
-  top: 0;
-  left: 0;
+.congestion .list-group-item {
+  padding: 0;
+  border-style: none;
+}
+
+.congestion .congestion-btn {
+  border-color: #2cb696;
+  background-color: #fff;
+}
+
+.congestion .congestion-status {
+  color: #2cb696;
+}
+
+.congestion .congestion-count {
+  background-color: #2cb696;
 }

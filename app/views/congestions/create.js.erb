@@ -1,0 +1,10 @@
+<% if @congestion.vacant? %>
+  $('#congestion-vacant-<%= @status.id.to_s %>').
+  html('<span id="congestion-vacant-<%= @status.id.to_s %>" class="badge badge-primary badge-pill congestion-count"><%= Congestion.within_hour.status_count(@status.id, Congestion.statuses[:vacant]) %></span>');
+<% elsif @congestion.usually? %>
+  $('#congestion-usually-<%= @status.id.to_s %>').
+  html('<span id="congestion-usually-<%= @status.id.to_s %>" class="badge badge-primary badge-pill congestion-count"><%= Congestion.within_hour.status_count(@status.id, Congestion.statuses[:usually]) %></span>');
+<% elsif @congestion.crowded? %>
+  $('#congestion-crowded-<%= @status.id.to_s %>').
+  html('<span id="congestion-crowded-<%= @status.id.to_s %>" class="badge badge-primary badge-pill congestion-count"><%= Congestion.within_hour.status_count(@status.id, Congestion.statuses[:crowded]) %></span>');
+<% end %>
