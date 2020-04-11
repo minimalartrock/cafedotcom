@@ -1,7 +1,7 @@
 <section id="top">
 	<div class="search-container overlay">
 		<%= search_form_for @q do |f| %>
-		<div class="form-group search-input center mw">
+		<div class="form-group search-input">
 			<div>
 				<div class="row">
 					<div class="col-sm-6 col-md-10">
@@ -26,20 +26,20 @@
 <hr>
 
 <!--今空いているお店-->
-<%= render partial: "now_available_shops" %>
+<%= render partial: "available" %>
 
 <hr>
 
-<div class="center mw">
+<div>
 	<!--pagination-->
-	<div class="pagination mt-3">
+	<div class="pagination">
 		<%= paginate @shops %>
 	</div>
 	<div class="row">
 		<!--検索結果-->
-		<div class="search-results mr-2 col-sm-12 col-md-9">
+		<div class="row">
 			<% if @shops.present? %>
-				<div class="card-columns mt-3">
+				<div>
 					<% @shops.each do |shop| %>
 					<%= render partial: "shop", locals: {shop: shop} %>
 					<% end %>
@@ -52,7 +52,7 @@
 			<% end %>
 		</div>
 		<!--人気のお店-->
-		<div class="popular-shops mt-3 col-sm-12 col-md-3">
+		<div>
 			<aside>
 			</aside>
 		</div>

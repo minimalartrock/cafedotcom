@@ -1,3 +1,70 @@
-<header class="first-header">
-  <%= render "layouts/header" %>
-</header>
+<div class="navbar-fixed">
+	<!--管理者メニュー-->
+	<ul id="dropdown" class="dropdown-content">
+		<li>
+			<%= link_to 'ユーザー一覧', users_path %>
+		</li>
+	</ul>
+  <nav>
+    <div class="nav-wrapper">
+      <%= link_to root_path, class: 'brand-logo' do %>
+        <% image_tag '/images/logo.png' %>
+      <% end %>
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+        <% if user_signed_in? %>
+					<li>
+						<%= link_to 'お気に入りのお店', user_favorites_path(current_user) %>
+					</li>
+				<% end %>
+				<!--管理者メニュー-->
+				<% if user_signed_in? && current_user.admin? %>
+					<li><a class="dropdown-trigger" href="#!" data-target="dropdown">管理者メニュー<i class="material-icons right">arrow_drop_down</i></a></li>
+				<% end %>
+				<li>
+					<% if user_signed_in? %>
+						<%= link_to '#', class: 'dropdown-trigger', data_target: 'avatar-dropdown' do %>
+							<%= image_tag(avatar_for(current_user)) %>
+						<% end %>
+						<ul id='avatar-dropdown' class='dropdown-content'>
+							<li><a href="#!">one</a></li>
+							<li><a href="#!">two</a></li>
+							<li class="divider" tabindex="-1"></li>
+							<li><a href="#!">three</a></li>
+							<li><a href="#!"><i class="material-icons">view_module</i>four</a></li>
+							<li><a href="#!"><i class="material-icons">cloud</i>five</a></li>
+						</ul>
+					<% else %>
+						<%= link_to 'ログイン', login_path %>
+					<% end %>
+				</li>
+      </ul>
+    </div>
+  </nav>
+</div>
+<ul class="sidenav" id="mobile-demo">
+	<% if user_signed_in? %>
+		<li>
+			<%= link_to 'お気に入りのお店', user_favorites_path(current_user) %>
+		</li>
+	<% end %>
+	<!--管理者メニュー-->
+	<% if user_signed_in? && current_user.admin? %>
+		<li><a class="dropdown-trigger" href="#!" data-target="dropdown">管理者メニュー<i class="material-icons right">arrow_drop_down</i></a></li>
+	<% end %>
+	<li>
+		<% if user_signed_in? %>
+			<%= link_to user_path(current_user.id) do %>
+				<%= image_tag(avatar_for(current_user)) %>
+			<% end %>
+		<% else %>
+			<%= link_to 'ログイン', login_path %>
+		<% end %>
+	</li>
+</ul>
+<script>
+  $(document).ready(function(){
+			$('.sidenav').sidenav();
+			$('.dropdown-trigger').dropdown();
+    });
+</script>
