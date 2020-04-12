@@ -1,3 +1,7 @@
+.breadcrumbs-nav {
+  margin-bottom: 40px;
+}
+
 .breadcrumbs a:first-child:before {
   font-family: 'Font Awesome 5 Free';
   font-weight: bold;

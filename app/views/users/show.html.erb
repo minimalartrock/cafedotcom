@@ -1,40 +1,19 @@
-<% breadcrumb :show_user, @user %>
-<%= render "layouts/breadcrumbs" %>
-
-<div class="profile-wrap">
+<div class="container">
+	<h2>プロフィール</h2>
 	<div class="row">
-		<div class="col-md-4 text-center">
-			<%= image_tag(avatar_for(@user), alt: @user.name, class: "round-img") %>
+		<div class="col s12 m6">
+			<%= image_tag avatar_for(@user), alt: @user.name, class: 'avatar-large' %>
 		</div>
-		<div class="col-md-8">
+		<div class="col s12 m6">
 			<div class="row">
-				<h1><%= @user.name %></h1>
-
-				<%= link_to "プロフィールを編集", edit_user_path, class: "btn btn-outline-dark common-btn edit-profile-btn" %>
-				<button type="button" class="setting" data-toggle="modal" data-target="#exampleModal"></button>
-
-				<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-					aria-hidden="true">
-					<div class="modal-dialog" role="document">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h5 class="modal-title" id="exampleModalLabel">設定</h5>
-								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-									<span aria-hidden="true">×</span>
-								</button>
-							</div>
-							<div class="list-group text-center">
-								<%= link_to "サインアウト", destroy_user_session_path, method: :delete, class: "list-group-item list-group-item-action" %>
-								<%= link_to "キャンセル", "#", class: "list-group-item list-group-item-action", "data-dismiss": "modal" %>
-							</div>
-						</div>
-					</div>
-				</div>
+				<h3><%= @user.name %></h3>
+				<%= link_to edit_user_path, class: "waves-effect waves-light btn" do %>
+					<i class="fas fa-user-edit"></i>
+					プロフィールを編集
+				<% end %>
 			</div>
 			<div class="row">
-				<p>
-					<%= @user.email %>
-				</p>
+				<%= @user.email %>
 			</div>
 		</div>
 	</div>

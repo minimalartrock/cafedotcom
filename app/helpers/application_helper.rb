@@ -16,11 +16,11 @@ module ApplicationHelper
     render_404 unless user_signed_in? && current_user.admin?
   end
 
-  def correct_user?
-    render_404 unless user_signed_in? && current_user.id == params[:id].to_i
+  def correct_user?(user)
+    render_404 unless user_signed_in? && (user == current_user)
   end
 
   def render_404
-    render file: "public/404.html", status: 404, layout: false
+    render file: "/public/404.html", status: 404, layout: false
   end
 end

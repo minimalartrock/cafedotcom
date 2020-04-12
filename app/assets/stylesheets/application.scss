@@ -1,8 +1,11 @@
+@import url(https://fonts.googleapis.com/earlyaccess/notosansjp.css);
 @import 'materialize';
 @import 'https://fonts.googleapis.com/icon?family=Material+Icons';
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
-@import 'theme.scss';
+@import 'global.scss';
 @import 'navbar.scss';
+@import 'footer.scss';
 @import 'breadcrumb.scss';
 @import 'login.scss';
+@import 'users.scss';
