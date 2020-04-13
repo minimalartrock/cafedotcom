@@ -16,6 +16,10 @@ class User < ApplicationRecord
 
   validates :name, presence: true, length: { maximum: 50 }
 
+	scope :desc, -> () { order(created_at: :desc) }
+	scope :users, -> () { where(admin: false) }
+	scope :administrators, -> () { where(admin: true) }
+
   def update_without_current_password(params, *options)
     params.delete(:current_password)
 

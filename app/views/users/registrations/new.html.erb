@@ -1,12 +1,4 @@
-<% if @user.errors.present? %>
-	<div class="alert alert-danger">
-		<ul>
-			<% @user.errors.full_messages.each do |message| %>
-				<li><%= message %></li>
-			<% end %>
-		</ul>
-	</div>
-<% end %>
+<%= render 'layouts/error_messages', model: @user %>
 
 <div class="main">
 	<div class="card devise-card">

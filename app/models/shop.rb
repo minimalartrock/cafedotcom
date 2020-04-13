@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Shop < ApplicationRecord
-  has_many_attached :images
+  has_one_attached :image
   has_many :comments, dependent: :destroy
   has_many :favorites
   has_many :users, through: :favorites
