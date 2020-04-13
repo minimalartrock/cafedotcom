@@ -1,67 +1,96 @@
-<div class="navbar-fixed">
-	<!--管理者メニュー-->
-	<ul id="dropdown" class="dropdown-content">
+<ul id="admin-menu" class="dropdown-content admin-menu">
+	<li>
+		<%= link_to 'ユーザー一覧', users_path %>
+	</li>
+</ul>
+<ul id="user-menu" class="dropdown-content user-menu">
+	<% if user_signed_in? %>
 		<li>
-			<%= link_to 'ユーザー一覧', users_path %>
+			<%= link_to user_path(current_user.id) do %>
+				プロフィール
+				<i class="material-icons">account_circle</i>
+			<% end %>
 		</li>
-	</ul>
+		<li>
+			<%= link_to logout_path, method: :delete do %>
+				ログアウト
+				<i class="fas fa-sign-out-alt"></i>
+			<% end %>
+		</li>
+	<% end %>
+</ul>
+<div class="navbar-fixed">
   <nav>
     <div class="nav-wrapper">
       <%= link_to root_path, class: 'brand-logo' do %>
         <% image_tag '/images/logo.png' %>
       <% end %>
-      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <a href="#" data-target="mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
         <% if user_signed_in? %>
 					<li>
 						<%= link_to 'お気に入りのお店', user_favorites_path(current_user) %>
 					</li>
-				<% end %>
-				<!--管理者メニュー-->
-				<% if user_signed_in? && current_user.admin? %>
-					<li><a class="dropdown-trigger" href="#!" data-target="dropdown">管理者メニュー<i class="material-icons right">arrow_drop_down</i></a></li>
-				<% end %>
-				<li>
-					<% if user_signed_in? %>
-						<%= link_to '#', class: 'dropdown-trigger', data_target: 'avatar-dropdown' do %>
-							<%= image_tag(avatar_for(current_user)) %>
-						<% end %>
-						<ul id='avatar-dropdown' class='dropdown-content'>
-							<li><a href="#!">one</a></li>
-							<li><a href="#!">two</a></li>
-							<li class="divider" tabindex="-1"></li>
-							<li><a href="#!">three</a></li>
-							<li><a href="#!"><i class="material-icons">view_module</i>four</a></li>
-							<li><a href="#!"><i class="material-icons">cloud</i>five</a></li>
-						</ul>
-					<% else %>
-						<%= link_to 'ログイン', login_path %>
+					<% if current_user.admin? %>
+						<li>
+							<a class="dropdown-trigger" href="#" data-target="admin-menu">管理者メニュー<i class="material-icons right">arrow_drop_down</i></a>
+						</li>
 					<% end %>
-				</li>
+					<li>
+						<a class="dropdown-trigger avatar-menu" href="#" data-target="user-menu"><%= image_tag avatar_for(current_user), class: 'avatar' %></a>
+					</li>
+				<% else %>
+					<%= link_to login_path, class: 'btn waves-effect waves-light login-link' do %>
+						ログイン
+						<i class="fas fa-sign-in-alt"></i>
+					<% end %>
+				<% end %>
       </ul>
     </div>
   </nav>
 </div>
-<ul class="sidenav" id="mobile-demo">
+
+<ul id="mobile" class="sidenav">
+	<li>
+		<div class="user-view">
+			<div class="background">
+				<img src="/images/background.png">
+			</div>
+			<% if user_signed_in? %>
+				<%= image_tag avatar_for(current_user), class: 'circle' %>
+				<span class="white-text name"><%= current_user.name %></span>
+				<span class="white-text email"><%= current_user.email %></span>
+			<% else %>
+				<%= image_tag '/images/default-avatar.jpg', class: 'circle' %>
+				<span class="white-text name">Your Name</span>
+				<span class="white-text email">Your Email</span>
+			<% end %>
+		</div>
+	</li>
 	<% if user_signed_in? %>
 		<li>
 			<%= link_to 'お気に入りのお店', user_favorites_path(current_user) %>
 		</li>
+		<% if current_user.admin? %>
+			<li><a class="dropdown-trigger" href="#" data-target="admin-menu">管理者メニュー<i class="material-icons right">arrow_drop_down</i></a></li>
+		<% end %>
 	<% end %>
-	<!--管理者メニュー-->
-	<% if user_signed_in? && current_user.admin? %>
-		<li><a class="dropdown-trigger" href="#!" data-target="dropdown">管理者メニュー<i class="material-icons right">arrow_drop_down</i></a></li>
-	<% end %>
+	<li><div class="divider"></div></li>
 	<li>
 		<% if user_signed_in? %>
-			<%= link_to user_path(current_user.id) do %>
-				<%= image_tag(avatar_for(current_user)) %>
+			<%= link_to logout_path, class: 'btn waves-effect waves-light login-link', method: :delete do %>
+				ログアウト
+				<i class="fas fa-sign-out-alt"></i>
 			<% end %>
 		<% else %>
-			<%= link_to 'ログイン', login_path %>
+			<%= link_to login_path, class: 'btn waves-effect waves-light login-link' do %>
+				ログイン
+				<i class="fas fa-sign-in-alt"></i>
+			<% end %>
 		<% end %>
 	</li>
 </ul>
+
 <script>
   $(document).ready(function(){
 			$('.sidenav').sidenav();
