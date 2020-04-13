@@ -1,32 +1,48 @@
-<% breadcrumb :index_user %>
-<%= render "layouts/breadcrumbs" %>
-
-<div class="users-wrap">
-	<div class="card-columns">
-		<% @users.each do |user| %>
-		<div class="card text-center p-4">
-			<% if user.avatar.attached? %>
-			<div>
-				<%= image_tag user.avatar, class: 'round-img' %>
-			</div>
-			<% else %>
-			<%= image_tag '/images/default-avatar.png', class: 'round-img' %>
-			<% end %>
-			<hr>
-			<h5 class="card-title"><%= link_to user.name, user_path(user.id) %></h5>
-			<div class="card-body">
-				<p class="card-text"><%= user.email %></p>
-				<p class="card-text"><%= user.admin? ? '管理者' : '一般ユーザ' %></p>
-				<p class="card-text text-muted"><%= user.created_at.strftime("%Y年%-m月%-d日") %></p>
-			</div>
-			<%= link_to '', users_path, method: :delete, data: { confirm: "ユーザー「#{user.name}」を削除します。よろしいですか？" }, class: "delete-icon" %>
+<div class="container">
+	<h2>ユーザー一覧</h2>
+	<div class="row">
+    <div class="col s12">
+      <ul class="tabs">
+        <li class="tab col s6"><a class="active" href="#users">一般ユーザー</a></li>
+        <li class="tab col s6"><a href="#administrators">管理者</a></li>
+      </ul>
+    </div>
+    <div id="users" class="col s12">
+			<ul class="collection">
+				<% @users.each do |user| %>
+					<li class="collection-item avatar">
+						<%= image_tag avatar_for(user), class: 'circle' %>
+						<p><%= link_to user.name, user_path(user) %></p>
+						<p><i class="material-icons">email</i><%= user.email %></p>
+						<p><i class="material-icons">card_membership</i><%= user.created_at.strftime("%Y年%-m月%-d日") %></p>
+						<%= link_to user_path(user), method: :delete, class: 'trash', data: { confirm: "ユーザー「#{user.name}」を削除します。よろしいですか？" } do %>
+							<i class="material-icons">delete</i>
+						<% end %>
+					</li>
+				<% end %>
+			</ul>
 		</div>
-		<% end %>
-	</div>
+    <div id="administrators" class="col s12">
+			<ul class="collection">
+				<% @administrators.each do |admin| %>
+					<li class="collection-item avatar">
+						<%= image_tag avatar_for(admin), class: 'circle' %>
+						<p><%= link_to admin.name, user_path(admin) %></p>
+						<p><i class="material-icons">email</i><%= admin.email %></p>
+						<p><i class="material-icons">card_membership</i><%= admin.created_at.strftime("%Y年%-m月%-d日") %></p>
+						<p class="secondary-content"><i class="material-icons">grade</i></p>
+						<%= link_to user_path(admin), method: :delete, class: 'trash', data: { confirm: "ユーザー「#{admin.name}」を削除します。よろしいですか？" } do %>
+							<i class="material-icons">delete</i>
+						<% end %>
+					</li>
+				<% end %>
+			</ul>
+		</div>
+  </div>
 </div>
 
 <script>
-	$(function () {
-		$('.users-link').addClass('active')
-	})
+$(document).ready(function(){
+	$('.tabs').tabs();
+});
 </script>

@@ -1,22 +1,85 @@
 <%= form_with model: @shop, local: true do |f| %>
-	<%= render 'layouts/error_messages', model: f.object %>
-	<div class="form-group">
-		<%= f.text_field :name, autofocus: true, placeholder: "店舗名", class: "form-control" %>
+	<div class="row">
+		<div class="row">
+			<div class="preview">
+				<%= image_tag @shop.image %>
+			</div>
+		</div>
 	</div>
 
-	<div class="form-group">
-		<%= f.text_field :address, autofocus: true, placeholder: "住所", class: "form-control" %>
+	<div class="row">
+		<div class="input-field col s12">
+			<i class="material-icons prefix">store</i>
+			<%= f.text_field :name, class: "validate" %>
+			<%= f.label :name, class: 'active' %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="input-field col s12">
+			<i class="fas fa-map-marker-alt prefix"></i>
+			<%= f.text_field :address, class: "validate" %>
+			<%= f.label :address, class: 'active' %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="file-field input-field">
+			<div class="btn">
+				<i class="material-icons">photo</i>
+				<%= f.file_field :image %>
+			</div>
+			<div class="file-path-wrapper">
+				<input class="file-path validate" type="text" placeholder="お店の画像" >
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="input-field col s12">
+			<i class="fas fa-globe prefix"></i>
+			<%= f.text_field :url, class: "validate" %>
+			<%= f.label :url, class: 'active' %>
+		</div>
 	</div>
 
-	<div class="form-group file-upload-wrapper">
-		<%= f.file_field :images, multiple: true, autocomplete: "true", class: "form-control-file file-upload" %>
-	</div>
-
-	<div class="form-group">
-		<%= f.text_field :url, autocomplete: "true", placeholder: "お店のURL", class: "form-control" %>
-	</div>
-
-	<div class="actions">
-		<%= f.submit "登録する", class: "btn btn-primary w-100" %>
+	<div class="row">
+		<div class="input-field col s12">
+			<%= link_to root_path, class: "btn waves-effect waves-light login-link" do %>
+			キャンセル
+				<i class="material-icons">keyboard_return</i>
+			<% end %>
+		</div>
+		<div class="input-field col s12">
+			<%= button_tag '', class: "btn waves-effect waves-light login-link", type: 'submit' do %>
+			変更する
+				<i class="material-icons">send</i>
+			<% end %>
+		</div>
 	</div>
 <% end %>
+
+<script>
+	$(function(){
+		$('form').on('change', 'input[type="file"]', function(e){
+			var file = e.target.files[0],
+				reader = new FileReader(),
+				$preview = $(".preview");
+			t = this;
+
+			if(file.type.indexOf("image") < 0){
+				return false;
+			}
+
+			reader.onload = (function(file){
+				return function(e){
+					$preview.empty();
+					$preview.append($('<img>').attr({
+						src: e.target.result,
+						class: "preview",
+						title: file.name
+					}));
+				};
+			})(file);
+
+			reader.readAsDataURL(file);
+		});
+	});
+</script>

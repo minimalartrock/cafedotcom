@@ -6,7 +6,8 @@ class UsersController < ApplicationController
   before_action :admin?, only: [:index]
 
   def index
-    @users = User.all
+    @users = User.users.desc
+    @administrators = User.administrators.desc
   end
 
   def show
@@ -17,5 +18,10 @@ class UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
     correct_user?(@user)
+  end
+
+	def destroy
+    @user = User.find(params[:id])
+		redirect_to users_path, notice: "ユーザー「#{@user.name}」を削除しました。"
   end
 end

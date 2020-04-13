@@ -37,7 +37,7 @@
 						</li>
 					<% end %>
 					<li>
-						<a class="dropdown-trigger avatar-menu" href="#" data-target="user-menu"><%= image_tag avatar_for(current_user), class: 'avatar' %></a>
+						<a class="dropdown-trigger avatar-menu" href="#" data-target="user-menu"><%= image_tag avatar_for(current_user), class: 'avatar-small' %></a>
 					</li>
 				<% else %>
 					<%= link_to login_path, class: 'btn waves-effect waves-light login-link' do %>
@@ -80,14 +80,14 @@
 	<li><div class="divider"></div></li>
 	<li>
 		<% if user_signed_in? %>
-			<%= link_to logout_path, class: 'btn waves-effect waves-light login-link', method: :delete do %>
+			<%= link_to logout_path, class: 'btn waves-effect waves-light', method: :delete do %>
 				ログアウト
-				<i class="fas fa-sign-out-alt"></i>
+				<i class="fas fa-sign-out-alt right"></i>
 			<% end %>
 		<% else %>
-			<%= link_to login_path, class: 'btn waves-effect waves-light login-link' do %>
+			<%= link_to login_path, class: 'btn waves-effect waves-light' do %>
 				ログイン
-				<i class="fas fa-sign-in-alt"></i>
+				<i class="fas fa-sign-in-alt right"></i>
 			<% end %>
 		<% end %>
 	</li>

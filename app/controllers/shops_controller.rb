@@ -50,6 +50,6 @@ class ShopsController < ApplicationController
   private
 
   def shop_params
-    params.require(:shop).permit(:name, :address, :map, :url, images: [])
+    params.require(:shop).permit(:name, :address, :url, :image)
   end
 end

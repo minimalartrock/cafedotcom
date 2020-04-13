@@ -2,8 +2,8 @@
 	<div class="card medium hoverable">
 		<div class="card-image">
 			<%= link_to shop_path(shop.id), class: "waves-effect waves-light" do %>
-				<% if shop.images.attached? %>
-					<%= lazysizes_image_tag url_for(shop.images[0]) %>
+				<% if shop.image.attached? %>
+					<%= lazysizes_image_tag url_for(shop.image) %>
 				<% else %>
 					<%= lazysizes_image_tag '/images/no-image.png' %>
 				<% end %>

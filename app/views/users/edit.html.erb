@@ -1,65 +1,63 @@
-<% if @user.errors.present? %>
-	<div class="alert alert-danger">
-		<ul>
-			<% @user.errors.full_messages.each do |message| %>
-				<li><%= message %></li>
-			<% end %>
-		</ul>
-	</div>
-<% end %>
+<%= render 'layouts/error_messages', model: @user %>
 
 <div class="container">
 	<h2>プロフィール編集</h2>
-	<div class="row">
-		<div class="col s12">
+	<div class="main">
+		<div class="card devise-card">
 			<div class="form-wrap">
-				<%= form_with url: user_registration_path(@user), method: :put, scope: @user, local: true do |f| %>
-					<div class="row">
-						<div class="preview">
-							<%= image_tag avatar_for(@user), class: "avatar-large" %>
-						</div>
-					</div>
-					<div class="row">
-						<div class="file-field input-field">
-							<div class="btn">
-								<i class="material-icons">photo</i>
-								<%= f.file_field :avatar %>
-							</div>
-							<div class="file-path-wrapper">
-								<input class="file-path validate" type="text" placeholder="プロフィール画像" >
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="input-field col s12">
-							<i class="material-icons prefix">account_circle</i>
-							<%= f.text_field :name, id: 'name', class: "validate" %>
-							<%= f.label :name, class: 'active' %>
-						</div>
-					</div>
-					<div class="row">
-						<div class="input-field col s12">
-							<i class="material-icons prefix">email</i>
-							<%= f.email_field :email, id: 'email', class: "validate" %>
-							<%= f.label :email, class: 'active' %>
-						</div>
-					</div>
-					<div class="row">
-						<div class="input-field col s12">
-							<%= link_to user_path(@user), class: "btn waves-effect waves-light login-link" do %>
-							キャンセル
-								<i class="material-icons">keyboard_return</i>
+				<div class="row">
+					<div class="col s12">
+						<div class="form-wrap">
+							<%= form_with url: user_registration_path(@user), method: :put, scope: @user, local: true do |f| %>
+								<div class="row">
+									<div class="preview">
+										<%= image_tag avatar_for(@user), class: "avatar-large" %>
+									</div>
+								</div>
+								<div class="row">
+									<div class="file-field input-field">
+										<div class="btn">
+											<i class="material-icons">photo</i>
+											<%= f.file_field :avatar %>
+										</div>
+										<div class="file-path-wrapper">
+											<input class="file-path validate" type="text" placeholder="プロフィール画像" >
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="input-field col s12">
+										<i class="material-icons prefix">account_circle</i>
+										<%= f.text_field :name, id: 'name', class: "validate" %>
+										<%= f.label :name, class: 'active' %>
+									</div>
+								</div>
+								<div class="row">
+									<div class="input-field col s12">
+										<i class="material-icons prefix">email</i>
+										<%= f.email_field :email, id: 'email', class: "validate" %>
+										<%= f.label :email, class: 'active' %>
+									</div>
+								</div>
+								<div class="row">
+									<div class="input-field col s12">
+										<%= link_to user_path(@user), class: "btn waves-effect waves-light login-link" do %>
+										キャンセル
+											<i class="material-icons">keyboard_return</i>
+										<% end %>
+									</div>
+									<div class="input-field col s12">
+										<%= button_tag '', class: "btn waves-effect waves-light login-link", type: 'submit' do %>
+										変更する
+											<i class="material-icons">send</i>
+										<% end %>
+									</div>
+								</div>
+								<%= hidden_field_tag :id, @user.id %>
 							<% end %>
 						</div>
-						<div class="input-field col s12">
-							<%= button_tag '', class: "btn waves-effect waves-light login-link", type: 'submit' do %>
-							変更する
-								<i class="material-icons">send</i>
-							<% end %>
-						</div>
 					</div>
-					<%= hidden_field_tag :id, @user.id %>
-				<% end %>
+				</div>
 			</div>
 		</div>
 	</div>
