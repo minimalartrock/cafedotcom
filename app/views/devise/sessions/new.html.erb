@@ -8,14 +8,16 @@
 				<%= form_with url: login_path, class: 'col s12', scope: @user, local: true do |f| %>
 					<div class="row">
 						<div class="input-field col s12">
+						<i class="material-icons prefix">email</i>
 							<%= f.email_field :email, id: 'email', class: "validate" %>
-							<%= f.label :email %>
+							<%= f.label :email, class: 'active' %>
 						</div>
 					</div>
 					<div class="row">
 						<div class="input-field col s12">
+							<i class="fas fa-key prefix"></i>
 							<%= f.password_field :password, id: 'password', class: "validate", autocomplete: "off" %>
-							<%= f.label :password %>
+							<%= f.label :password, class: 'active' %>
 						</div>
 					</div>
 					<div class="row">

@@ -1,3 +1,18 @@
+.body
+{
+    font-family: 'Noto Sans JP';
+}
+
+.field_with_errors
+{
+    display: contents;
+
+    input
+    {
+        @extend .invalid;
+    }
+}
+
 .alert
 {
     margin-bottom: 20px;

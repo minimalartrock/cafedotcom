@@ -32,9 +32,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def update
     @user = User.find(params[:id])
 		if @user.update(user_params)
-			redirect_to users_show_path(@user), notice: "「#{@user.name}」を更新しました。"
+			redirect_to user_path(current_user.id), notice: "「#{@user.name}」を更新しました。"
 		else
-			render :edit
+			render template: 'users/edit'
 		end
   end
 
@@ -81,7 +81,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :admin, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :avatar)
 	end
 
 	def check_guest

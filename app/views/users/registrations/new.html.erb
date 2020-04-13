@@ -17,26 +17,30 @@
 			<%= form_with url: user_registration_path, scope: @user, local: true do |f| %>
 				<div class="row">
 					<div class="input-field col s12">
+						<i class="material-icons prefix">email</i>
 						<%= f.email_field :email, id: 'email', class: "validate" %>
-						<%= f.label :email %>
+						<%= f.label :email, class: 'active' %>
 					</div>
 				</div>
 				<div class="row">
 					<div class="input-field col s12">
+						<i class="material-icons prefix">account_circle</i>
 						<%= f.text_field :name, id: 'name', class: "validate" %>
-						<%= f.label :name %>
+						<%= f.label :name, class: 'active' %>
 					</div>
 				</div>
 				<div class="row">
 					<div class="input-field col s12">
+						<i class="fas fa-key prefix"></i>
 						<%= f.password_field :password, id: 'password', class: "validate", autocomplete: "off" %>
-						<%= f.label :password %>
+						<%= f.label :password, class: 'active' %>
 					</div>
 				</div>
 				<div class="row">
 					<div class="input-field col s12">
+						<i class="fas fa-key prefix"></i>
 						<%= f.password_field :password_confirmation, id: 'password_confirmation', class: "validate", autocomplete: "off" %>
-						<%= f.label :password_confirmation %>
+						<%= f.label :password_confirmation, class: 'active' %>
 					</div>
 				</div>
 
@@ -44,7 +48,7 @@
 					<div class="input-field col s12">
 						<%= button_tag '', class: "btn waves-effect waves-light login-link", type: 'submit' do %>
 						登録する
-							<i class="fas fa-sign-in-alt"></i>
+							<i class="material-icons">send</i>
 						<% end %>
 					</div>
 				</div>

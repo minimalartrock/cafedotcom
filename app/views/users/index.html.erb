@@ -10,7 +10,7 @@
 				<%= image_tag user.avatar, class: 'round-img' %>
 			</div>
 			<% else %>
-			<%= image_tag '/images/default-avatar.jpg', class: 'round-img' %>
+			<%= image_tag '/images/default-avatar.png', class: 'round-img' %>
 			<% end %>
 			<hr>
 			<h5 class="card-title"><%= link_to user.name, user_path(user.id) %></h5>

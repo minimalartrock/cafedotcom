@@ -3,7 +3,6 @@
 class UsersController < ApplicationController
   include ApplicationHelper
 
-  before_action :correct_user?, only: %i[show edit]
   before_action :admin?, only: [:index]
 
   def index
@@ -12,9 +11,11 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    correct_user?(@user)
   end
 
   def edit
     @user = User.find(params[:id])
+    correct_user?(@user)
   end
 end

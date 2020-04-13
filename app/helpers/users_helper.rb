@@ -5,7 +5,7 @@ module UsersHelper
     if user.avatar.attached?
       user.avatar
     else
-      "/images/default-avatar.jpg"
+      "/images/default-avatar.png"
     end
   end
 end
