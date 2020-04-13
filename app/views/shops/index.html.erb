@@ -1,13 +1,13 @@
 <section id="top">
 	<div class="search-container overlay">
 		<%= search_form_for @q do |f| %>
-		<div class="form-group search-input">
+		<div class="form-group search-input center mw">
 			<div>
 				<div class="row">
-					<div class="col-sm-6 col-md-8">
+					<div class="col-sm-6 col-md-10">
 						<%= f.search_field :address_cont, id: 'search-text', class: "form-control", placeholder: 'お店の名前を入力してください' %>
 					</div>
-					<div class="col-sm-6 col-md-4">
+					<div class="col-sm-6 col-md-2">
 						<%= button_tag type: 'submit', class: 'btn btn-primary search-btn' do %>
 							<i class="fa fa-search"></i>
 							検索
@@ -30,7 +30,7 @@
 
 <hr>
 
-<div>
+<div class="center mw">
 	<!--pagination-->
 	<div class="pagination mt-3">
 		<%= paginate @shops %>
@@ -64,6 +64,6 @@
 
 <script>
 	$(function () {
-		$('#shops-link').addClass('active')
+		$('.shops-link').addClass('active')
 	})
 </script>

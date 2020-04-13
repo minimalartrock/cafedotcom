@@ -16,6 +16,5 @@
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
-//= require jquery_lazyload
 //= require jquery_raty
 //= require_tree .

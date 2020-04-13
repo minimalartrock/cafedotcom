@@ -1,10 +1,10 @@
 ja:
   enums:
-    comment:
+    congestion:
       status:
-        vacant: 空いている😌
-        usually: 普通😃
-        crowded: 混んでいる😫
+        vacant: 空いてる
+        usually: 普通
+        crowded: 混んでる
   activerecord:
     errors:
     messages:

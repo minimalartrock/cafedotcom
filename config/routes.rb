@@ -24,8 +24,12 @@ Rails.application.routes.draw do
   resources :users do
     get "favorites", to: "favorites#index"
   end
-  resources :shops do
+  resources :shops, only: %i[create destroy] do
     post "favorite", to: "favorites#create"
     delete "/favorite", to: "favorites#destroy"
+  end
+  resources :shops, only: %i[create destroy] do
+    post "congestion", to: "congestions#create"
+    delete "/congestion", to: "congestions#destroy"
   end
 end

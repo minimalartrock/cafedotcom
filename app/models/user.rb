@@ -11,6 +11,8 @@ class User < ApplicationRecord
 	has_many :likes
 	has_many :favorites
 	has_many :shops, through: :favorites
+	has_many :congestions
+	has_many :shops, through: :congestions
 
   validates :name, presence: true, length: { maximum: 50 }
 

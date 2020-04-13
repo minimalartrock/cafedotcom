@@ -5,8 +5,7 @@ $(function () {
 		heroBottom;
 
 	_window.on('scroll', function () {
-		heroBottom = $('.search-container').height();
-		if (_window.scrollTop() > heroBottom) {
+		if (_window.scrollTop() > 415) {
 			headerChange.addClass('show');
 		} else {
 			headerChange.removeClass('show');
