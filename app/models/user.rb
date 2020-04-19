@@ -7,12 +7,12 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :omniauthable
 
   has_one_attached :avatar
-  has_many :comments
-	has_many :likes
-	has_many :favorites
-	has_many :shops, through: :favorites
-	has_many :congestions
-	has_many :shops, through: :congestions
+  has_many :comments, dependent: :destroy
+	has_many :likes, dependent: :destroy
+	has_many :favorites, dependent: :destroy
+	has_many :shops, through: :favorites, dependent: :destroy
+	# has_many :congestions
+	# has_many :shops, through: :congestions
 
   validates :name, presence: true, length: { maximum: 50 }
 
@@ -34,15 +34,12 @@ class User < ApplicationRecord
   end
 
   def self.find_for_oauth(auth)
-    user = User.where(uid: auth.uid, provider: auth.provider).first
-
     user ||= User.create(
       uid: auth.uid,
       provider: auth.provider,
       email: User.dummy_email(auth),
       password: Devise.friendly_token[0, 20],
-      name: auth.info.name,
-      image: auth.info.image
+      name: auth.info.name
     )
 
     user

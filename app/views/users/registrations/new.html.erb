@@ -23,14 +23,14 @@
 				</div>
 				<div class="row">
 					<div class="input-field col s12">
-						<i class="fas fa-key prefix"></i>
+						<i class="material-icons prefix">lock</i>
 						<%= f.password_field :password, id: 'password', class: "validate", autocomplete: "off" %>
 						<%= f.label :password, class: 'active' %>
 					</div>
 				</div>
 				<div class="row">
 					<div class="input-field col s12">
-						<i class="fas fa-key prefix"></i>
+						<i class="material-icons prefix">lock</i>
 						<%= f.password_field :password_confirmation, id: 'password_confirmation', class: "validate", autocomplete: "off" %>
 						<%= f.label :password_confirmation, class: 'active' %>
 					</div>
@@ -48,7 +48,7 @@
 			<div class="row">
 				<div class="col s12">
 					<p class="devise-link">
-						アカウントをお持ちですか？<%= link_to "サインインする", new_user_session_path %>
+						アカウントをお持ちですか？<%= link_to 'サインインする', new_user_session_path %>
 					</p>
 				</div>
 			</div>

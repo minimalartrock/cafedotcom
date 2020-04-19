@@ -128,3 +128,153 @@
 {
     color: #843534;
 }
+
+.error-page
+{
+    box-shadow: none;
+
+    @extend .card;
+}
+
+.error-title
+{
+    top: 0;
+
+    color: #000 !important;
+
+    @extend .card-title;
+}
+
+#page_top
+{
+    position: fixed;
+    z-index: 100;
+    right: 20px;
+    bottom: 100px;
+
+    width: 50px;
+    height: 50px;
+
+    opacity: .8;
+    border-radius: 50%;
+    background: #03a9f4;
+}
+
+#page_top a
+{
+    position: relative;
+
+    display: block;
+
+    width: 50px;
+    height: 50px;
+
+    text-align: center;
+    text-decoration: none;
+}
+
+#page_top a::before
+{
+    font-family: 'Font Awesome 5 Free';
+    font-size: 25px;
+    font-weight: 900;
+
+    position: absolute;
+    right: 0;
+    bottom: 20px;
+    left: 0;
+
+    width: 25px;
+    height: 25px;
+    margin: auto;
+
+    content: '\f106';
+
+    color: #fff;
+}
+
+.logo
+{
+    display: block;
+
+    margin: 0 auto;
+}
+
+.avatar-x-small
+{
+    position: relative;
+
+    height: 32px;
+
+    border-radius: 50%;
+}
+
+.avatar-small
+{
+    position: relative;
+
+    height: 64px;
+
+    border-radius: 50%;
+}
+
+.avatar-medium
+{
+    position: relative;
+    top: 50%;
+
+    width: 50px;
+    height: 50px;
+
+    cursor: pointer;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+
+    border-radius: 50%;
+}
+
+.avatar-large
+{
+    width: 100%;
+    max-width: 400px;
+    height: 100%;
+    max-height: 400px;
+
+    border-radius: 50%;
+}
+
+.trash-btn
+{
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}
+
+.like-btn
+{
+    width: 24px;
+    height: 24px;
+
+    background-image: image-url('/images/like.png');
+    background-repeat: no-repeat;
+    background-size: 24px !important;
+}
+
+.liked-btn
+{
+    width: 24px;
+    height: 24px;
+
+    background-image: image-url('/images/liked.png');
+    background-repeat: no-repeat;
+    background-size: 24px !important;
+}
+
+.hide-text
+{
+    display: block;
+    overflow: hidden;
+
+    white-space: nowrap;
+    text-indent: 110%;
+}

@@ -4,10 +4,11 @@ class CommentsController < ApplicationController
   before_action :login_required
 
   def create
-    @comment = Comment.new(comment_params)
+		@comment = Comment.new(comment_params)
+		@comment.build_congestion
     @shop = @comment.shop
-    if @comment.save
-      redirect_to shop_path(@shop.id), notice: 'コメントを登録しました'
+		if @comment.save
+      render :success
     else
       render :error
     end
@@ -26,7 +27,7 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:status, :rate, :comment, :user_id, :shop_id)
+    params.require(:comment).permit(:rate, :comment, :user_id, :shop_id, congestions_attributes:[:comment_id, :status])
    end
 
   def login_required

@@ -6,6 +6,14 @@ module ShopsHelper
     else
       options[:class] = "lazyload #{options[:class]}"
     end
-    image_tag("/loading.gif", options)
+    image_tag("/public/loading.gif", options)
+  end
+
+  def shop_for(shop)
+    if shop.image.attached?
+      shop.image
+    else
+      "/images/default-shop.png"
+    end
   end
 end

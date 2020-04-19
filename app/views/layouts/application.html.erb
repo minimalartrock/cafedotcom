@@ -5,29 +5,21 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= stylesheet_link_tag "https://unpkg.com/swiper/css/swiper.min.css" %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application' %>
     <%= javascript_include_tag "https://unpkg.com/swiper/js/swiper.min.js" %>
     <%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.2.0/lazysizes.min.js' %>
   </head>
   <body>
     <div>
       <%= render "layouts/navbar" %>
-      <% if flash.notice.present? %>
-        <div class="alert alert-info">
-          <%= flash.notice %>
-        </div>
-      <% end %>
-      <% if flash.alert.present? %>
-        <div class="alert alert-danger">
-          <%= flash.alert %>
-        </div>
-      <% end %>
+      <%= render "layouts/toast" %>
       <div>
         <%= yield %>
       </div>
     </div>
+    <div id="page_top"><a href="#"></a></div>
     <%= render "layouts/footer" %>
   </body>
 </html>

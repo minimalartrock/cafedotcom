@@ -1,0 +1,30 @@
+<div class="col s12 m7">
+	<div class="card horizontal">
+		<div class="card-image">
+			<%= link_to shop_path(shop.id), class: "waves-effect waves-light" do %>
+				<%= image_tag shop_for(shop) %>
+				<span class="card-title"><%= shop.name %></span>
+			<% end %>
+		</div>
+		<div class="card-stacked">
+			<div class="card-content">
+				<p class="star-rate" id="star-rate-<%= shop.id %>"></p>&nbsp<%= shop.rate_average %>
+				<i class="far fa-comments"></i>&nbsp<%= shop.comments.size %>件
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+  $(document).ready(function(){
+		$('#star-rate-<%= shop.id %>').raty({
+			size: 36,
+			starOff: '/images/star_off.png',
+			starOn: '/images/star_on.png',
+			starHalf: '/images/star_half.png',
+			score: '<%= shop.comments.average(:rate) %>',
+			half: true,
+			readOnly: true,
+		});
+	});
+</script>

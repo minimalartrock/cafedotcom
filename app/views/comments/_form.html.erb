@@ -1,57 +1,65 @@
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-	aria-hidden="true">
-	<div class="modal-dialog modal-dialog-centered" role="document">
-		<div class="modal-content">
-			<a data-dismiss="modal">
-        <i class="fa fa-times close-btn"></i>
-      </a>
+<div id="comment-dialog" class="modal modal-fixed-footer">
+	<div class="modal-content">
+		<h4>コメント</h4>
 			<% if user_signed_in? %>
-				<div class="modal-body">
-					<%= form_with model: [shop, Comment.new] do |f|  %>
-						<div class="error-message"></div>
-
-						<h5 class="comment-title">お店は混んでいましたか？</h5>
-						<div class="input-status">
-							<div class="form-check">
-								<%= f.radio_button :status, :vacant %>
-								<i class="far fa-laugh status-icon"></i><span> </span><%= f.label '空いていた', class: "form-check-label"%>
-							</div>
-							<div class="form-check">
-								<%= f.radio_button :status, :usually, checked: true %>
-								<i class="far fa-smile status-icon"></i><span> </span><%= f.label '普通だった', class: "form-check-label" %>
-							</div>
-							<div class="form-check">
-								<%= f.radio_button :status, :crowded %>
-								<i class="far fa-dizzy status-icon"></i><span> </span><%= f.label '混んでいた', class: "form-check-label" %>
+				<div class="row">
+					<%= form_with model: [shop, comment = Comment.new], id: "comment-form", class: 'col s12' do |f| %>
+						<div id="error-message", class="error-message" >
+						</div>
+						<div class="row">
+							<div class="col s12">
+								<h5>お店は混んでましたか？</h5>
+								<%= f.fields_for :congestions do |congestion| %>
+									<p>
+										<%= congestion.radio_button :status, :vacant, id: 'input-vacant', class: "with-gap validate" %>
+										<span><i class="far fa-laugh"></i><%= congestion.label Congestion.statuses_i18n[:vacant], for: 'input-vacant'%></span>
+									</p>
+									<p>
+										<%= congestion.radio_button :status, :usually, id: 'input-usually', class: "with-gap validate", checked: true %>
+										<span><i class="far fa-smile"></i><%= congestion.label Congestion.statuses_i18n[:usually], for: 'input-usually'%></span>
+									</p>
+									<p>
+										<%= congestion.radio_button :status, :crowded, id: 'input-crowded', class: "with-gap validate" %>
+										<span><i class="far fa-dizzy"></i><%= congestion.label Congestion.statuses_i18n[:crowded], for: 'input-crowded'%></span>
+									</p>
+								<% end %>
 							</div>
 						</div>
-
-						<h5 class="comment-title">評価</h5>
-						<div id="star" class="form-group input-rate">
-							<%= f.hidden_field :rate, id: :review_star %>
+						<div class="row">
+							<div id="star" class="col s12">
+								<h5>お店は満足できましたか？</h5>
+								<%= f.hidden_field :rate, id: :review_star %>
+							</div>
 						</div>
-
-						<div class="input-comment">
-							<%= f.text_area :comment, class: "form-control", placeholder: "コメント ...", autocomplete: :off %>
-							<%= f.hidden_field :user_id, value: current_user&.id %>
-							<%= f.hidden_field :shop_id, value: @shop.id %>
+						<div class="row">
+							<div class="col s12">
+								<h5>お店の様子をみんなにシェアしよう！</h5>
+								<div class="input-field">
+									<i class="material-icons prefix">question_answer</i>
+									<%= f.label :comment, class: 'active' %>
+									<%= f.text_area :comment, id: 'input_comment', class: "materialize-textarea validate" %>
+									<%= f.hidden_field :user_id, value: current_user.id %>
+									<%= f.hidden_field :shop_id, value: @shop.id %>
+								</div>
+							</div>
 						</div>
-
-						<div class="modal-footer">
-							<div class="input-comment-btn">
-								<%= f.submit "コメントする", class: "btn btn-primary w-100" %>
+						<div class="row">
+							<div class="col s12">
+								<%= button_tag '', class: "modal-action waves-effect btn", type: 'submit' do %>
+									コメントする
+									<i class="material-icons">send</i>
+								<% end %>
 							</div>
 						</div>
 					<% end %>
 				</div>
 			<% else %>
-				<div class="modal-body">
-					<p class="logo-img mx-auto"></p>
-					<p>コメントするにはログインが必要です。</p>
-					<div class="modal-footer">
-						<%= link_to "ログイン", login_path, class: "btn btn-primary" %>
-					</div>
-				</div>
+				<%= image_tag '/images/logo-black.png', class: 'logo' %>
+				<p>ログインが必要です。</p>
+				<%= link_to login_path, class: 'btn waves-effect waves-light login-link' do %>
+					ログイン
+					<i class="fas fa-sign-in-alt"></i>
+				<% end %>
 			<% end %>
 		</div>
 	</div>
@@ -60,14 +68,22 @@
 <script>
 	$('#star').raty({
 		size: 36,
-		starOff: '<%= asset_path('/star_off.png') %>',
-		starOn: '<%= asset_path('/star_on.png') %>',
-		starHalf: '<%= asset_path('/star_half.png') %>',
+		starOff: '<%= asset_path('/images/star_off.png') %>',
+		starOn: '<%= asset_path('/images/star_on.png') %>',
+		starHalf: '<%= asset_path('/images/star_half.png') %>',
 		scoreName: 'comment[rate]',
 		half: true,
 	});
-
-	$('#exampleModal').on('hide.bs.modal', function () {
-		$('input[type="text"]').val('');
-	})
+	$(document).ready(function(){
+		$('.modal').modal({
+			onCloseEnd: function(){
+				if ($('#comment-form').length) {
+					$('#comment-form')[0].reset();
+					var rate = $('input[name="comment[rate]');
+					rate.val(0.0);
+					$('.error-message').hide();
+				}
+    	}
+		});
+	});
 </script>

@@ -1,26 +1,28 @@
-<!--お気に入りのお店一覧-->
-<div class="center mw">
-	<% if @user.shops.present? %>
-		<div class="search-results mr-2 col-sm-12 col-md-9">
-			<div class="card-columns mt-3">
-				<% @user.shops.each do |shop| %>
-					<%= render partial: "shops/shop", locals: {shop: shop} %>
-				<% end %>
-			</div>
+<div class="container">
+	<h2>お気に入りのお店</h2>
+	<% if @favorite_shops.present? %>
+		<div>
+			<% @favorite_shops.each do |favorite_shop| %>
+				<%= render partial: "shop", locals: {shop: favorite_shop} %>
+			<% end %>
 		</div>
 	<% else %>
-		<div class="container">
-			<h3>お気に入りのお店を登録してみましょう</h3>
-			<%= image_tag '/no_records_found.png', class: "w-100" %>
+		<div class="error-page">
+			<div class="card-image">
+				<%= link_to root_path do %>
+					<%= image_tag '/images/no_records_found.png' %>
+					<span class="error-title">気になるお店を登録してみましょう</span>
+				<% end %>
+			</div>
+			<%= link_to 'トップページへ', root_path %>
 		</div>
 	<% end %>
 </div>
 
-<%# ページトップへ %>
 <div id="page_top"><a href="#top"></a></div>
 
 <script>
-	$(function () {
-		$('.favorites-link').addClass('active')
-	})
+$(document).ready(function(){
+	$('.favorites-menu').addClass('active')
+});
 </script>
