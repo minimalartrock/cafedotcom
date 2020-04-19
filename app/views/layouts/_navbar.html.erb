@@ -1,5 +1,10 @@
-<ul id="admin-menu" class="dropdown-content admin-menu">
-	<li>
+<ul id="admin-menu" class="dropdown-content">
+	<li class="admin-menu">
+		<%= link_to 'ユーザー一覧', users_path %>
+	</li>
+</ul>
+<ul id="admin-menu-mobile" class="dropdown-content admin-menu">
+	<li class="admin-menu">
 		<%= link_to 'ユーザー一覧', users_path %>
 	</li>
 </ul>
@@ -28,16 +33,14 @@
       <a href="#" data-target="mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
         <% if user_signed_in? %>
-					<li>
+					<li class="favorites-menu">
 						<%= link_to 'お気に入りのお店', user_favorites_path(current_user) %>
 					</li>
 					<% if current_user.admin? %>
-						<li>
-							<a class="dropdown-trigger" href="#" data-target="admin-menu">管理者メニュー<i class="material-icons right">arrow_drop_down</i></a>
-						</li>
+						<li><a class="dropdown-trigger" href="#" data-target="admin-menu">管理者メニュー<i class="material-icons right">arrow_drop_down</i></a></li>
 					<% end %>
 					<li>
-						<a class="dropdown-trigger avatar-menu" href="#" data-target="user-menu"><%= image_tag avatar_for(current_user), class: 'avatar-small' %></a>
+						<a class="dropdown-trigger avatar-small" href="#" data-target="user-menu"><%= image_tag avatar_for(current_user), class: 'avatar-small' %></a>
 					</li>
 				<% else %>
 					<%= link_to login_path, class: 'btn waves-effect waves-light login-link' do %>
@@ -70,11 +73,11 @@
 		</div>
 	</li>
 	<% if user_signed_in? %>
-		<li>
+		<li class="favorites-menu">
 			<%= link_to 'お気に入りのお店', user_favorites_path(current_user) %>
 		</li>
 		<% if current_user.admin? %>
-			<li><a class="dropdown-trigger" href="#" data-target="admin-menu">管理者メニュー<i class="material-icons right">arrow_drop_down</i></a></li>
+			<li><a class="dropdown-trigger" href="#" data-target="admin-menu-mobile">管理者メニュー<i class="material-icons right">arrow_drop_down</i></a></li>
 		<% end %>
 	<% end %>
 	<li><div class="divider"></div></li>

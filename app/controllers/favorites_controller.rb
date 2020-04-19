@@ -2,7 +2,8 @@ class FavoritesController < ApplicationController
 	before_action :login_required
 
 	def index
-		@user = User.find(current_user.id)
+		favorites = Favorite.joins(:user).where(user_id: params[:user_id]).select(:shop_id)
+		@favorite_shops = Shop.where(id: favorites)
   end
 
   def create

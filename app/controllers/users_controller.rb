@@ -3,21 +3,21 @@
 class UsersController < ApplicationController
   include ApplicationHelper
 
-  before_action :admin?, only: [:index]
+	before_action :admin?, only: [:index]
 
   def index
     @users = User.users.desc
     @administrators = User.administrators.desc
   end
 
-  def show
-    @user = User.find(params[:id])
-    correct_user?(@user)
+	def show
+		@user = User.find(params[:id])
+    correct_user?(@user) unless current_user.admin?
   end
 
   def edit
     @user = User.find(params[:id])
-    correct_user?(@user)
+    correct_user?(@user) unless current_user.admin?
   end
 
 	def destroy

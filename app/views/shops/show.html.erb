@@ -1,74 +1,50 @@
-<% breadcrumb :show_shop, @shop %>
-<%= render "layouts/breadcrumbs" %>
-
-<% if @shop.image.attached? %>
-	<div id="shop" class="carousel slide" data-ride="carousel">
-		<ol class="carousel-indicators">
-			<li data-target="#shop" data-slide-to="0" class="active"></li>
-			<li data-target="#shop" data-slide-to="1"></li>
-			<li data-target="#shop" data-slide-to="2"></li>
-		</ol>
-		<div class="carousel-inner">
-			<div class="carousel-item active">
-				<%= image_tag url_for(@shop.image), class: "d-block w-100" %>
+<div class="container">
+	<div class="row">
+		<div class="col l12">
+			<div class="col l8 s12">
+				<div class="shop">
+					<h2><%= @shop.name %></h2>
+					<%= image_tag shop_for(@shop) %>
+				</div>
 			</div>
-			<div class="carousel-item">
-				<%= image_tag url_for(@shop.image), class: "d-block w-100" %>
-			</div>
-			<div class="carousel-item">
-				<%= image_tag url_for(@shop.image), class: "d-block w-100" %>
+			<div class="col l4 s12">
+				<div class="card-panel teal white-text">
+					<span class="detail-title"><i class="fas fa-map-marker-alt"></i>住所</span>
+					<span><%= @shop.address %></span>
+					<div class="divider"></div>
+					<span class="detail-title"><i class="fas fa-globe"></i></i>URL</span>
+					<span><%= link_to 'お店のサイト', @shop.url, target: "_blank" %></span>
+					<div class="divider"></div>
+					<span class="detail-title"><i class="fas fa-map-marked-alt"></i>地図</span>
+					<%= render partial: "map" %>
+					<div class="divider"></div>
+					<%= render partial: "sns" %>
+				</div>
 			</div>
 		</div>
-		<a class="carousel-control-prev" href="#shop" role="button" data-slide="prev">
-			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-			<span class="sr-only">Previous</span>
-		</a>
-		<a class="carousel-control-next" href="#shop" role="button" data-slide="next">
-			<span class="carousel-control-next-icon" aria-hidden="true"></span>
-			<span class="sr-only">Next</span>
-		</a>
 	</div>
-<% else %>
-	<%= image_tag '/no-image.png', class: "no-image w-100" %>
-<% end %>
-
-<div class="shop-description">
-	<h1 id="shop-name"><%= @shop.name %></h1>
-	<div id="shop-address" class="mb-2">
-		<i class="fas fa-map-marker-alt mr-2"></i>
-		<address><%= @shop.address %></address>
-	</div>
-	<div id="shop-search" class="mb-2">
-		<i class="fas fa-map-marked-alt mr-2"></i>
-		<a data-toggle="modal" data-target="#modalWindow">地図を確認する</a>
-		<%= render partial: "map" %>
-	</div>
-	<div id="shop-url" class="mb-2">
-		<i class="fas fa-globe-asia mr-2"></i>
-		<%= link_to 'お店のサイトを確認する', @shop.url, target: "_blank" %>
+	<div class="row">
+		<div class="col l12">
+			<%= render partial: "comments/form", locals: {shop: @shop} %>
+			<h4>コメント（<%= @shop.comments.size %>件）</h4>
+			<% @shop.comments.sort_by{|c| c[:created_at]}.reverse!.each do |comment| %>
+				<%= render partial: "comments/comment", :locals => { comment: comment } %>
+			<% end %>
+		</div>
 	</div>
 </div>
-
-<!-- SNS Share -->
-<%= render partial: "sns" %>
-
-<section class="comments">
-	<div class="container">
-		<%= render partial: "comments/form", locals: {shop: @shop} %>
-
-		<h5>コメント（<%= @shop.comments.size %>件）</h5>
-
-		<% @shop.comments.each do |comment| %>
-		<%= render partial: "comments", :locals => { comment: comment } %>
-		<% end %>
-	</div>
-</section>
-
-<div>
-	<a id="comment-btn" type="button" class="btn-pen" data-toggle="modal" data-target="#exampleModal">
-		<span>
-		<i class="fas fa-pen"></i><br/>
-		コメントする
-		</span>
+<div class="fixed-action-btn">
+	<a class="btn-floating btn-large cyan waves-effect waves-light pulse modal-trigger" href="#comment-dialog">
+		<i class="large material-icons">mode_edit</i>
 	</a>
 </div>
+
+<script>
+	document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.fixed-action-btn');
+    var instances = M.FloatingActionButton.init(elems, {
+      direction: 'left',
+      hoverEnabled: false
+    });
+	});
+</script>

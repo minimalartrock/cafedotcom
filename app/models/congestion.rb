@@ -1,7 +1,9 @@
 class Congestion < ApplicationRecord
   enum status: { vacant: 0, usually: 1, crowded: 2 }
-  belongs_to :user
-  belongs_to :shop
+  belongs_to :comment
+  # belongs_to :user
+  # belongs_to :shop
+  validates :status, presence: true
 
   # スタータス別投稿数をサマリする
   scope :status_count, ->(shop_id, status) { where(shop_id: shop_id, status: status).count }
