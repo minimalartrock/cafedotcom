@@ -1,69 +1,98 @@
-<section id="top">
-	<div class="search-container overlay">
+<div class="parallax-container">
+	<div class="parallax main"><img src="/images/main.png"></div>
+</div>
+<div class="search-form">
+	<div class="row animated fadeInLeft">
 		<%= search_form_for @q do |f| %>
-		<div class="form-group search-input">
-			<div>
-				<div class="row">
-					<div class="col-sm-6 col-md-10">
-						<%= f.search_field :address_cont, id: 'search-text', class: "form-control", placeholder: 'お店の名前を入力してください' %>
-					</div>
-					<div class="col-sm-6 col-md-2">
-						<%= button_tag type: 'submit', class: 'btn btn-primary search-btn' do %>
-							<i class="fa fa-search"></i>
-							検索
-						<% end %>
-					</div>
+			<div class="col s10 m10">
+				<%= f.search_field :address_cont, id: 'search-text', placeholder: 'お店を検索してみましょう' %>
+			</div>
+			<div class="col s2 m2">
+				<%= button_tag type: 'submit', id: 'search-btn', class: 'btn waves-effect waves-light search-btn' do %>
+					<i class="fa fa-search"></i>検索
+				<% end %>
+			</div>
+		<% end %>
+	</div>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col s12 m4">
+			<div class="card-panel blue-grey darken-1 hoverable">
+				<div class="card-content white-text">
+					<span class="card-title">Card Title</span>
+					<p>I am a very simple card. I am good at containing small bits of information.
+					I am convenient because I require little markup to use effectively.</p>
 				</div>
 			</div>
 		</div>
-		<% end %>
+		<div class="col s12 m4">
+			<div class="card-panel blue-grey darken-1 hoverable">
+				<div class="card-content white-text">
+					<span class="card-title">Card Title</span>
+					<p>I am a very simple card. I am good at containing small bits of information.
+					I am convenient because I require little markup to use effectively.</p>
+				</div>
+			</div>
+		</div>
+		<div class="col s12 m4">
+			<div class="card-panel blue-grey darken-1 hoverable">
+				<div class="card-content white-text">
+					<span class="card-title">Card Title</span>
+					<p>I am a very simple card. I am good at containing small bits of information.
+					I am convenient because I require little markup to use effectively.</p>
+				</div>
+			</div>
+		</div>
 	</div>
-</section>
+</div>
+<div class="parallax-container">
+	<div class="parallax"><img src="/images/sub.png"></div>
+</div>
 
-<!--メニュー-->
-<%= render partial: "menu" %>
-
-<hr>
-
-<!--今空いているお店-->
-<%= render partial: "available" %>
-
-<hr>
+<div class="carousel">
+	<% @shops.each do |shop| %>
+		<a class="carousel-item" href="#">
+			<%= image_tag shop_for(shop), class: "carousel-item" %>
+		</a>
+	<% end %>
+</div>
 
 <div>
-	<!--pagination-->
-	<div class="pagination">
-		<%= paginate @shops %>
-	</div>
-	<div class="row">
-		<!--検索結果-->
+	<div class="container">
+		<div class="row">
+			<div class="pagination center-align">
+				<%= paginate @shops %>
+			</div>
+		</div>
 		<div class="row">
 			<% if @shops.present? %>
 				<div>
 					<% @shops.each do |shop| %>
-					<%= render partial: "shop", locals: {shop: shop} %>
+						<%= render partial: "shop", locals: {shop: shop} %>
 					<% end %>
 				</div>
 			<% else %>
-				<div>
-					<h3>お探しのお店は見つかりませんでした</h3>
-					<%= image_tag '/no_records_found.png', class: "w-100" %>
+				<div class="error-page">
+					<div class="card-image">
+						<%= link_to root_path do %>
+							<%= image_tag '/images/no_records_found.png' %>
+							<span class="error-title">お探しのお店は見つかりませんでした</span>
+						<% end %>
+					</div>
+					<%= link_to 'トップページへ', root_path %>
 				</div>
 			<% end %>
-		</div>
-		<!--人気のお店-->
-		<div>
-			<aside>
-			</aside>
 		</div>
 	</div>
 </div>
 
-<%# ページトップへ %>
 <div id="page_top"><a href="#top"></a></div>
 
 <script>
-	$(function () {
+	$(document).ready(function(){
 		$('.shops-link').addClass('active')
-	})
+    $('.parallax').parallax();
+		$('.carousel').carousel();
+  });
 </script>

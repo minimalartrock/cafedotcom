@@ -13,7 +13,7 @@ module ShopsHelper
     if shop.image.attached?
       shop.image
     else
-      "/images/default-shop.png"
+      "/images/default-shop.jpg"
     end
   end
 end

@@ -33,7 +33,9 @@ class User < ApplicationRecord
     result
   end
 
-  def self.find_for_oauth(auth)
+	def self.find_for_oauth(auth)
+		user = User.where(uid: auth.uid, provider: auth.provider).first
+
     user ||= User.create(
       uid: auth.uid,
       provider: auth.provider,

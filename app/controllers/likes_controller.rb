@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class LikesController < ApplicationController
-  before_action :loggined?
+  before_action :login_required
 
   def create
     @like = current_user.likes.build(like_params)
@@ -22,7 +22,7 @@ class LikesController < ApplicationController
     params.permit(:comment_id)
   end
 
-  def loggined?
+  def login_required
     unless user_signed_in?
       render template: "layouts/login_error"
       return

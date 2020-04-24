@@ -1,9 +1,8 @@
 <% if model.errors.present? %>
-  <div class="alert alert-danger">
-    <ul>
-      <% model.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
+  <script>
+    <% model.errors.full_messages.each do |message| %>
+    	<% color = 'pink lighten-1' %>
+    			M.toast({html: '<%= message %>', classes: 'pink lighten-1'})
+    		<% end %>
+  </script>
 <% end %>
