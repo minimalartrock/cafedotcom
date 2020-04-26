@@ -13,6 +13,7 @@ class ShopsController < ApplicationController
 
   def show
 		@shop = Shop.find(params[:id])
+		@comments = @shop.comments.order(created_at: :desc).page(params[:page]).per(5)
   end
 
   def new

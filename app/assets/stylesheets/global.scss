@@ -291,3 +291,70 @@
     white-space: nowrap;
     text-indent: 110%;
 }
+
+.btn-social-square
+{
+    font-size: 23px;
+    font-weight: bold;
+    line-height: 50px;
+
+    display: inline-block;
+    overflow: hidden;
+
+    width: 50px;
+    height: 50px;
+    margin: 2px;
+
+    transition: .3s;
+    text-align: center;
+    text-decoration: none;
+
+    color: white;
+    border-radius: 12px;
+}
+
+.btn-social-square i
+{
+    line-height: 50px;
+}
+
+.btn-social-square:hover
+{
+    -webkit-transform: translateY(-5px);
+            transform: translateY(-5px);
+}
+
+.btn-social-square--twitter
+{
+    background: #22b8ff;
+}
+
+.btn-social-square--facebook
+{
+    background: #6680d8;
+}
+
+.btn-social-square--hatebu
+{
+    background: #49a8fb;
+}
+
+.btn-social-square--pocket
+{
+    background: #ff6d82;
+}
+
+.btn-social-square--feedly
+{
+    background: #7bda72;
+}
+
+.btn-social-square--line
+{
+    background: #7bda72;
+}
+
+.sns-btn
+{
+    margin: 0 auto;
+}
