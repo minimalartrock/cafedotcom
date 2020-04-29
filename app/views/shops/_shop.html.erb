@@ -16,30 +16,51 @@
           <%= link_to '', shop_favorite_path(shop), method: :post, remote: true, class: "favorite-btn" %>
         <% end %>
       </div>
+      <div class="congestion-status white-text">
+        <% congestion = get_congestion(shop.id) %>
+        <% if congestion.present? %>
+          <% if congestion.vacant? %>
+            <p class="animated pulse"><i class="far fa-laugh"><%= Congestion.statuses_i18n[:vacant] %></i></p>
+          <% elsif congestion.usually? %>
+            <p><i class="far fa-smile"><%= Congestion.statuses_i18n[:usually] %></i></p>
+          <% elsif congestion.crowded? %>
+            <p><i class="far fa-dizzy"><%= Congestion.statuses_i18n[:crowded] %></i></p>
+          <% end %>
+        <% else %>
+          <p><i class="far fa-smile"><%= Congestion.statuses_i18n[:usually] %></i></p>
+        <% end %>
+      </div>
       <div class="commented-person">
         <% Favorite.liked_people(shop.id).each do |user| %>
           <%= image_tag avatar_for(user), class: 'avatar-x-small' %>
         <% end %>
       </div>
       <div class="number-of-comments">
-        <p class="white-text"><i class="material-icons">question_answer</i><%= Comment.number_of_comments(shop.id) %><span>件</span><p>
-      </div>
-      <div>
-        <p class="star-rate" id="star-rate-<%= shop.id %>"></p>
+        <p class="white-text">
+          <i class="material-icons">question_answer</i>
+          <% if has_new_comment?(shop.id) %>
+            <span class="badge new"><%= Comment.number_of_comments(shop.id) %></span>
+          <% else %>
+            <span class="badge"><%= Comment.number_of_comments(shop.id) %></span>
+          <% end %>
+          <p>
+          </div>
+          <div>
+            <p class="star-rate" id="star-rate-<%= shop.id %>"></p>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-<script>
-  $(document).ready(function(){
-  		$('#star-rate-<%= shop.id %>').raty({
-  			size: 36,
-  			starOff: '/images/star_off.png',
-  			starOn: '/images/star_on.png',
-  			starHalf: '/images/star_half.png',
-  			score: '<%= shop.comments.average(:rate) %>',
-  			half: true,
-  			readOnly: true,
-  		});
-  	});
-</script>
+    <script>
+      $(document).ready(function(){
+      		$('#star-rate-<%= shop.id %>').raty({
+      			size: 36,
+      			starOff: '/images/star_off.png',
+      			starOn: '/images/star_on.png',
+      			starHalf: '/images/star_half.png',
+      			score: '<%= shop.comments.average(:rate) %>',
+      			half: true,
+      			readOnly: true,
+      		});
+      	});
+    </script>

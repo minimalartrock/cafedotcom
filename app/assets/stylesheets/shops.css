@@ -58,6 +58,13 @@
   right: 10px;
 }
 
+.shop-card .congestion-status {
+  position: absolute;
+  z-index: 1;
+  bottom: 10px;
+  left: 10px;
+}
+
 .shop-card .star-rate {
   position: absolute;
   z-index: 1;
@@ -114,15 +121,19 @@
   max-height: 400px;
 }
 
-.detail-title {
+.detail .detail-title {
   font-weight: bold;
   display: block;
 }
 
-#map {
+.detail #map {
   height: 400px;
 }
 
-.main img {
+.detail .main img {
   background-size: 100vw 100vh;
+}
+
+.detail .divider {
+  margin: .5em 0;
 }

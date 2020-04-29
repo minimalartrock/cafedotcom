@@ -1,6 +1,10 @@
 module CongestionsHelper
-  def get_congestion_status(shop_id)
-    @summary_status = Congestion.within_hour.summary_status(shop_id)
-    return @summary_status[0]
+  def get_congestion(shop_id)
+    status = Congestion.where(shop_id: shop_id).within_1_hour.group(:status).order(count_all: :desc).count.first.to_a[0]
+    return Congestion.find_by(status: status)
+  end
+
+  def get_vacant_shops
+    Shop.where(id: Congestion.where(status: 0).where(created_at: Time.current.ago(1.hour)..Time.current).select(:shop_id))
   end
 end

@@ -5,8 +5,7 @@ class Shop < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :favorites
   has_many :users, through: :favorites
-  # has_many :congestions
-  # has_many :users, through: :congestions
+  has_many :congestions
 
   validates :name, presence: true, length: { maximum: 30 }
   validates :address, presence: true, length: { maximum: 50 }

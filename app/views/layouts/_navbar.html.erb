@@ -18,8 +18,7 @@
 		</li>
 		<li>
 			<%= link_to logout_path, method: :delete do %>
-				ログアウト
-				<i class="fas fa-sign-out-alt"></i>
+				<i class="fas fa-sign-out-alt">ログアウト</i>
 			<% end %>
 		</li>
 	<% end %>
@@ -84,13 +83,11 @@
 	<li>
 		<% if user_signed_in? %>
 			<%= link_to logout_path, class: 'btn waves-effect waves-light', method: :delete do %>
-				ログアウト
-				<i class="fas fa-sign-out-alt right"></i>
+				<i class="fas fa-sign-out-alt right">ログアウト</i>
 			<% end %>
 		<% else %>
 			<%= link_to login_path, class: 'btn waves-effect waves-light' do %>
-				ログイン
-				<i class="fas fa-sign-in-alt right"></i>
+				<i class="fas fa-sign-in-alt right">ログイン</i>
 			<% end %>
 		<% end %>
 	</li>

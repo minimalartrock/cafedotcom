@@ -70,6 +70,14 @@
         right: 10px;
     }
 
+    .congestion-status
+    {
+        position: absolute;
+        z-index: 1;
+        bottom: 10px;
+        left: 10px;
+    }
+
     .star-rate
     {
         position: absolute;
@@ -141,19 +149,27 @@
     max-height: 400px;
 }
 
-.detail-title
+.detail
 {
-    font-weight: bold;
+    .detail-title
+    {
+        font-weight: bold;
 
-    display: block;
-}
+        display: block;
+    }
 
-#map
-{
-    height: 400px;
-}
+    #map
+    {
+        height: 400px;
+    }
 
-.main img
-{
-    background-size: 100vw 100vh;
+    .main img
+    {
+        background-size: 100vw 100vh;
+    }
+
+    .divider
+    {
+        margin: .5em 0;
+    }
 }

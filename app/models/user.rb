@@ -11,8 +11,6 @@ class User < ApplicationRecord
 	has_many :likes, dependent: :destroy
 	has_many :favorites, dependent: :destroy
 	has_many :shops, through: :favorites, dependent: :destroy
-	# has_many :congestions
-	# has_many :shops, through: :congestions
 
   validates :name, presence: true, length: { maximum: 50 }
 

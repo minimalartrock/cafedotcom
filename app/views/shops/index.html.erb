@@ -50,8 +50,8 @@
 	<div class="parallax"><img src="/images/sub.png"></div>
 </div>
 
-<div class="carousel">
-	<% @shops.each do |shop| %>
+<div class="carousel carousel-slider">
+	<% get_vacant_shops.each do |shop| %>
 		<a class="carousel-item" href="#">
 			<%= image_tag shop_for(shop), class: "carousel-item" %>
 		</a>
@@ -93,6 +93,13 @@
 	$(document).ready(function(){
 		$('.shops-link').addClass('active')
     $('.parallax').parallax();
-		$('.carousel').carousel();
+		$('.carousel.carousel-slider').carousel({
+			dist: 0,
+			shift: 10,
+			padding: 10,
+			fullWidth: true,
+			indicators: true,
+			noWrap: true,
+		});
   });
 </script>
