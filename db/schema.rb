@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_27_101856) do
+ActiveRecord::Schema.define(version: 2020_04_30_042527) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -84,7 +84,7 @@ ActiveRecord::Schema.define(version: 2020_04_27_101856) do
     t.string "tel"
     t.string "opentime"
     t.string "holiday"
-    t.boolean "microphone", default: false
+    t.boolean "outret", default: false
     t.boolean "wifi", default: false
     t.float "latitude"
     t.float "longitude"

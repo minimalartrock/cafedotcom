@@ -1,10 +1,12 @@
 <%= render 'layouts/error_messages', model: @shop %>
 
 <div class="container">
-	<h2>お店を編集する</h2>
+	<h2>お店を登録する</h2>
   <div class="card devise-card">
     <div class="form-wrap">
-			<%= render partial: 'form' %>
+			<%= form_with model: @shop, local: true, url: {action: :create} do |f| %>
+				<%= render partial: 'form', locals: {f: f} %>
+			<% end %>
 		</div>
 		<p class="devise-link">
 			<%= link_to 'お店の一覧を表示する', shops_path, class: 'nav-link' %>

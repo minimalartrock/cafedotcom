@@ -1,6 +1,12 @@
+# frozen_string_literal: true
+
 module CommentsHelper
+  def commented_by(comment, user)
+    comment.user_id == user.id if user_signed_in?
+  end
+
   def did_you_like_it?(comment)
-    user_signed_in? && comment.liked_by(current_user).present?
+    comment.liked_by(current_user).present? if user_signed_in?
   end
 
   def has_new_comment?(shop_id)

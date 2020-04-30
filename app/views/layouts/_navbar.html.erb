@@ -1,11 +1,29 @@
 <ul id="admin-menu" class="dropdown-content">
 	<li class="admin-menu">
-		<%= link_to 'ユーザー一覧', users_path %>
+		<%= link_to admin_shops_path do %>
+			<i class="material-icons">store_mall_directory</i>
+			店舗一覧
+		<% end %>
+	</li>
+	<li class="admin-menu">
+		<%= link_to admin_users_path do %>
+			<i class="fas fa-user-cog"></i>
+			ユーザー一覧
+		<% end %>
 	</li>
 </ul>
 <ul id="admin-menu-mobile" class="dropdown-content admin-menu">
 	<li class="admin-menu">
-		<%= link_to 'ユーザー一覧', users_path %>
+		<%= link_to admin_shops_path do %>
+			<i class="material-icons">store_mall_directory</i>
+			店舗一覧
+		<% end %>
+	</li>
+	<li class="admin-menu">
+		<%= link_to admin_users_path do %>
+			<i class="fas fa-user-cog"></i>
+			ユーザー一覧
+		<% end %>
 	</li>
 </ul>
 <ul id="user-menu" class="dropdown-content user-menu">
@@ -33,10 +51,19 @@
       <ul class="right hide-on-med-and-down">
         <% if user_signed_in? %>
 					<li class="favorites-menu">
-						<%= link_to 'お気に入りのお店', user_favorites_path(current_user) %>
+						<%= link_to user_favorites_path(current_user) do %>
+							<span><i class="fas fa-heart"></i></span>
+							お気に入りのお店
+						<% end %>
 					</li>
 					<% if current_user.admin? %>
-						<li><a class="dropdown-trigger" href="#" data-target="admin-menu">管理者メニュー<i class="material-icons right">arrow_drop_down</i></a></li>
+						<li>
+							<a class="dropdown-trigger" href="#" data-target="admin-menu">
+								<span><i class="fas fa-cog"></i></span>
+								管理者メニュー
+								<i class="material-icons right">arrow_drop_down</i>
+							</a>
+						</li>
 					<% end %>
 					<li>
 						<a class="dropdown-trigger avatar-small" href="#" data-target="user-menu"><%= image_tag avatar_for(current_user), class: 'avatar-small' %></a>
@@ -73,10 +100,19 @@
 	</li>
 	<% if user_signed_in? %>
 		<li class="favorites-menu">
-			<%= link_to 'お気に入りのお店', user_favorites_path(current_user) %>
+			<%= link_to user_favorites_path(current_user) do %>
+				<span><i class="fas fa-heart"></i></span>
+				お気に入りのお店
+			<% end %>
 		</li>
 		<% if current_user.admin? %>
-			<li><a class="dropdown-trigger" href="#" data-target="admin-menu-mobile">管理者メニュー<i class="material-icons right">arrow_drop_down</i></a></li>
+			<li>
+				<a class="dropdown-trigger" href="#" data-target="admin-menu-mobile">
+					<span><i class="fas fa-cog"></i></span>
+					管理者メニュー
+					<i class="material-icons right">arrow_drop_down</i>
+				</a>
+			</li>
 		<% end %>
 	<% end %>
 	<li><div class="divider"></div></li>

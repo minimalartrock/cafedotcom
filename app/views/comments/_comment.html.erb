@@ -26,15 +26,10 @@
 							<% end %>
 						</li>
 					</ul>
-					<% if correct_user?(current_user) %>
-						<a class='dropdown-trigger' href='#' data-target='delete-comment'><i class="material-icons">delete</i></a>
-						<ul id='delete-comment' class='dropdown-content'>
-							<li>
-								<%= link_to shop_comment_path(@shop.id, comment.id), method: :delete do %>
-									コメントを削除します。よろしいですか？
-								<% end %>
-							</li>
-						</ul>
+					<% if commented_by(comment, current_user) %>
+						<%= link_to shop_comment_path(@shop.id, comment.id), method: :delete, class: 'trash-btn', data: { confirm: "コメントを削除します。よろしいですか？" } do %>
+							<i class="material-icons">delete</i>
+						<% end %>
 					<% end %>
 				</div>
 				<div class="card-action follower">
