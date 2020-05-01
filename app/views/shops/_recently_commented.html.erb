@@ -1,0 +1,22 @@
+<div class="container">
+  <h3>New Comments</h3>
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <% @recently_commented_shops.each do |shop| %>
+        <div class="swiper-slide">
+          <div class="card hoverable shop-card">
+            <div class="card-image">
+              <%= link_to shop_path(shop.id), class: "waves-effect waves-light" do %>
+                <%= image_tag shop_for(shop) %>
+                <span class="card-title"><%= shop.name %></span>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  </div>
+</div>

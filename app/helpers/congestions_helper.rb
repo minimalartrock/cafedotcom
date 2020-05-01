@@ -5,6 +5,6 @@ module CongestionsHelper
   end
 
   def get_vacant_shops
-    Shop.where(id: Congestion.where(status: 0).where(created_at: Time.current.ago(1.hour)..Time.current).select(:shop_id))
+    Shop.where(id: Congestion.where(status: 0).within_1_hour.select(:shop_id))
   end
 end

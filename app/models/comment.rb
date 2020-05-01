@@ -6,7 +6,6 @@ class Comment < ApplicationRecord
   belongs_to :user
   belongs_to :shop
   has_many :likes, -> { order(created_at: :desc) }, dependent: :destroy
-  # scope :recent, ->(count) { order(updated_at: :desc).limit(count) }
   scope :within_1_hour, -> { where(created_at: Time.current.ago(1.hour)..Time.current) }
 
   validates :comment, presence: true, length: { maximum: 300 }

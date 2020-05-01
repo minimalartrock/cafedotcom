@@ -119,11 +119,13 @@
 	<li>
 		<% if user_signed_in? %>
 			<%= link_to logout_path, class: 'btn waves-effect waves-light', method: :delete do %>
-				<i class="fas fa-sign-out-alt right">ログアウト</i>
+				ログアウト
+				<i class="fas fa-sign-out-alt right"></i>
 			<% end %>
 		<% else %>
 			<%= link_to login_path, class: 'btn waves-effect waves-light' do %>
-				<i class="fas fa-sign-in-alt right">ログイン</i>
+				ログイン
+				<i class="fas fa-sign-in-alt right"></i>
 			<% end %>
 		<% end %>
 	</li>

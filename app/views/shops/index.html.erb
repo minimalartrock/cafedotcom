@@ -1,5 +1,5 @@
 <div class="parallax-container">
-	<div class="parallax main"><img src="/images/main.png"></div>
+	<div class="parallax main"><img src=""></div>
 </div>
 <div class="search-form">
 	<div class="row animated fadeInLeft">
@@ -46,46 +46,22 @@
 		</div>
 	</div>
 </div>
+
+<div class="divider"></div>
+
 <div class="parallax-container">
-	<div class="parallax"><img src="/images/sub.png"></div>
+	<div class="parallax"><img src=""></div>
 </div>
 
-<div class="carousel carousel-slider">
-	<% get_vacant_shops.each do |shop| %>
-		<a class="carousel-item" href="#">
-			<%= image_tag shop_for(shop), class: "carousel-item" %>
-		</a>
-	<% end %>
-</div>
+<section id="recently-commented-shop">
+	<%= render partial: 'recently_commented' %>
+</section>
 
-<div>
-	<div class="container">
-		<div class="row">
-			<div class="pagination center-align">
-				<%= paginate @shops %>
-			</div>
-		</div>
-		<div class="row">
-			<% if @shops.present? %>
-				<div>
-					<% @shops.each do |shop| %>
-						<%= render partial: "shop", locals: {shop: shop} %>
-					<% end %>
-				</div>
-			<% else %>
-				<div class="error-page">
-					<div class="card-image">
-						<%= link_to root_path do %>
-							<%= image_tag '/images/no_records_found.png' %>
-							<span class="error-title">お探しのお店は見つかりませんでした</span>
-						<% end %>
-					</div>
-					<%= link_to 'トップページへ', root_path %>
-				</div>
-			<% end %>
-		</div>
-	</div>
-</div>
+<div class="divider"></div>
+
+<section id="search_result">
+	<%= render partial: 'search_result', locals: {shops: @shops} %>
+</section>
 
 <div id="page_top"><a href="#top"></a></div>
 

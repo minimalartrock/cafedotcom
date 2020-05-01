@@ -4,7 +4,7 @@ class ShopsController < ApplicationController
   def index
     @q = Shop.ransack(params[:q])
     @shops = @q.result(distinct: true).page(params[:page])
-    @recently = Shop.recent(4)
+    @recently_commented_shops = view_context.recently_commented_shops
   end
 
   def show
