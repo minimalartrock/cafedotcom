@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_30_042527) do
+ActiveRecord::Schema.define(version: 2020_05_02_063722) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -93,6 +93,7 @@ ActiveRecord::Schema.define(version: 2020_04_30_042527) do
     t.string "prefname"
     t.string "areacode_s"
     t.string "areaname_s"
+    t.boolean "smoking", default: false
   end
 
   create_table "users", force: :cascade do |t|

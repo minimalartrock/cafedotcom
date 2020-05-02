@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'search/prefecture'
+  get 'search/outret'
+  get 'search/wifi'
+  get 'search/smoking'
   namespace :admin, only: %i[new edit update index create destroy] do
     resources :shops
   end

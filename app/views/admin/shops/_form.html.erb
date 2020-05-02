@@ -79,6 +79,15 @@
 </div>
 <div class="row">
 	<div class="input-field col s12">
+		<i class="material-icons prefix">smoking_rooms</i>
+		<%= f.label :smoking do %>
+			<%= f.check_box :smoking, id: 'shop_smoking', class: 'filled-in validate' %>
+			<span><%= t('activerecord.attributes.shop.smoking') %></span>
+		<% end %>
+	</div>
+</div>
+<div class="row">
+	<div class="input-field col s12">
 		<i class="far fa-compass prefix"></i>
 		<%= f.text_field :latitude, class: "validate" %>
 		<%= f.label :latitude, class: 'active' %>

@@ -36,55 +36,55 @@
   background: #eee;
 }
 
-.shop-card {
+.shop {
   position: relative;
 }
 
-.shop-card .card-title {
+.shop .card-title {
   padding-bottom: 60px !important;
 }
 
-.shop-card .favorite-btn {
+.shop .favorite-btn {
   position: absolute;
   z-index: 1;
   top: 10px;
   right: 10px;
 }
 
-.shop-card .favorited-btn {
+.shop .favorited-btn {
   position: absolute;
   z-index: 1;
   top: 10px;
   right: 10px;
 }
 
-.shop-card .congestion-status {
+.shop .congestion-status {
   position: absolute;
   z-index: 1;
   bottom: 10px;
   left: 10px;
 }
 
-.shop-card .star-rate {
+.shop .star-rate {
   position: absolute;
   z-index: 1;
   right: 10px;
   bottom: 0;
 }
 
-.shop-card .star-rate img {
+.shop .star-rate img {
   display: inline-block;
   width: auto;
 }
 
-.shop-card .commented-person {
+.shop .commented-person {
   position: absolute;
   z-index: 1;
   top: 10px;
   left: 10px;
 }
 
-.shop-card .commented-person img {
+.shop .commented-person img {
   display: inline-block;
   width: unset;
   border-radius: 50%;

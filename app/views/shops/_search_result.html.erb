@@ -9,7 +9,7 @@
 		<% if @shops.present? %>
 			<div>
 				<% @shops.each do |shop| %>
-					<%= render partial: "shop", locals: {shop: shop} %>
+					<%= render partial: "shops/shop", locals: {shop: shop} %>
 				<% end %>
 			</div>
 		<% else %>
