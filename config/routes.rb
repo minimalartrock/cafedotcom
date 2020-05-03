@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  get 'search/prefecture'
+	get 'search/location'
   get 'search/outret'
   get 'search/wifi'
   get 'search/smoking'

@@ -4,9 +4,9 @@
 		<div class="col s12 m3">
 			<div class="card hoverable shop">
 				<div class="card-image">
-					<%= link_to search_prefecture_path, class: "waves-effect waves-light" do %>
+					<%= link_to '', class: "waves-effect waves-light location-search", onclick: 'findNearbyShops();return false;' do %>
 						<%= image_tag '/images/shops_many_comments.png' %>
-						<span class="card-title">東京都</span>
+						<span class="card-title">近くのお店</span>
 					<% end %>
 				</div>
 			</div>
@@ -16,7 +16,7 @@
 				<div class="card-image">
 					<%= link_to search_outret_path, class: "waves-effect waves-light" do %>
 						<%= image_tag '/images/shops_many_comments.png' %>
-						<span class="card-title">電源あり</span>
+						<span class="card-title">電源がある</span>
 					<% end %>
 				</div>
 			</div>
@@ -26,7 +26,7 @@
 				<div class="card-image">
 					<%= link_to search_wifi_path, class: "waves-effect waves-light" do %>
 						<%= image_tag '/images/shops_many_comments.png' %>
-						<span class="card-title">Wi-Fiあり</span>
+						<span class="card-title">Wi-Fiがある</span>
 					<% end %>
 				</div>
 			</div>
@@ -36,10 +36,50 @@
 				<div class="card-image">
 					<%= link_to search_smoking_path, class: "waves-effect waves-light" do %>
 						<%= image_tag '/images/shops_many_comments.png' %>
-						<span class="card-title">喫煙席あり</span>
+						<span class="card-title">喫煙席がある</span>
 					<% end %>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+
+<script>
+	function findNearbyShops() {
+		if (navigator.geolocation) {
+			console.log('Geolocation is supported!');
+		}
+		else {
+			console.log('Geolocation is not supported for this Browser/OS.');
+		}
+
+		var startPos;
+		var geoOptions = {
+			enableHighAccuracy: true
+		}
+
+		var geoSuccess = function(position) {
+			startPos = position;
+			position.coords.latitude
+			position.coords.longitude
+			window.location.href = "/search/location?latitude="+position.coords.latitude+"&longitude="+position.coords.longitude
+		};
+		var geoError = function(error) {
+			console.log('Error occurred. Error code: ' + error.code);
+			switch (error.code) {
+				case 0:
+					message = '予期せぬエラーが発生しました。'
+				case 1:
+					message = '位置情報の提供を許可してください。'
+				case 2:
+					message = '位置情報の取得に失敗しました。'
+				case 3:
+					message = 'タイムアウトしました。'
+				default:
+					Alert.set('warning', message)
+			}
+		};
+
+		navigator.geolocation.getCurrentPosition(geoSuccess, geoError, geoOptions);
+	};
+</script>
