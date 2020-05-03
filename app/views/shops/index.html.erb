@@ -1,42 +1,56 @@
-<div class="parallax-container">
-	<div class="parallax main"><img src=""></div>
-</div>
-<div class="search-form">
-	<div class="row animated fadeInLeft">
-		<%= search_form_for @q do |f| %>
-			<div class="col s10 m10">
-				<%= f.search_field :address_cont, id: 'search-text', placeholder: 'お店を検索してみましょう' %>
-			</div>
-			<div class="col s2 m2">
-				<%= button_tag type: 'submit', id: 'search-btn', class: 'btn waves-effect waves-light search-btn' do %>
-					<i class="fa fa-search">検索</i>
-				<% end %>
-			</div>
-		<% end %>
+<div id="showloading" class=" preloader-wrapper big active">
+	<div class="spinner-layer spinner-blue-only">
+		<div class="circle-clipper left">
+			<div class="circle"></div>
+		</div><div class="gap-patch">
+			<div class="circle"></div>
+		</div><div class="circle-clipper right">
+			<div class="circle"></div>
+		</div>
 	</div>
 </div>
 
-<section class="search-menu">
-	<%= render partial: 'search_menu' %>
-</section>
+<div id="contents">
+	<div class="parallax-container">
+		<div class="parallax main"><img src=""></div>
+	</div>
+	<div class="search-form">
+		<div class="row animated fadeInLeft">
+			<%= search_form_for @q do |f| %>
+				<div class="col s10 m10">
+					<%= f.search_field :address_cont, id: 'search-text', placeholder: 'お店を検索してみましょう' %>
+				</div>
+				<div class="col s2 m2">
+					<%= button_tag type: 'submit', id: 'search-btn', class: 'btn waves-effect waves-light search-btn' do %>
+						<i class="fa fa-search">検索</i>
+					<% end %>
+				</div>
+			<% end %>
+		</div>
+	</div>
 
-<div class="divider"></div>
+	<section class="search-menu">
+		<%= render partial: 'search_menu' %>
+	</section>
 
-<div class="parallax-container">
-	<div class="parallax"><img src=""></div>
+	<div class="divider"></div>
+
+	<div class="parallax-container">
+		<div class="parallax"><img src=""></div>
+	</div>
+
+	<section id="recently-commented-shop">
+		<%= render partial: 'recently_commented' %>
+	</section>
+
+	<div class="divider"></div>
+
+	<section id="search_result">
+		<%= render partial: 'search_result', locals: {shops: @shops} %>
+	</section>
+
+	<div id="page_top"><a href="#top"></a></div>
 </div>
-
-<section id="recently-commented-shop">
-	<%= render partial: 'recently_commented' %>
-</section>
-
-<div class="divider"></div>
-
-<section id="search_result">
-	<%= render partial: 'search_result', locals: {shops: @shops} %>
-</section>
-
-<div id="page_top"><a href="#top"></a></div>
 
 <script>
 	$(document).ready(function(){
@@ -50,5 +64,17 @@
 			indicators: true,
 			noWrap: true,
 		});
+
+		// ローディング画面のdivを取得
+		var showloading = document.getElementById('showloading');
+		// 画面本体のdivを取得
+		var contents = document.getElementById('contents');
+		// 読み込みが完了したら発動
+		window.addEventListener('load', function () {
+		// loadingのdivを非表示に
+		showloading.style.display = 'none';
+		// contentsのdivを表示
+		contents.classList.remove('hidden');
+});
   });
 </script>

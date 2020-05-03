@@ -16,7 +16,7 @@
 		<p class="infinite-scroll-error">読み込むページがありません</p>
 	</div>
 	<p class="center-align">
-	  <button class="view-more-button btn waves-effect waves-light">もっと見る</button>
+		<button class="view-more-button btn waves-effect waves-light">もっと見る</button>
 	</p>
 <% else %>
 	<div class="error-page">
@@ -29,14 +29,19 @@
 <% end %>
 
 <script>
-	$('.comments').infiniteScroll({
-		path: '.pagination a[rel=next]',
-		append: '.card-comment',
-		history: false,
-		hideNav: '.pagination',
-		button: '.view-more-button',
-		scrollThreshold: false,
-		status: '.page-load-status',
-	});
+	if ($('.pagination a[rel=next]').length) {
+		$('.comments').infiniteScroll({
+			path: '.pagination a[rel=next]',
+			checkLastPage: '.pagination__next',
+			append: '.card-comment',
+			history: false,
+			hideNav: '.pagination',
+			button: '.view-more-button',
+			scrollThreshold: false,
+			status: '.page-load-status',
+		});
+	} else {
+		$('.view-more-button').hide();
+	}
 	$('.page-load-status').hide();
 </script>
