@@ -9,7 +9,7 @@
 						<div class="row">
 							<div class="col s12">
 								<h5>お店は混んでましたか？</h5>
-								<%= f.fields_for :congestions do |congestion| %>
+								<%= f.fields_for :congestion, comment.build_congestion do |congestion| %>
 									<p>
 										<%= congestion.radio_button :status, :vacant, id: 'input-vacant', class: "with-gap validate" %>
 										<span><i class="far fa-laugh"></i><%= congestion.label Congestion.statuses_i18n[:vacant], for: 'input-vacant'%></span>
@@ -22,6 +22,8 @@
 										<%= congestion.radio_button :status, :crowded, id: 'input-crowded', class: "with-gap validate" %>
 										<span><i class="far fa-dizzy"></i><%= congestion.label Congestion.statuses_i18n[:crowded], for: 'input-crowded'%></span>
 									</p>
+									<%= congestion.hidden_field :user_id, value: current_user.id %>
+									<%= congestion.hidden_field :shop_id, value: @shop.id %>
 								<% end %>
 							</div>
 						</div>

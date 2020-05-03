@@ -5,8 +5,8 @@ class CommentsController < ApplicationController
 
   def create
 		@comment = Comment.new(comment_params)
-		@comment.build_congestion
-    @shop = @comment.shop
+		# @comment.build_congestion
+		@shop = @comment.shop
 		if @comment.save
       render :success
     else
@@ -27,7 +27,7 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:rate, :comment, :user_id, :shop_id, congestions_attributes:[:comment_id, :status])
+    params.require(:comment).permit(:rate, :comment, :user_id, :shop_id, congestion_attributes: [:comment_id, :status, :user_id, :shop_id] )
    end
 
   def login_required

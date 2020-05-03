@@ -16,12 +16,24 @@ ja:
       task:
     attributes:
       shop:
-        id: ID
-        name: 店舗名
+        id: 店舗ID
+        name: 店舗名称
         address: 住所
-        map: 地図
         image: 画像
-        url: URL
+        name_kana: 店舗名称（カタカナ）
+        tel: 電話番号
+        opentime: 営業時間
+        holiday: 休業日
+        outret: 電源あり
+        wifi: wifiあり
+        smoking: 喫煙席あり
+        latitude: 緯度
+        longitude: 経度
+        pr_short: PR文（短）
+        pref_code: 都道府県コード
+        prefname: 都道府県名称
+        areacode_s: エリアSコード
+        areaname_s: エリアS名
         created_at: 登録日時
         updated_at: 更新日時
       user:

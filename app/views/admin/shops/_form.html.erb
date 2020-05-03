@@ -1,0 +1,182 @@
+<div class="row">
+	<div class="row">
+		<div class="preview">
+			<%= image_tag shop_for(@shop) %>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="input-field col s12">
+		<i class="material-icons prefix">store</i>
+		<%= f.text_field :name, class: "validate" %>
+		<%= f.label :name, class: 'active' %>
+	</div>
+</div>
+<div class="row">
+	<div class="input-field col s12">
+		<i class="material-icons prefix">store</i>
+		<%= f.text_field :name_kana, class: "validate" %>
+		<%= f.label :name_kana, class: 'active' %>
+	</div>
+</div>
+<div class="row">
+	<div class="input-field col s12">
+		<i class="material-icons prefix">edit_location</i>
+		<%= f.text_field :address, class: "validate" %>
+		<%= f.label :address, class: 'active' %>
+	</div>
+</div>
+<div class="row">
+	<div class="file-field input-field">
+		<div class="btn">
+			<i class="material-icons">photo</i>
+			<%= f.file_field :image %>
+		</div>
+		<div class="file-path-wrapper">
+			<input class="file-path validate" type="text" placeholder="画像" >
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="input-field col s12">
+		<i class="material-icons prefix">phone</i>
+		<%= f.text_field :tel, class: "validate" %>
+		<%= f.label :tel, class: 'active' %>
+	</div>
+</div>
+<div class="row">
+	<div class="input-field col s12">
+		<i class="material-icons prefix">access_time</i>
+		<%= f.text_field :opentime, class: "validate" %>
+		<%= f.label :opentime, class: 'active' %>
+	</div>
+</div>
+<div class="row">
+	<div class="input-field col s12">
+		<i class="material-icons prefix">store</i>
+		<%= f.text_field :holiday, class: "validate" %>
+		<%= f.label :holiday, class: 'active' %>
+	</div>
+</div>
+<div class="row">
+	<div class="input-field col s12">
+		<i class="material-icons prefix">power</i>
+		<%= f.label :outret do %>
+			<%= f.check_box :outret, id: 'shop_outret', class: 'filled-in validate' %>
+			<span><%= t('activerecord.attributes.shop.outret') %></span>
+		<% end %>
+	</div>
+</div>
+<div class="row">
+	<div class="input-field col s12">
+		<i class="material-icons prefix">wifi</i>
+		<%= f.label :wifi do %>
+			<%= f.check_box :wifi, id: 'shop_wifi', class: 'filled-in validate' %>
+			<span><%= t('activerecord.attributes.shop.wifi') %></span>
+		<% end %>
+	</div>
+</div>
+<div class="row">
+	<div class="input-field col s12">
+		<i class="material-icons prefix">smoking_rooms</i>
+		<%= f.label :smoking do %>
+			<%= f.check_box :smoking, id: 'shop_smoking', class: 'filled-in validate' %>
+			<span><%= t('activerecord.attributes.shop.smoking') %></span>
+		<% end %>
+	</div>
+</div>
+<div class="row">
+	<div class="input-field col s12">
+		<i class="far fa-compass prefix"></i>
+		<%= f.text_field :latitude, class: "validate" %>
+		<%= f.label :latitude, class: 'active' %>
+	</div>
+</div>
+<div class="row">
+	<div class="input-field col s12">
+		<i class="far fa-compass prefix"></i>
+		<%= f.text_field :longitude, class: "validate" %>
+		<%= f.label :longitude, class: 'active' %>
+	</div>
+</div>
+<div class="row">
+	<div class="input-field col s12">
+		<i class="material-icons prefix">message</i>
+		<%= f.text_area :pr_short, class: "materialize-textarea validate" %>
+		<%= f.label :pr_short, class: 'active' %>
+	</div>
+</div>
+<div class="row">
+	<div class="input-field col s12">
+		<i class="material-icons prefix">edit_location</i>
+		<%= f.text_field :pref_code, class: "validate" %>
+		<%= f.label :pref_code, class: 'active' %>
+	</div>
+</div>
+<div class="row">
+	<div class="input-field col s12">
+		<i class="material-icons prefix">edit_location</i>
+		<%= f.text_field :prefname, class: "validate" %>
+		<%= f.label :prefname, class: 'active' %>
+	</div>
+</div>
+<div class="row">
+	<div class="input-field col s12">
+		<i class="material-icons prefix">edit_location</i>
+		<%= f.text_field :areacode_s, class: "validate" %>
+		<%= f.label :areacode_s, class: 'active' %>
+</div>
+<div class="row">
+	<div class="input-field col s12">
+		<i class="material-icons prefix">edit_location</i>
+		<%= f.text_field :areaname_s, class: "validate" %>
+		<%= f.label :areaname_s, class: 'active' %>
+</div>
+
+<div class="row">
+	<div class="input-field col s12">
+		<%= link_to admin_shops_path, class: "btn waves-effect waves-light login-link" do %>
+		キャンセル
+			<i class="material-icons">keyboard_return</i>
+		<% end %>
+	</div>
+	<div class="input-field col s12">
+		<%= button_tag '', class: "btn waves-effect waves-light login-link", type: 'submit' do %>
+			<% if local_assigns[:edit_flag].present? %>
+				更新する
+			<% else %>
+				登録する
+			<% end %>
+			<i class="material-icons">send</i>
+		<% end %>
+	</div>
+</div>
+
+<script>
+	$(function(){
+		$('form').on('change', 'input[type="file"]', function(e){
+			var file = e.target.files[0],
+				reader = new FileReader(),
+				$preview = $(".preview");
+			t = this;
+
+			if(file.type.indexOf("image") < 0){
+				return false;
+			}
+
+			reader.onload = (function(file){
+				return function(e){
+					$preview.empty();
+					$preview.append($('<img>').attr({
+						src: e.target.result,
+						class: "preview",
+						title: file.name
+					}));
+				};
+			})(file);
+
+			reader.readAsDataURL(file);
+		});
+	});
+</script>

@@ -29,4 +29,4 @@
     });
   }
 </script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBH4RpZgnxvD42m_wjodP4tX7CPWFnZZt8&callback=getLatLng" type="text/javascript"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=<%= Rails.application.credentials.google[:googlemap_api_key] %>&callback=getLatLng" type="text/javascript"></script>

@@ -1,17 +1,37 @@
 <div class="row">
 	<div class="col s12">
-		<div class="card">
+		<div class="card card-comment animated fadeIn">
 			<div class="card-content">
 				<%= image_tag avatar_for(comment.user), class: "avatar-small" %><span id="star-rate-<%= comment.id %>"></span>
 				<p class="card-title"><%= comment.user.name %></p>
 				<p><%= comment.congestion.status_i18n %></p>
 				<p><%= auto_link(simple_format(h(comment.comment), {}, sanitize: false, wrapper_tag: "div")) %></p>
 				<p><small><%= comment.created_at.strftime("%Y/%-m/%-d %-H:%-M ") %></small></p>
-				<% if correct_user?(current_user) %>
-					<%= link_to shop_comment_path(@shop.id, comment.id), method: :delete, data: { confirm: "コメントを削除します。よろしいですか？" }, class: "trash-btn" do %>
-					<i class="material-icons">delete</i>
+				<div class="comment-menu">
+					<a class='dropdown-trigger' href='#' data-target='sns-share'><i class="material-icons">share</i></a>
+					<ul id='sns-share' class='dropdown-content'>
+						<li>
+							<%= link_to "https://twitter.com/share?url=#{request.url}&text=#{@shop.name}", target: '_blank' do %>
+								<i class="fab fa-twitter-square">twitter</i>
+							<% end %>
+						</li>
+						<li>
+							<%= link_to "https://www.facebook.com/sharer/sharer.php?u=#{request.url}&text=#{@shop.name}", target: '_blank' do %>
+								<i class="fab fa-facebook-square">facebook</i>
+							<% end %>
+						</li>
+						<li>
+							<%= link_to "http://line.me/R/msg/text/?#{request.url}&text=#{@shop.name}", target: '_blank' do %>
+								<i class="fab fa-line">line</i>
+							<% end %>
+						</li>
+					</ul>
+					<% if commented_by(comment, current_user) %>
+						<%= link_to shop_comment_path(@shop.id, comment.id), method: :delete, class: 'trash-btn', data: { confirm: "コメントを削除します。よろしいですか？" } do %>
+							<i class="material-icons">delete</i>
+						<% end %>
 					<% end %>
-				<% end %>
+				</div>
 				<div class="card-action follower">
 					<div id="like-icon-comment-<%= comment.id.to_s %>">
 						<% if did_you_like_it?(comment) %>

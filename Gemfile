@@ -68,15 +68,15 @@ end
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 gem 'jquery-rails'
-gem 'materialize-sass', '~> 1.0.0'
 gem 'material_icons'
+gem 'materialize-sass', '~> 1.0.0'
 
 gem 'devise'
 gem 'omniauth-twitter'
 
 gem 'ransack'
 
-gem 'font-awesome-sass', '~> 5.4.1'
+gem 'font-awesome-sass'
 
 gem 'geocoder'
 
@@ -89,3 +89,5 @@ gem 'gretel'
 gem 'dotenv-rails'
 
 gem 'rails_autolink'
+
+gem 'aws-sdk-s3', require: false

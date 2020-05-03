@@ -5,13 +5,13 @@ class Shop < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :favorites
   has_many :users, through: :favorites
-  # has_many :congestions
-  # has_many :users, through: :congestions
+  has_many :congestions
 
   validates :name, presence: true, length: { maximum: 30 }
   validates :address, presence: true, length: { maximum: 50 }
 
-  scope :recent, ->(count) { order(updated_at: :desc).limit(count) }
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
 
   def self.ransackable_attributes(_auth_object = nil)
     %w[name address]
@@ -21,23 +21,20 @@ class Shop < ApplicationRecord
     []
   end
 
-  def number_of_people_saying_crowded(shop)
-    Comment.where(shop_id: shop.id).crowded.count
-  end
-
-  def number_of_people_saying_usually(shop)
-    Comment.where(shop_id: shop.id).usually.count
-  end
-
-  def number_of_people_saying_vacant(shop)
-    Comment.where(shop_id: shop.id).vacant.count
-  end
-
   def rate_average
     if comments.any?
       comments.average(:rate).floor(1).to_f
     else
       0.0
+    end
+  end
+
+  class << self
+    def within_box(distance, latitude, longitude)
+      distance = distance
+      center_point = [latitude, longitude]
+      box = Geocoder::Calculations.bounding_box(center_point, distance)
+      within_bounding_box(box)
     end
   end
 end

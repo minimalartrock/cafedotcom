@@ -1,7 +1,7 @@
 @import 'https://fonts.googleapis.com/earlyaccess/notosansjp.css';
 @import 'https://fonts.googleapis.com/icon?family=Material+Icons';
 @import 'materialize/components/color-variables';
-$primary-color: color('blue', 'base') !default;
+$primary-color: color('blue-grey', 'lighten-1') !default;
 $primary-color-light: false !default;
 $primary-color-dark: false !default;
 
@@ -19,17 +19,18 @@ $secondary-color: color('teal', 'lighten-1') !default;
 $success-color: color('green', 'base') !default;
 $error-color: color('red', 'base') !default;
 
-$link-color: color('light-blue', 'darken-1') !default;
+$link-color: color('teal', 'lighten-1') !default;
 @import 'materialize';
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 @import 'global.scss';
+@import 'loader.scss';
 @import 'navbar.scss';
 @import 'footer.scss';
 @import 'breadcrumb.scss';
 @import 'login.scss';
 @import 'users.scss';
-@import 'admin.scss';
 @import 'shops.scss';
 @import 'favorites.scss';
 @import 'comment.scss';
+@import 'carousel.scss';

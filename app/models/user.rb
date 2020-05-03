@@ -11,8 +11,6 @@ class User < ApplicationRecord
 	has_many :likes, dependent: :destroy
 	has_many :favorites, dependent: :destroy
 	has_many :shops, through: :favorites, dependent: :destroy
-	# has_many :congestions
-	# has_many :shops, through: :congestions
 
   validates :name, presence: true, length: { maximum: 50 }
 
@@ -33,7 +31,9 @@ class User < ApplicationRecord
     result
   end
 
-  def self.find_for_oauth(auth)
+	def self.find_for_oauth(auth)
+		user = User.where(uid: auth.uid, provider: auth.provider).first
+
     user ||= User.create(
       uid: auth.uid,
       provider: auth.provider,

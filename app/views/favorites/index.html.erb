@@ -1,3 +1,14 @@
+<nav>
+	<div class="nav-wrapper">
+		<div class="col s12">
+			<%= link_to root_path, class: 'breadcrumb' do %>
+				<span><i class="fas fa-home"></i>HOME</span>
+			<% end %>
+			<a class="breadcrumb active">お気に入りのお店</a>
+		</div>
+	</div>
+</nav>
+
 <div class="container">
 	<h2>お気に入りのお店</h2>
 	<% if @favorite_shops.present? %>

@@ -1,3 +1,15 @@
+<nav>
+	<div class="nav-wrapper">
+		<div class="col s12">
+			<%= link_to root_path, class: 'breadcrumb' do %>
+				<span><i class="fas fa-home"></i>HOME</span>
+			<% end %>
+			<%= link_to 'プロフィール', user_path(@user), class: "breadcrumb" %>
+			<a class="breadcrumb active">プロフィール編集</a>
+		</div>
+	</div>
+</nav>
+
 <%= render 'layouts/error_messages', model: @user %>
 
 <div class="container">

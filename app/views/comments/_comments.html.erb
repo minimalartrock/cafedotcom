@@ -1,0 +1,47 @@
+<% if @shop.comments.present? %>
+	<div class="comments">
+		<% @comments.each do |comment| %>
+			<%= render partial: "comments/comment", :locals => { comment: comment } %>
+		<% end %>
+	</div>
+	<%= paginate @comments %>
+	<div class="page-load-status">
+		<div class="loader-ellips infinite-scroll-request">
+			<span class="loader-ellips__dot"></span>
+			<span class="loader-ellips__dot"></span>
+			<span class="loader-ellips__dot"></span>
+			<span class="loader-ellips__dot"></span>
+		</div>
+		<p class="infinite-scroll-last">これ以上コメントはありません</p>
+		<p class="infinite-scroll-error">読み込むページがありません</p>
+	</div>
+	<p class="center-align">
+		<button class="view-more-button btn waves-effect waves-light">もっと見る</button>
+	</p>
+<% else %>
+	<div class="error-page">
+		<div class="card-image">
+			<%= image_tag '/images/no_records_found.png' %>
+			<span class="error-title">コメントがありません</span>
+		</div>
+		<%= link_to 'トップページへ', root_path %>
+	</div>
+<% end %>
+
+<script>
+	if ($('.pagination a[rel=next]').length) {
+		$('.comments').infiniteScroll({
+			path: '.pagination a[rel=next]',
+			checkLastPage: '.pagination__next',
+			append: '.card-comment',
+			history: false,
+			hideNav: '.pagination',
+			button: '.view-more-button',
+			scrollThreshold: false,
+			status: '.page-load-status',
+		});
+	} else {
+		$('.view-more-button').hide();
+	}
+	$('.page-load-status').hide();
+</script>

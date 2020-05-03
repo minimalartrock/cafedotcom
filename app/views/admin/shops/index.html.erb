@@ -1,0 +1,31 @@
+<nav>
+	<div class="nav-wrapper">
+		<div class="col s12">
+			<%= link_to root_path, class: 'breadcrumb' do %>
+				<span><i class="fas fa-home"></i>HOME</span>
+			<% end %>
+			<a class="breadcrumb active">店舗一覧</a>
+		</div>
+	</div>
+</nav>
+
+<div class="container">
+	<h2>店舗一覧</h2>
+	<div class="row">
+    <div id="shops" class="col s12">
+			<ul class="collection">
+				<% @shops.each do |shop| %>
+					<li class="collection-item avatar">
+						<%= image_tag shop_for(shop), class: 'circle' %>
+						<p><%= link_to shop.name, edit_admin_shop_path(shop) %></p>
+						<p class="secondary-content">
+							<%= link_to admin_shop_path(shop), method: :delete, class: 'trash-btn', data: { confirm: "店舗「#{shop.name}」を削除します。よろしいですか？" } do %>
+								<i class="material-icons">delete</i>
+							<% end %>
+						</p>
+					</li>
+				<% end %>
+			</ul>
+		</div>
+  </div>
+</div>

@@ -1,69 +1,80 @@
-<section id="top">
-	<div class="search-container overlay">
-		<%= search_form_for @q do |f| %>
-		<div class="form-group search-input">
-			<div>
-				<div class="row">
-					<div class="col-sm-6 col-md-10">
-						<%= f.search_field :address_cont, id: 'search-text', class: "form-control", placeholder: 'お店の名前を入力してください' %>
-					</div>
-					<div class="col-sm-6 col-md-2">
-						<%= button_tag type: 'submit', class: 'btn btn-primary search-btn' do %>
-							<i class="fa fa-search"></i>
-							検索
-						<% end %>
-					</div>
-				</div>
-			</div>
-		</div>
-		<% end %>
-	</div>
-</section>
-
-<!--メニュー-->
-<%= render partial: "menu" %>
-
-<hr>
-
-<!--今空いているお店-->
-<%= render partial: "available" %>
-
-<hr>
-
-<div>
-	<!--pagination-->
-	<div class="pagination">
-		<%= paginate @shops %>
-	</div>
-	<div class="row">
-		<!--検索結果-->
-		<div class="row">
-			<% if @shops.present? %>
-				<div>
-					<% @shops.each do |shop| %>
-					<%= render partial: "shop", locals: {shop: shop} %>
-					<% end %>
-				</div>
-			<% else %>
-				<div>
-					<h3>お探しのお店は見つかりませんでした</h3>
-					<%= image_tag '/no_records_found.png', class: "w-100" %>
-				</div>
-			<% end %>
-		</div>
-		<!--人気のお店-->
-		<div>
-			<aside>
-			</aside>
+<div id="showloading" class=" preloader-wrapper big active">
+	<div class="spinner-layer spinner-blue-only">
+		<div class="circle-clipper left">
+			<div class="circle"></div>
+		</div><div class="gap-patch">
+			<div class="circle"></div>
+		</div><div class="circle-clipper right">
+			<div class="circle"></div>
 		</div>
 	</div>
 </div>
 
-<%# ページトップへ %>
-<div id="page_top"><a href="#top"></a></div>
+<div id="contents">
+	<div class="parallax-container">
+		<div class="parallax main"><img src=""></div>
+	</div>
+	<div class="search-form">
+		<div class="row animated fadeInLeft">
+			<%= search_form_for @q do |f| %>
+				<div class="col s10 m10">
+					<%= f.search_field :address_cont, id: 'search-text', placeholder: 'お店を検索してみましょう' %>
+				</div>
+				<div class="col s2 m2">
+					<%= button_tag type: 'submit', id: 'search-btn', class: 'btn waves-effect waves-light search-btn' do %>
+						<i class="fa fa-search">検索</i>
+					<% end %>
+				</div>
+			<% end %>
+		</div>
+	</div>
+
+	<section class="search-menu">
+		<%= render partial: 'search_menu' %>
+	</section>
+
+	<div class="divider"></div>
+
+	<div class="parallax-container">
+		<div class="parallax"><img src=""></div>
+	</div>
+
+	<section id="recently-commented-shop">
+		<%= render partial: 'recently_commented' %>
+	</section>
+
+	<div class="divider"></div>
+
+	<section id="search_result">
+		<%= render partial: 'search_result', locals: {shops: @shops} %>
+	</section>
+
+	<div id="page_top"><a href="#top"></a></div>
+</div>
 
 <script>
-	$(function () {
+	$(document).ready(function(){
 		$('.shops-link').addClass('active')
-	})
+    $('.parallax').parallax();
+		$('.carousel.carousel-slider').carousel({
+			dist: 0,
+			shift: 10,
+			padding: 10,
+			fullWidth: true,
+			indicators: true,
+			noWrap: true,
+		});
+
+		// ローディング画面のdivを取得
+		var showloading = document.getElementById('showloading');
+		// 画面本体のdivを取得
+		var contents = document.getElementById('contents');
+		// 読み込みが完了したら発動
+		window.addEventListener('load', function () {
+		// loadingのdivを非表示に
+		showloading.style.display = 'none';
+		// contentsのdivを表示
+		contents.classList.remove('hidden');
+});
+  });
 </script>

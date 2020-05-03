@@ -1,16 +1,63 @@
 <div class="col s12 m7">
-	<div class="card horizontal">
-		<div class="card-image">
+	<div class="card horizontal animated fadeInRightBig">
+		<div class="card-image shop">
 			<%= link_to shop_path(shop.id), class: "waves-effect waves-light" do %>
 				<%= image_tag shop_for(shop) %>
 				<span class="card-title"><%= shop.name %></span>
 			<% end %>
+			<div id="favorite-shop-<%= shop.id.to_s %>">
+				<% if user_signed_in? %>
+					<% if Favorite.liked_by(current_user.id, shop.id) %>
+						<%= link_to '', shop_favorite_path(shop), method: :delete, remote: true, class: "favorited-btn" %>
+					<% else %>
+						<%= link_to '', shop_favorite_path(shop), method: :post, remote: true, class: "favorite-btn" %>
+					<% end %>
+				<% else %>
+					<%= link_to '', shop_favorite_path(shop), method: :post, remote: true, class: "favorite-btn" %>
+				<% end %>
+			</div>
 		</div>
 		<div class="card-stacked">
 			<div class="card-content">
-				<p class="star-rate" id="star-rate-<%= shop.id %>"></p>&nbsp<%= shop.rate_average %>
-				<i class="far fa-comments"></i>&nbsp<%= shop.comments.size %>件
+				<p><i class="fas fa-map-marker-alt">住所</i></p>
+				<p><%= shop.address %></p>
+				<p><i class="fas fa-phone">電話番号</i></p>
+				<p><%= shop.tel %></p>
+				<p><i class="far fa-clock">営業時間</i></p>
+				<p><%= shop.opentime %></p>
+				<p><i class="fas fa-cog">設備</i></p>
+				<% if shop.outret? %>
+					<div class="chip">
+						<i class="material-icons">power</i>
+						電源あり
+					</div>
+				<% end %>
+				<% if shop.wifi? %>
+					<div class="chip">
+						<i class="material-icons">wifi</i>
+						Wi-Fiあり
+					</div>
+				<% end %>
+				<% if shop.smoking? %>
+					<div class="chip">
+						<i class="material-icons">smoking_rooms</i>
+						喫煙席あり
+					</div>
+				<% end %>
+				<p><i class="fas fa-star-half-alt">評価</i></p>
+				<p class="star-rate" id="star-rate-<%= shop.id %>"></p>
+				<p><i class="material-icons">question_answer</i></p>
+				コメント
+				<% if has_new_comment?(shop.id) %>
+					<span class="badge new"><%= Comment.number_of_comments(shop.id) %></span>
+				<% else %>
+					<span class="badge"><%= Comment.number_of_comments(shop.id) %></span>
+				<% end %>
 			</div>
+			<div class="card-reveal">
+      <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+      <p>Here is some more information about this product that is only revealed once clicked on.</p>
+    </div>
 		</div>
 	</div>
 </div>
