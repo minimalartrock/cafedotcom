@@ -15,20 +15,19 @@ class Users::RegistrationsController < Devise::RegistrationsController
 		super
   end
 
-  # GET /resource/edit
   def edit
-    @user = User.find(params[:id])
-  end
+		@user = User.find(current_user.id)
+	end
 
-  # PUT /resource
-  def update
-    @user = User.find(params[:id])
-		if @user.update(user_params)
-			redirect_to user_path(@user), notice: "「#{@user.name}」を更新しました。"
-		else
-			render template: 'users/edit'
-		end
-  end
+	def update
+		# @user = User.find(params[:id])
+		# if @user.update(user_params)
+		# 	redirect_to user_path(@user), notice: "「#{@user.name}」を更新しました。"
+		# else
+		# 	render template: 'users/edit'
+		# end
+		super
+	end
 
   # DELETE /resource
   def destroy
@@ -64,21 +63,25 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # The path used after sign up for inactive accounts.
   def after_inactive_sign_up_path_for(resource)
     user_path(resource)
-  end
+	end
 
 	def update_resource(resource, params)
-    resource.update_without_password(params)
-  end
+    resource.update_without_current_password(params)
+	end
+
+	def after_update_path_for(resource)
+		user_path(resource)
+	end
 
   private
-
-  def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :avatar)
-	end
 
 	def check_guest
     if resource.email == 'guest@example.com'
       redirect_to root_path, alert: 'ゲストユーザーの変更・削除はできません。'
     end
-  end
+	end
+
+  def user_params
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :avatar)
+	end
 end

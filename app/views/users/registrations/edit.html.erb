@@ -20,7 +20,7 @@
 				<div class="row">
 					<div class="col s12">
 						<div class="form-wrap">
-							<%= form_with url: user_registration_path(@user), method: :put, scope: @user, local: true do |f| %>
+							<%= form_with url: user_registration_path, method: :put, scope: @user, local: true do |f| %>
 								<div class="row">
 									<div class="preview">
 										<%= image_tag avatar_for(@user), class: "avatar-large" %>
@@ -49,6 +49,20 @@
 										<i class="material-icons prefix">email</i>
 										<%= f.email_field :email, id: 'email', class: "validate" %>
 										<%= f.label :email, class: 'active' %>
+									</div>
+								</div>
+								<div class="row">
+									<div class="input-field col s12">
+										<i class="material-icons prefix">lock</i>
+										<%= f.password_field :password, id: 'password', class: "validate", autocomplete: "off" %>
+										<%= f.label :password, class: 'active' %>
+									</div>
+								</div>
+								<div class="row">
+									<div class="input-field col s12">
+										<i class="material-icons prefix">lock</i>
+										<%= f.password_field :password_confirmation, id: 'password_confirmation', class: "validate", autocomplete: "off" %>
+										<%= f.label :password_confirmation, class: 'active' %>
 									</div>
 								</div>
 								<div class="row">
