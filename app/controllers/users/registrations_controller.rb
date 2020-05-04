@@ -12,15 +12,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    @user = User.new(user_params)
-
-    if @user.save
-      redirect_to user_path(@user), notice: "ユーザー「#{@user.name}」を登録しました。"
-    else
-      render :new
-    end
-
-    NotificationMailer.creation_email(@user).deliver_now
+		super
   end
 
   # GET /resource/edit
@@ -66,12 +58,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # The path used after sign up.
   def after_sign_up_path_for(resource)
-    super(resource)
+    user_path(resource)
   end
 
   # The path used after sign up for inactive accounts.
   def after_inactive_sign_up_path_for(resource)
-    super(resource)
+    user_path(resource)
   end
 
 	def update_resource(resource, params)
@@ -81,7 +73,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :avatar)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :avatar)
 	end
 
 	def check_guest
