@@ -5,7 +5,7 @@
 				<span><i class="fas fa-home"></i>HOME</span>
 			<% end %>
 			<%= link_to 'プロフィール', user_path(@user), class: "breadcrumb" %>
-			<a class="breadcrumb active">プロフィール編集</a>
+			<a class="breadcrumb active">【管理者】プロフィール編集</a>
 		</div>
 	</div>
 </nav>
@@ -13,17 +13,17 @@
 <%= render 'layouts/error_messages', model: @user %>
 
 <div class="container">
-	<h2>プロフィール編集</h2>
+	<h2>【管理者】プロフィール編集</h2>
 	<div class="main">
 		<div class="card devise-card">
 			<div class="form-wrap">
 				<div class="row">
 					<div class="col s12">
 						<div class="form-wrap">
-							<%= form_with url: user_registration_path, method: :put, scope: @user, local: true do |f| %>
-								<%= render partial: 'form', locals: {f: f, user: @user} %>
+							<%= form_with url: admin_user_path(@user), method: :put, scope: @user, local: true do |f| %>
+								<%= render partial: 'users/registrations/form', locals: {f: f, user: @user} %>
 							<% end %>
-							<%= link_to user_path(@user), class: "btn waves-effect waves-light login-link" do %>
+							<%= link_to admin_users_path, class: "btn waves-effect waves-light login-link" do %>
 								キャンセル
 								<i class="material-icons">keyboard_return</i>
 							<% end %>

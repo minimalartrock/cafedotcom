@@ -20,12 +20,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
 	end
 
 	def update
-		# @user = User.find(params[:id])
-		# if @user.update(user_params)
-		# 	redirect_to user_path(@user), notice: "「#{@user.name}」を更新しました。"
-		# else
-		# 	render template: 'users/edit'
-		# end
 		super
 	end
 

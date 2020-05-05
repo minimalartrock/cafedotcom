@@ -8,12 +8,11 @@ Rails.application.routes.draw do
   namespace :admin, only: %i[new edit update index create destroy] do
     resources :shops
   end
-  namespace :admin, only: %i[edit index destroy] do
+  namespace :admin, only: %i[edit update index destroy] do
     resources :users
   end
   get "errors/show"
   get "maps/map"
-  get "users/show"
   devise_for :users, controllers: {
                        omniauth_callbacks: "users/omniauth_callbacks",
                        registrations: "users/registrations",

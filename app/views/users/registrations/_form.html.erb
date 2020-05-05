@@ -1,0 +1,66 @@
+<div class="row">
+	<div class="preview">
+		<%= image_tag avatar_for(@user), class: "avatar-large" %>
+	</div>
+</div>
+<div class="row">
+	<div class="file-field input-field">
+		<div class="btn">
+			<i class="material-icons">photo</i>
+			<%= f.file_field :avatar %>
+		</div>
+		<div class="file-path-wrapper">
+			<input class="file-path validate" type="text" placeholder="プロフィール画像" >
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="input-field col s12">
+		<i class="material-icons prefix">account_circle</i>
+		<%= f.text_field :name, id: 'name', class: "validate" %>
+		<%= f.label :name, class: 'active' %>
+	</div>
+</div>
+<div class="row">
+	<div class="input-field col s12">
+		<i class="material-icons prefix">email</i>
+		<%= f.email_field :email, id: 'email', class: "validate" %>
+		<%= f.label :email, class: 'active' %>
+	</div>
+</div>
+<div class="row">
+	<div class="input-field col s12">
+		<i class="material-icons prefix">lock</i>
+		<%= f.password_field :password, id: 'password', class: "validate", autocomplete: "off" %>
+		<%= f.label :password, class: 'active' %>
+	</div>
+</div>
+<div class="row">
+	<div class="input-field col s12">
+		<i class="material-icons prefix">lock</i>
+		<%= f.password_field :password_confirmation, id: 'password_confirmation', class: "validate", autocomplete: "off" %>
+		<%= f.label :password_confirmation, class: 'active' %>
+	</div>
+</div>
+<% if current_user.admin? %>
+	<div class="row">
+		<div class="input-field col s12">
+			<i class="fas fa-user-cog prefix"></i>
+			<%= f.label :admin do %>
+				<%= f.check_box :admin, id: 'user_admin', class: 'filled-in validate' %>
+				<span><%= t('activerecord.attributes.user.admin') %></span>
+			<% end %>
+		</div>
+	</div>
+<% end %>
+<div class="row">
+	<div class="input-field col s12">
+	</div>
+	<div class="input-field col s12">
+		<%= button_tag '', class: "btn waves-effect waves-light login-link", type: 'submit' do %>
+		変更する
+			<i class="material-icons">send</i>
+		<% end %>
+	</div>
+</div>
+<%= hidden_field_tag :id, @user.id %>
