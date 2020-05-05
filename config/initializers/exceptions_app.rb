@@ -1,3 +1,5 @@
 # frozen_string_literal: true
 
-Rails.configuration.exceptions_app = ->(env) { ErrorsController.action(:show).call(env) }
+Rails.application.configure do
+  config.exceptions_app = ErrorsController.action(:show)
+end
