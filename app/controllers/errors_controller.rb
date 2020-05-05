@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 class ErrorsController < ActionController::Base
-  rescue_from Exception, with: :internal_server_error
   rescue_from ActiveRecord::RecordNotFound, with: :not_found
   rescue_from ActionController::RoutingError, with: :not_found
+  rescue_from StandardError, with: :internal_server_error
 
   def show
     raise env["action_dispatch.exception"]
