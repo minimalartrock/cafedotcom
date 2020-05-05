@@ -7,8 +7,16 @@ class Admin::UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-    render template: 'users/edit'
   end
+
+	def update
+		@user = User.find(params[:id])
+		if @user.update(user_params)
+			redirect_to admin_users_path, notice: "「#{@user.name}」を更新しました。"
+		else
+			render 'edit'
+		end
+	end
 
   def index
     @users = User.users.desc
@@ -19,5 +27,11 @@ class Admin::UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.destroy
     redirect_to admin_users_path, notice: "ユーザー「#{@user.name}」を削除しました。"
-  end
+	end
+
+	private
+
+	def user_params
+    params.require(:user).permit(:name, :email, :avatar, :admin)
+	end
 end
