@@ -2,7 +2,7 @@
 	<div class="nav-wrapper">
 		<div class="col s12">
 			<%= link_to root_path, class: 'breadcrumb' do %>
-				<span><i class="fas fa-home"></i>HOME</span>
+				<i class="material-icons before">home</i>HOME
 			<% end %>
 			<a class="breadcrumb active">お気に入りのお店</a>
 		</div>
@@ -11,23 +11,25 @@
 
 <div class="container">
 	<h2>お気に入りのお店</h2>
-	<% if @favorite_shops.present? %>
-		<div>
-			<% @favorite_shops.each do |favorite_shop| %>
-				<%= render partial: "shop", locals: {shop: favorite_shop} %>
-			<% end %>
-		</div>
-	<% else %>
-		<div class="error-page">
-			<div class="card-image">
-				<%= link_to root_path do %>
-					<%= image_tag '/images/no_records_found.png' %>
-					<span class="error-title">気になるお店を登録してみましょう</span>
+	<div class="row">
+		<% if @favorite_shops.present? %>
+			<div>
+				<% @favorite_shops.each do |favorite_shop| %>
+					<%= render partial: "shop", locals: {shop: favorite_shop} %>
 				<% end %>
 			</div>
-			<%= link_to 'トップページへ', root_path %>
-		</div>
-	<% end %>
+		<% else %>
+			<div class="error-page">
+				<div class="card-image">
+					<%= link_to root_path do %>
+						<%= image_tag '/images/no_records_found.png' %>
+						<span class="error-title">気になるお店を登録してみましょう</span>
+					<% end %>
+				</div>
+				<%= link_to 'トップページへ', root_path %>
+			</div>
+		<% end %>
+	</div>
 </div>
 
 <div id="page_top"><a href="#top"></a></div>

@@ -1,8 +1,14 @@
+.search-container {
+  width: 100%;
+  height: 400px;
+  background: #38383e;
+}
+
 .search-form {
   position: absolute;
-  top: 50%;
+  top: 30%;
   left: 50%;
-  width: 100%;
+  width: 80%;
   max-width: 1280px;
   margin-bottom: 20px;
   padding: 50px;
@@ -21,23 +27,28 @@
 }
 
 #search-btn {
-  font-size: 16px;
   font-weight: bold;
   width: 100%;
   height: 50px;
   color: #fff;
   border: none;
   border-radius: 2px;
-  background: #7fbfff;
+  background: #ffb74c;
 }
 
 #search-btn:hover {
-  color: #7fbfff;
+  color: #ffb74c;
   background: #eee;
 }
 
 .shop {
   position: relative;
+  max-width: 600px;
+  background: black;
+}
+
+.shop img {
+  opacity: .5;
 }
 
 .shop .card-title {
@@ -77,15 +88,25 @@
   width: auto;
 }
 
-.shop .commented-person {
+.shop .star-rate::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  content: '';
+  opacity: .5;
+  background: black;
+}
+
+.shop .favorite-person {
   position: absolute;
   z-index: 1;
   top: 10px;
   left: 10px;
 }
 
-.shop .commented-person img {
-  display: inline-block;
+.shop .favorite-person img {
   width: unset;
   border-radius: 50%;
 }
@@ -136,4 +157,12 @@
 
 .detail .divider {
   margin: .5em 0;
+}
+
+.search-shop .card {
+  border-radius: 8px;
+}
+
+.search-shop .card img {
+  border-radius: 8px;
 }

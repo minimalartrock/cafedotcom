@@ -1,28 +1,28 @@
 <ul id="admin-menu" class="dropdown-content">
 	<li class="admin-menu">
 		<%= link_to admin_shops_path do %>
-			<i class="material-icons">store_mall_directory</i>
 			店舗一覧
+			<i class="material-icons left">store</i>
 		<% end %>
 	</li>
 	<li class="admin-menu">
 		<%= link_to admin_users_path do %>
-			<i class="fas fa-user-cog"></i>
 			ユーザー一覧
+			<i class="material-icons left">person_add</i>
 		<% end %>
 	</li>
 </ul>
 <ul id="admin-menu-mobile" class="dropdown-content admin-menu">
 	<li class="admin-menu">
 		<%= link_to admin_shops_path do %>
-			<i class="material-icons">store_mall_directory</i>
 			店舗一覧
+			<i class="material-icons left">store</i>
 		<% end %>
 	</li>
 	<li class="admin-menu">
 		<%= link_to admin_users_path do %>
-			<i class="fas fa-user-cog"></i>
 			ユーザー一覧
+			<i class="material-icons left">person_add</i>
 		<% end %>
 	</li>
 </ul>
@@ -31,12 +31,13 @@
 		<li>
 			<%= link_to user_path(current_user.id) do %>
 				プロフィール
-				<i class="material-icons">account_circle</i>
+				<i class="material-icons left">account_circle</i>
 			<% end %>
 		</li>
 		<li>
 			<%= link_to logout_path, method: :delete do %>
-				<i class="fas fa-sign-out-alt">ログアウト</i>
+				ログアウト
+				<i class="material-icons right">lock_outline</i>
 			<% end %>
 		</li>
 	<% end %>
@@ -52,26 +53,26 @@
         <% if user_signed_in? %>
 					<li class="favorites-menu">
 						<%= link_to user_favorites_path(current_user) do %>
-							<span><i class="fas fa-heart"></i></span>
 							お気に入りのお店
+							<i class="material-icons left">favorite</i>
 						<% end %>
 					</li>
 					<% if current_user.admin? %>
 						<li>
 							<a class="dropdown-trigger" href="#" data-target="admin-menu">
-								<span><i class="fas fa-cog"></i></span>
 								管理者メニュー
+								<i class="material-icons left">supervisor_account</i>
 								<i class="material-icons right">arrow_drop_down</i>
 							</a>
 						</li>
 					<% end %>
 					<li>
-						<a class="dropdown-trigger avatar-small" href="#" data-target="user-menu"><%= image_tag avatar_for(current_user), class: 'avatar-small' %></a>
+						<a class="dropdown-trigger avatar-menu" href="#" data-target="user-menu"><%= image_tag avatar_for(current_user), class: 'avatar-small' %></a>
 					</li>
 				<% else %>
-					<%= link_to login_path, class: 'btn waves-effect waves-light login-link' do %>
+					<%= link_to login_path, class: 'btn waves-effect waves-light btn-small' do %>
 						ログイン
-						<i class="fas fa-sign-in-alt"></i>
+						<i class="material-icons right">lock_open</i>
 					<% end %>
 				<% end %>
       </ul>
@@ -101,15 +102,15 @@
 	<% if user_signed_in? %>
 		<li class="favorites-menu">
 			<%= link_to user_favorites_path(current_user) do %>
-				<span><i class="fas fa-heart"></i></span>
 				お気に入りのお店
+				<i class="material-icons left">favorite</i>
 			<% end %>
 		</li>
 		<% if current_user.admin? %>
 			<li>
 				<a class="dropdown-trigger" href="#" data-target="admin-menu-mobile">
-					<span><i class="fas fa-cog"></i></span>
 					管理者メニュー
+					<i class="material-icons left">supervisor_account</i>
 					<i class="material-icons right">arrow_drop_down</i>
 				</a>
 			</li>
@@ -119,13 +120,13 @@
 	<li>
 		<% if user_signed_in? %>
 			<%= link_to logout_path, class: 'btn waves-effect waves-light', method: :delete do %>
+				<i class="material-icons right">lock_outline</i>
 				ログアウト
-				<i class="fas fa-sign-out-alt right"></i>
 			<% end %>
 		<% else %>
 			<%= link_to login_path, class: 'btn waves-effect waves-light' do %>
+				<i class="material-icons right">lock_open</i>
 				ログイン
-				<i class="fas fa-sign-in-alt right"></i>
 			<% end %>
 		<% end %>
 	</li>

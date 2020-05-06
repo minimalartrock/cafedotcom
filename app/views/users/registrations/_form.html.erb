@@ -45,7 +45,7 @@
 <% if current_user.admin? %>
 	<div class="row">
 		<div class="input-field col s12">
-			<i class="fas fa-user-cog prefix"></i>
+			<i class="material-icons prefix">supervisor_account</i>
 			<%= f.label :admin do %>
 				<%= f.check_box :admin, id: 'user_admin', class: 'filled-in validate' %>
 				<span><%= t('activerecord.attributes.user.admin') %></span>
@@ -58,8 +58,8 @@
 	</div>
 	<div class="input-field col s12">
 		<%= button_tag '', class: "btn waves-effect waves-light login-link", type: 'submit' do %>
-		変更する
-			<i class="material-icons">send</i>
+			<i class="material-icons right">send</i>
+			更新する
 		<% end %>
 	</div>
 </div>

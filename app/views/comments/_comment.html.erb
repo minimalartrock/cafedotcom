@@ -1,55 +1,53 @@
-<div class="row">
-	<div class="col s12">
-		<div class="card card-comment animated fadeIn">
-			<div class="card-content">
-				<%= image_tag avatar_for(comment.user), class: "avatar-small" %><span id="star-rate-<%= comment.id %>"></span>
-				<p class="card-title"><%= comment.user.name %></p>
-				<p><%= comment.congestion.status_i18n %></p>
-				<p><%= auto_link(simple_format(h(comment.comment), {}, sanitize: false, wrapper_tag: "div")) %></p>
-				<p><small><%= comment.created_at.strftime("%Y/%-m/%-d %-H:%-M ") %></small></p>
-				<div class="comment-menu">
-					<a class='dropdown-trigger' href='#' data-target='sns-share'><i class="material-icons">share</i></a>
-					<ul id='sns-share' class='dropdown-content'>
-						<li>
-							<%= link_to "https://twitter.com/share?url=#{request.url}&text=#{@shop.name}", target: '_blank' do %>
-								<i class="fab fa-twitter-square">twitter</i>
-							<% end %>
-						</li>
-						<li>
-							<%= link_to "https://www.facebook.com/sharer/sharer.php?u=#{request.url}&text=#{@shop.name}", target: '_blank' do %>
-								<i class="fab fa-facebook-square">facebook</i>
-							<% end %>
-						</li>
-						<li>
-							<%= link_to "http://line.me/R/msg/text/?#{request.url}&text=#{@shop.name}", target: '_blank' do %>
-								<i class="fab fa-line">line</i>
-							<% end %>
-						</li>
-					</ul>
-					<% if commented_by(comment, current_user) %>
-						<%= link_to shop_comment_path(@shop.id, comment.id), method: :delete, class: 'trash-btn', data: { confirm: "コメントを削除します。よろしいですか？" } do %>
-							<i class="material-icons">delete</i>
-						<% end %>
+<div class="card card-comment animated fadeIn">
+	<div class="card-content">
+		<%= image_tag avatar_for(comment.user), class: "avatar-small" %><span id="star-rate-<%= comment.id %>"></span>
+		<p class="card-title"><%= comment.user.name %></p>
+		<p><% congestion = comment.congestion %></p>
+		<% if congestion.vacant? %>
+			<p class="green-text"><i class="far fa-laugh"><%= Congestion.statuses_i18n[:vacant] %></i></p>
+		<% elsif congestion.usually? %>
+			<p><i class="far fa-smile"><%= Congestion.statuses_i18n[:usually] %></i></p>
+		<% elsif congestion.crowded? %>
+			<p class="red-text"><i class="far fa-dizzy"><%= Congestion.statuses_i18n[:crowded] %></i></p>
+		<% end %>
+		<p><%= auto_link(simple_format(h(comment.comment), {}, sanitize: false, wrapper_tag: "div")) %></p>
+		<p><small><%= comment.created_at.strftime("%Y/%-m/%-d %-H:%-M ") %></small></p>
+		<div class="comment-menu">
+			<a class='dropdown-trigger' href='#' data-target='sns-share'><i class="material-icons">share</i></a>
+			<ul id='sns-share' class='dropdown-content'>
+				<li>
+					<%= link_to "https://twitter.com/share?url=#{request.url}&text=#{comment.comment}%0a#{@shop.name}の口コミ - カフェどっと混む&hashtags=カフェどっと混む", target: '_blank' do %>
+						<i class="fab fa-twitter-square">twitter</i>
 					<% end %>
-				</div>
-				<div class="card-action follower">
-					<div id="like-icon-comment-<%= comment.id.to_s %>">
-						<% if did_you_like_it?(comment) %>
-							<%= link_to 'いいねを取り下げる', shop_comment_like_path(@shop.id, comment.id, comment.liked_by(current_user)), method: :delete, remote: true, class: 'liked-btn hide-text' %>
-							<% Comment.followed_by(comment).each do |follower| %>
-								<%= image_tag avatar_for(follower), class: "avatar-x-small" %>
-							<% end %>
-						<% else %>
-							<%= link_to 'いいねする', shop_comment_likes_path(@shop.id, comment.id), method: :post, remote: true, class: 'like-btn hide-text' %>
-							<% Comment.followed_by(comment).each do |follower| %>
-								<%= image_tag avatar_for(follower), class: "avatar-x-small" %>
-							<% end %>
-						<% end %>
-					</div>
-					<div id="like-text-comment-<%= comment.id.to_s %>">
-						<%= render "comments/like_text", { likes: comment.likes } %>
-					</div>
-				</div>
+				</li>
+				<li>
+					<%= link_to "http://line.me/R/msg/text/?#{comment.comment}%0a#{@shop.name}の口コミ - カフェどっと混む%0a#{request.url}", target: '_blank' do %>
+						<i class="fab fa-line">line</i>
+					<% end %>
+				</li>
+			</ul>
+			<% if commented_by(comment, current_user) %>
+				<%= link_to shop_comment_path(@shop.id, comment.id), method: :delete, class: 'trash-btn', data: { confirm: "コメントを削除します。よろしいですか？" } do %>
+					<i class="material-icons">delete</i>
+				<% end %>
+			<% end %>
+		</div>
+		<div class="card-action follower">
+			<div id="like-icon-comment-<%= comment.id.to_s %>">
+				<% if did_you_like_it?(comment) %>
+					<%= link_to 'いいねを取り下げる', shop_comment_like_path(@shop.id, comment.id, comment.liked_by(current_user)), method: :delete, remote: true, class: 'liked-btn hide-text' %>
+					<% Comment.followed_by(comment).each do |follower| %>
+						<%= image_tag avatar_for(follower), class: "avatar-x-small" %>
+					<% end %>
+				<% else %>
+					<%= link_to 'いいねする', shop_comment_likes_path(@shop.id, comment.id), method: :post, remote: true, class: 'like-btn hide-text' %>
+					<% Comment.followed_by(comment).each do |follower| %>
+						<%= image_tag avatar_for(follower), class: "avatar-x-small" %>
+					<% end %>
+				<% end %>
+			</div>
+			<div id="like-text-comment-<%= comment.id.to_s %>">
+				<%= render "comments/like_text", { likes: comment.likes } %>
 			</div>
 		</div>
 	</div>

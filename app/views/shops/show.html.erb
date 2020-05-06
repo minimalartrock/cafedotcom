@@ -38,19 +38,19 @@
 								<td>
 									<% if @shop.outret? %>
 										<div class="chip">
-											<i class="material-icons">power</i>
+											<i class="material-icons left">power</i>
 											電源あり
 										</div>
 									<% end %>
 									<% if @shop.wifi? %>
 										<div class="chip">
-											<i class="material-icons">wifi</i>
+											<i class="material-icons left">wifi</i>
 											Wi-Fiあり
 										</div>
 									<% end %>
 									<% if @shop.smoking? %>
 										<div class="chip">
-											<i class="material-icons">smoking_rooms</i>
+											<i class="material-icons left">smoking_rooms</i>
 											喫煙席あり
 										</div>
 									<% end %>
@@ -62,11 +62,11 @@
 									<% congestion = get_congestion(@shop.id) %>
 									<% if congestion.present? %>
 										<% if congestion.vacant? %>
-											<p class="animated pulse"><i class="far fa-laugh"><%= Congestion.statuses_i18n[:vacant] %></i></p>
+											<p class="green-text"><i class="far fa-laugh"><%= Congestion.statuses_i18n[:vacant] %></i></p>
 										<% elsif congestion.usually? %>
 											<p><i class="far fa-smile"><%= Congestion.statuses_i18n[:usually] %></i></p>
 										<% elsif congestion.crowded? %>
-											<p><i class="far fa-dizzy"><%= Congestion.statuses_i18n[:crowded] %></i></p>
+											<p class="red-text"><i class="far fa-dizzy"><%= Congestion.statuses_i18n[:crowded] %></i></p>
 										<% end %>
 									<% else %>
 										<p><i class="far fa-smile"><%= Congestion.statuses_i18n[:usually] %></i></p>
@@ -84,19 +84,19 @@
 				</div>
 			</div>
 			<div class="col l4 s12">
-				<div class="card-panel teal white-text detail">
-					<h6>お店の情報</h6>
+				<div class="card-panel blue-grey white-text detail">
+					<h6>詳細</h6>
 					<div class="divider"></div>
-					<span class="detail-title"><i class="fas fa-map-marker-alt">住所</i></span>
+					<span class="detail-title"><i class="material-icons before">location_on</i>住所</span>
 					<span><%= @shop.address %></span>
 					<div class="divider"></div>
-					<span class="detail-title"><i class="fas fa-store-alt">おすすめ</i></span>
+					<span class="detail-title"><i class="material-icons before">error_outline</i>おすすめ</span>
 					<span><%= @shop.pr_short %></span>
 					<div class="divider"></div>
-					<span class="detail-title"><i class="far fa-clock">営業時間</i></span>
+					<span class="detail-title"><i class="material-icons before">access_time</i>営業時間</span>
 					<span><%= @shop.opentime %></span>
 					<div class="divider"></div>
-					<span class="detail-title"><i class="fas fa-map-marked-alt">地図</i></span>
+					<span class="detail-title"><i class="material-icons before">map</i>地図</span>
 					<%= render partial: "map" %>
 				</div>
 			</div>
@@ -104,13 +104,10 @@
 	</div>
 	<div class="row">
 		<div class="col l12 center-align">
-			<%= link_to "https://twitter.com/share?url=#{request.url}&text=#{@shop.name}", target: '_blank', class: "btn-social-square btn-social-square--twitter" do %>
+			<%= link_to "https://twitter.com/share?url=#{request.url}&text=#{@shop.name}の口コミ - カフェどっと混む&hashtags=カフェどっと混む", target: '_blank', class: "btn-social-square btn-social-square--twitter" do %>
  				<i class="fab fa-twitter"></i>
 			<% end %>
-			<%= link_to "https://www.facebook.com/sharer/sharer.php?u=#{request.url}&text=#{@shop.name}", target: '_blank', class: "btn-social-square btn-social-square--facebook" do %>
-				<i class="fab fa-facebook-f"></i>
-			<% end %>
-			<%= link_to "http://line.me/R/msg/text/?#{request.url}&text=#{@shop.name}", target: '_blank', class: "btn-social-square btn-social-square--line" do %>
+			<%= link_to "http://line.me/R/msg/text/?#{@shop.name}の口コミ - カフェどっと混む%0a#{request.url}", target: '_blank', class: "btn-social-square btn-social-square--line" do %>
 				<i class="fab fa-line"></i>
 			<% end %>
 		</div>
@@ -125,7 +122,7 @@
 </div>
 
 <div class="fixed-action-btn">
-	<a class="btn-floating btn-large cyan waves-effect waves-light pulse modal-trigger" href="#comment-dialog">
+	<a class="btn-floating btn-large waves-effect waves-light modal-trigger" href="#comment-dialog">
 		<i class="large material-icons">mode_edit</i>
 	</a>
 </div>

@@ -2,7 +2,7 @@
 	<div class="nav-wrapper">
 		<div class="col s12">
 			<%= link_to root_path, class: 'breadcrumb' do %>
-				<span><i class="fas fa-home"></i>HOME</span>
+				<i class="material-icons before">home</i>HOME
 			<% end %>
 			<%= link_to 'プロフィール', user_path(@user), class: "breadcrumb" %>
 			<a class="breadcrumb active">プロフィール編集</a>
@@ -23,9 +23,9 @@
 							<%= form_with url: user_registration_path, method: :put, scope: @user, local: true do |f| %>
 								<%= render partial: 'form', locals: {f: f, user: @user} %>
 							<% end %>
-							<%= link_to user_path(@user), class: "btn waves-effect waves-light login-link" do %>
+							<%= link_to user_path(@user), class: "btn waves-effect waves-light login-link teal" do %>
+								<i class="material-icons right">keyboard_return</i>
 								キャンセル
-								<i class="material-icons">keyboard_return</i>
 							<% end %>
 						</div>
 					</div>
