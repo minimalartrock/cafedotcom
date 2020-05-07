@@ -47,8 +47,8 @@
   background: black;
 }
 
-.shop img {
-  opacity: .5;
+.shop .shop-image {
+  opacity: .7;
 }
 
 .shop .card-title {
@@ -72,7 +72,7 @@
 .shop .congestion-status {
   position: absolute;
   z-index: 1;
-  bottom: 10px;
+  top: 10px;
   left: 10px;
 }
 
@@ -88,21 +88,10 @@
   width: auto;
 }
 
-.shop .star-rate::after {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  content: '';
-  opacity: .5;
-  background: black;
-}
-
 .shop .favorite-person {
   position: absolute;
   z-index: 1;
-  top: 10px;
+  bottom: 10px;
   left: 10px;
 }
 

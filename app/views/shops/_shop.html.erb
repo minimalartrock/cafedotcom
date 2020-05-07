@@ -2,7 +2,7 @@
   <div class="card hoverable shop">
     <div class="card-image">
       <%= link_to shop_path(shop.id), class: "waves-effect waves-light" do %>
-        <%= image_tag shop_for(shop) %>
+        <%= image_tag shop_for(shop), class: 'shop-image' %>
         <span class="card-title"><%= shop.name  %></span>
       <% end %>
       <div id="favorite-shop-<%= shop.id.to_s %>">
@@ -20,14 +20,8 @@
         <% congestion = get_congestion(shop.id) %>
         <% if congestion.present? %>
           <% if congestion.vacant? %>
-            <p><i class="far fa-laugh"><%= Congestion.statuses_i18n[:vacant] %></i></p>
-          <% elsif congestion.usually? %>
-            <p><i class="far fa-smile"><%= Congestion.statuses_i18n[:usually] %></i></p>
-          <% elsif congestion.crowded? %>
-            <p><i class="far fa-dizzy"><%= Congestion.statuses_i18n[:crowded] %></i></p>
+            <span class="new badge blue" data-badge-caption="<%= Congestion.statuses_i18n[:vacant] %>"></span>
           <% end %>
-        <% else %>
-          <p><i class="far fa-smile"><%= Congestion.statuses_i18n[:usually] %></i></p>
         <% end %>
       </div>
       <div class="favorite-person">
@@ -38,10 +32,9 @@
       <div class="number-of-comments">
         <p class="white-text">
           <i class="material-icons">question_answer</i>
+          <%= Comment.number_of_comments(shop.id) %>
           <% if has_new_comment?(shop.id) %>
-            <span class="badge new"><%= Comment.number_of_comments(shop.id) %></span>
-          <% else %>
-            <span class="badge"><%= Comment.number_of_comments(shop.id) %></span>
+            <span class="badge new"></span>
           <% end %>
           <p>
           </div>
