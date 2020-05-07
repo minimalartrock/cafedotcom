@@ -13,6 +13,13 @@
 		<p><%= auto_link(simple_format(h(comment.comment), {}, sanitize: false, wrapper_tag: "div")) %></p>
 		<p><small><%= comment.created_at.strftime("%Y/%-m/%-d %-H:%-M ") %></small></p>
 		<div class="comment-menu">
+			<div id="like-icon-comment-<%= comment.id.to_s %>">
+				<% if did_you_like_it?(comment) %>
+					<%= link_to 'いいねを取り下げる', shop_comment_like_path(@shop.id, comment.id, comment.liked_by(current_user)), method: :delete, remote: true, class: 'liked-btn hide-text' %>
+				<% else %>
+					<%= link_to 'いいねする', shop_comment_likes_path(@shop.id, comment.id), method: :post, remote: true, class: 'like-btn hide-text' %>
+				<% end %>
+			</div>
 			<a class='dropdown-trigger' href='#' data-target='sns-share'><i class="material-icons">share</i></a>
 			<ul id='sns-share' class='dropdown-content'>
 				<li>
@@ -33,21 +40,8 @@
 			<% end %>
 		</div>
 		<div class="card-action follower">
-			<div id="like-icon-comment-<%= comment.id.to_s %>">
-				<% if did_you_like_it?(comment) %>
-					<%= link_to 'いいねを取り下げる', shop_comment_like_path(@shop.id, comment.id, comment.liked_by(current_user)), method: :delete, remote: true, class: 'liked-btn hide-text' %>
-					<% Comment.followed_by(comment).each do |follower| %>
-						<%= image_tag avatar_for(follower), class: "avatar-x-small" %>
-					<% end %>
-				<% else %>
-					<%= link_to 'いいねする', shop_comment_likes_path(@shop.id, comment.id), method: :post, remote: true, class: 'like-btn hide-text' %>
-					<% Comment.followed_by(comment).each do |follower| %>
-						<%= image_tag avatar_for(follower), class: "avatar-x-small" %>
-					<% end %>
-				<% end %>
-			</div>
 			<div id="like-text-comment-<%= comment.id.to_s %>">
-				<%= render "comments/like_text", { likes: comment.likes } %>
+				<%= render "comments/like_text", { likes: comment.likes, comment: comment } %>
 			</div>
 		</div>
 	</div>
