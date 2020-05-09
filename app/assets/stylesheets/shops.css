@@ -41,8 +41,23 @@
   background: #eee;
 }
 
+.menu {
+  position: relative;
+  overflow: hidden;
+  max-width: 600px;
+  -webkit-transition: .3s;
+  transition: .3s;
+  border-radius: 8px;
+  background: black;
+}
+
+.menu .menu-image {
+  opacity: .7;
+}
+
 .swiper-button-prev,
 .swiper-button-next {
+  z-index: 2;
   width: 32px;
   height: 32px;
   margin-top: -16px;
@@ -64,12 +79,39 @@
   content: '' !important;
 }
 
+.recently-comment {
+  position: relative;
+  overflow: hidden;
+  max-width: 600px;
+  -webkit-transition: .3s;
+  transition: .3s;
+  border-radius: 8px;
+  background: black;
+}
+
+.recently-comment .recently-comment-image {
+  opacity: .7;
+}
+
+.recently-comment .card-content {
+  background: white;
+}
+
+.recently-comment .user-image {
+  padding-right: 10px;
+}
+
+.recently-comment .ago {
+  float: right;
+}
+
 .shop {
   position: relative;
   overflow: hidden;
   max-width: 600px;
   -webkit-transition: .3s;
   transition: .3s;
+  border-radius: 20px;
   background: black;
 }
 
