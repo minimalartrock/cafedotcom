@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ChangeRateDefault < ActiveRecord::Migration[5.2]
   def change
     change_column :comments, :rate, :float, default: 0.0
