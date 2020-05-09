@@ -62,14 +62,14 @@
 									<% congestion = get_congestion(@shop.id) %>
 									<% if congestion.present? %>
 										<% if congestion.vacant? %>
-											<p class="green-text"><i class="far fa-laugh"><%= Congestion.statuses_i18n[:vacant] %></i></p>
+											<span class="new badge blue" data-badge-caption="<%= Congestion.statuses_i18n[:vacant] %>"></span>
 										<% elsif congestion.usually? %>
-											<p><i class="far fa-smile"><%= Congestion.statuses_i18n[:usually] %></i></p>
+											<span class="new badge" data-badge-caption="<%= Congestion.statuses_i18n[:usually] %>"></span>
 										<% elsif congestion.crowded? %>
-											<p class="red-text"><i class="far fa-dizzy"><%= Congestion.statuses_i18n[:crowded] %></i></p>
+											<span class="new badge red" data-badge-caption="<%= Congestion.statuses_i18n[:crowded] %>"></span>
 										<% end %>
 									<% else %>
-										<p><i class="far fa-smile"><%= Congestion.statuses_i18n[:usually] %></i></p>
+										<span class="new badge" data-badge-caption="<%= Congestion.statuses_i18n[:usually] %>"></span>
 									<% end %>
 								</td>
 							</tr>

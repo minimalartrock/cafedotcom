@@ -26,7 +26,7 @@
       </div>
       <div class="favorite-person">
         <% findUser(shop.id).each do |user| %>
-          <%= image_tag avatar_for(user), class: 'avatar-x-small' %>
+          <%= image_tag avatar_for(user), class: 'avatar-x-small user-image' %>
         <% end %>
       </div>
       <div class="number-of-comments">

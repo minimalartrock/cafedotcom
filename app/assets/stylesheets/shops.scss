@@ -52,11 +52,44 @@
     background: #eee;
 }
 
+.swiper-button-prev,
+.swiper-button-next
+{
+    width: 32px;
+    height: 32px;
+    margin-top: -16px;
+}
+
+.swiper-button-prev
+{
+    background: image-url('left-arrow.png') no-repeat center center / contain;
+}
+
+.swiper-button-prev::after
+{
+    content: '' !important;
+}
+
+.swiper-button-next
+{
+    background: image-url('right-arrow.png') no-repeat center center / contain;
+}
+
+.swiper-button-next::after
+{
+    content: '' !important;
+}
+
 .shop
 {
     position: relative;
 
+    overflow: hidden;
+
     max-width: 600px;
+
+    -webkit-transition: .3s;
+            transition: .3s;
 
     background: black;
 
@@ -74,7 +107,7 @@
     {
         position: absolute;
         z-index: 1;
-        top: 10px;
+        top: -50px;
         right: 10px;
     }
 
@@ -82,7 +115,7 @@
     {
         position: absolute;
         z-index: 1;
-        top: 10px;
+        top: -50px;
         right: 10px;
     }
 
@@ -90,7 +123,7 @@
     {
         position: absolute;
         z-index: 1;
-        top: 10px;
+        top: -50px;
         left: 10px;
     }
 
@@ -99,7 +132,10 @@
         position: absolute;
         z-index: 1;
         right: 10px;
-        bottom: 0;
+        bottom: -50px;
+
+        -webkit-transition: .3s;
+                transition: .3s;
 
         img
         {
@@ -113,26 +149,77 @@
     {
         position: absolute;
         z-index: 1;
-        bottom: 10px;
+        bottom: -50px;
         left: 10px;
+
+        -webkit-transition: .3s;
+                transition: .3s;
 
         img
         {
+            display: inline-block;
+
             width: unset;
 
             border-radius: 50%;
         }
     }
-}
 
-.number-of-comments
-{
-    font-size: 14px;
+    .number-of-comments
+    {
+        font-size: 14px;
 
-    position: absolute;
-    z-index: 1;
-    right: 10px;
-    bottom: 15px;
+        position: absolute;
+        z-index: 1;
+        right: 10px;
+        bottom: -50px;
+
+        -webkit-transition: .3s;
+                transition: .3s;
+    }
+
+    &:hover
+    {
+        -webkit-transform: translateY(-5px);
+            -ms-transform: translateY(-5px);
+                transform: translateY(-5px);
+
+        .favorite-btn
+        {
+            top: 10px;
+            right: 10px;
+        }
+
+        .favorited-btn
+        {
+            top: 10px;
+            right: 10px;
+        }
+
+        .congestion-status
+        {
+            top: 10px;
+            left: 10px;
+        }
+
+        .star-rate
+        {
+            right: 10px;
+            bottom: 0;
+        }
+
+        .favorite-person
+        {
+            bottom: 10px;
+            left: 10px;
+        }
+
+        .number-of-comments
+        {
+            right: 10px;
+            bottom: 20px;
+        }
+    }
 }
 
 .preview

@@ -41,9 +41,35 @@
   background: #eee;
 }
 
+.swiper-button-prev,
+.swiper-button-next {
+  width: 32px;
+  height: 32px;
+  margin-top: -16px;
+}
+
+.swiper-button-prev {
+  background: image-url("left-arrow.png") no-repeat center center/contain;
+}
+
+.swiper-button-prev::after {
+  content: '' !important;
+}
+
+.swiper-button-next {
+  background: image-url("right-arrow.png") no-repeat center center/contain;
+}
+
+.swiper-button-next::after {
+  content: '' !important;
+}
+
 .shop {
   position: relative;
+  overflow: hidden;
   max-width: 600px;
+  -webkit-transition: .3s;
+  transition: .3s;
   background: black;
 }
 
@@ -58,21 +84,21 @@
 .shop .favorite-btn {
   position: absolute;
   z-index: 1;
-  top: 10px;
+  top: -50px;
   right: 10px;
 }
 
 .shop .favorited-btn {
   position: absolute;
   z-index: 1;
-  top: 10px;
+  top: -50px;
   right: 10px;
 }
 
 .shop .congestion-status {
   position: absolute;
   z-index: 1;
-  top: 10px;
+  top: -50px;
   left: 10px;
 }
 
@@ -80,7 +106,9 @@
   position: absolute;
   z-index: 1;
   right: 10px;
-  bottom: 0;
+  bottom: -50px;
+  -webkit-transition: .3s;
+  transition: .3s;
 }
 
 .shop .star-rate img {
@@ -91,21 +119,62 @@
 .shop .favorite-person {
   position: absolute;
   z-index: 1;
-  bottom: 10px;
+  bottom: -50px;
   left: 10px;
+  -webkit-transition: .3s;
+  transition: .3s;
 }
 
 .shop .favorite-person img {
+  display: inline-block;
   width: unset;
   border-radius: 50%;
 }
 
-.number-of-comments {
+.shop .number-of-comments {
   font-size: 14px;
   position: absolute;
   z-index: 1;
   right: 10px;
-  bottom: 15px;
+  bottom: -50px;
+  -webkit-transition: .3s;
+  transition: .3s;
+}
+
+.shop:hover {
+  -webkit-transform: translateY(-5px);
+  -ms-transform: translateY(-5px);
+  transform: translateY(-5px);
+}
+
+.shop:hover .favorite-btn {
+  top: 10px;
+  right: 10px;
+}
+
+.shop:hover .favorited-btn {
+  top: 10px;
+  right: 10px;
+}
+
+.shop:hover .congestion-status {
+  top: 10px;
+  left: 10px;
+}
+
+.shop:hover .star-rate {
+  right: 10px;
+  bottom: 0;
+}
+
+.shop:hover .favorite-person {
+  bottom: 10px;
+  left: 10px;
+}
+
+.shop:hover .number-of-comments {
+  right: 10px;
+  bottom: 20px;
 }
 
 .preview {
