@@ -15,7 +15,7 @@
 							<small class="ago"><%= time_ago_in_words(recently.created_at)+"前" %></small>
               <p class="short-comment">
 								<%= image_tag avatar_for(recently.user), class: 'avatar-x-small user-image' %>
-								<span><%= recently.comment.truncate(15) %></span>
+								<span><%= recently.comment.truncate(10) %></span>
 							</p>
             </div>
           </div>

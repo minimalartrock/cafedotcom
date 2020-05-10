@@ -1,18 +1,19 @@
 <div id="contents">
 	<div class="search-container"></div>
-	<div class="search-form">
-		<div class="row animated fadeIn">
-			<h2 class="title white-text">お店を検索してみましょう</h2>
-			<%= search_form_for @q do |f| %>
-				<div class="col s10 m10">
-					<%= f.search_field :address_cont, id: 'search-text' %>
-				</div>
-				<div class="col s2 m2">
-					<%= button_tag type: 'submit', id: 'search-btn', class: 'search-btn btn waves-effect waves-light search-btn' do %>
-						<i class="fa fa-search"></i>
-					<% end %>
-				</div>
-			<% end %>
+		<div class="search-form">
+			<div class="row">
+				<h2 class="title white-text">お店を検索してみましょう</h2>
+				<%= search_form_for @q do |f| %>
+					<div class="col s10 m10">
+						<%= f.search_field :address_cont, id: 'search-text' %>
+					</div>
+					<div class="col s2 m2">
+						<%= button_tag type: 'submit', id: 'search-btn', class: 'search-btn btn waves-effect waves-light search-btn' do %>
+							<i class="fa fa-search"></i>
+						<% end %>
+					</div>
+				<% end %>
+			</div>
 		</div>
 	</div>
 
