@@ -1,1 +1,8 @@
-null
+.brand-logo img {
+  vertical-align: middle;
+}
+
+.avatar-menu img {
+  float: right;
+  padding: 10px;
+}

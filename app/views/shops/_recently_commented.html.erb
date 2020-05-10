@@ -1,22 +1,28 @@
 <div class="container">
-  <h3>New Comments</h3>
+  <h2 class="title">New Comments</h2>
   <div class="swiper-container">
-    <div class="swiper-wrapper">
-      <% @recently_commented_shops.each do |shop| %>
+    <div class="swiper-wrapper recently-comments">
+      <% Comment.includes(:shop).order(created_at: :desc).limit(5).each do |recently| %>
         <div class="swiper-slide">
-          <div class="card hoverable shop">
+          <div class="card hoverable recently-comment">
             <div class="card-image">
-              <%= link_to shop_path(shop.id), class: "waves-effect waves-light" do %>
-                <%= image_tag shop_for(shop) %>
-                <span class="card-title"><%= shop.name %></span>
+              <%= link_to shop_path(recently.shop.id), class: "waves-effect waves-light" do %>
+                <%= image_tag shop_for(recently.shop), class: 'recently-comment-image' %>
+                <span class="card-title"><%= recently.shop.name %></span>
               <% end %>
+            </div>
+            <div class="card-content">
+							<small class="ago"><%= time_ago_in_words(recently.created_at)+"前" %></small>
+              <p class="short-comment">
+								<%= image_tag avatar_for(recently.user), class: 'avatar-x-small user-image' %>
+								<span><%= recently.comment.truncate(10) %></span>
+							</p>
             </div>
           </div>
         </div>
       <% end %>
     </div>
-    <div class="swiper-pagination"></div>
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-button-next"></div>
-  </div>
+		<div class="swiper-button-prev"></div>
+		<div class="swiper-button-next"></div>
+	</div>
 </div>

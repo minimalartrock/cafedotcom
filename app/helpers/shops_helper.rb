@@ -18,8 +18,4 @@ module ShopsHelper
       '/images/default-shop.jpg'
     end
   end
-
-  def recently_commented_shops
-    Shop.includes(:comments).order('comments.created_at DESC NULLS LAST').limit(5)
-  end
 end

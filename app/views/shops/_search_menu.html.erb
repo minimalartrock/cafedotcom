@@ -1,43 +1,45 @@
 <div class="container">
-	<h3>Menu</h3>
+	<h2 class="title">Menu</h2>
 	<div class="row">
-		<div class="col s12 m3">
-			<div class="card hoverable shop">
-				<div class="card-image">
-					<%= link_to '', class: "waves-effect waves-light location-search", onclick: 'findNearbyShops();return false;' do %>
-						<%= image_tag '/images/search/location.jpg' %>
-						<span class="card-title">近くのお店</span>
-					<% end %>
+		<div class="search-menu">
+			<div class="col s6 m3">
+				<div class="card hoverable menu">
+					<div class="card-image">
+						<%= link_to '', class: "waves-effect waves-light location-search", onclick: 'findNearbyShops();return false;' do %>
+							<%= image_tag '/images/search/location.jpg', class: 'menu-image' %>
+							<span class="card-title">近くのお店</span>
+						<% end %>
+					</div>
 				</div>
 			</div>
-		</div>
-		<div class="col s12 m3">
-			<div class="card hoverable shop">
-				<div class="card-image">
-					<%= link_to search_outret_path, class: "waves-effect waves-light" do %>
-						<%= image_tag '/images/search/outret.jpg' %>
-						<span class="card-title">電源がある</span>
-					<% end %>
+			<div class="col s6 m3">
+				<div class="card hoverable menu">
+					<div class="card-image">
+						<%= link_to search_outret_path, class: "waves-effect waves-light" do %>
+							<%= image_tag '/images/search/outret.jpg', class: 'menu-image' %>
+							<span class="card-title">電源がある</span>
+						<% end %>
+					</div>
 				</div>
 			</div>
-		</div>
-		<div class="col s12 m3">
-			<div class="card hoverable shop">
-				<div class="card-image">
-					<%= link_to search_wifi_path, class: "waves-effect waves-light" do %>
-						<%= image_tag '/images/search/wifi.jpg' %>
-						<span class="card-title">Wi-Fiがある</span>
-					<% end %>
+			<div class="col s6 m3">
+				<div class="card hoverable menu">
+					<div class="card-image">
+						<%= link_to search_wifi_path, class: "waves-effect waves-light" do %>
+							<%= image_tag '/images/search/wifi.jpg', class: 'menu-image' %>
+							<span class="card-title">Wi-Fiがある</span>
+						<% end %>
+					</div>
 				</div>
 			</div>
-		</div>
-		<div class="col s12 m3">
-			<div class="card hoverable shop">
-				<div class="card-image">
-					<%= link_to search_smoking_path, class: "waves-effect waves-light" do %>
-						<%= image_tag '/images/search/smoking.jpg' %>
-						<span class="card-title">喫煙席がある</span>
-					<% end %>
+			<div class="col s6 m3">
+				<div class="card hoverable menu">
+					<div class="card-image">
+						<%= link_to search_smoking_path, class: "waves-effect waves-light" do %>
+							<%= image_tag '/images/search/smoking.jpg', class: 'menu-image' %>
+							<span class="card-title">喫煙席がある</span>
+						<% end %>
+					</div>
 				</div>
 			</div>
 		</div>

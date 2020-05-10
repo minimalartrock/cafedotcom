@@ -1,4 +1,4 @@
 $('#like-icon-comment-<%= @comment.id.to_s %>').
-  html('<%= link_to "いいね", shop_comment_like_path(@shop.id, @comment.id, @like.id), method: :delete, remote: true, class: "liked-btn hide-text" %><% Comment.followed_by(@comment).each do |follower| %><%= image_tag avatar_for(follower), class: "avatar-x-small" %><% end %>');
+  html('<%= link_to "いいね", shop_comment_like_path(@shop.id, @comment.id, @like.id), method: :delete, remote: true, class: "liked-btn hide-text" %>');
 $('#like-text-comment-<%= @comment.id.to_s %>').
-  html('<%= j render "comments/like_text", { likes: @comment.likes } %>');
+  html('<%= j render "comments/like_text", { likes: @comment.likes, comment: @comment } %>');

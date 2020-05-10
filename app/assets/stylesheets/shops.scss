@@ -1,3 +1,26 @@
+.search-container
+{
+    position: relative;
+
+    height: 500px;
+
+    background-image: image-url('/images/top-image.jpg');
+    background-size: cover;
+}
+
+.search-container::before
+{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    content: ' ';
+
+    background-color: rgba(0, 0, 0, .5);
+}
+
 .search-form
 {
     position: absolute;
@@ -5,13 +28,17 @@
     left: 50%;
 
     width: 100%;
-    max-width: 1280px;
-    margin-bottom: 20px;
-    padding: 50px;
+    padding: 20%;
 
-    -webkit-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
-    text-align: center;
+    -webkit-transform: translateY(-50%) translateX(-50%);
+            transform: translateY(-50%) translateX(-50%);
+
+    .title
+    {
+        text-align: center;
+    }
+
+    ;
 }
 
 #search-text
@@ -27,7 +54,6 @@
 
 #search-btn
 {
-    font-size: 16px;
     font-weight: bold;
 
     width: 100%;
@@ -36,18 +62,118 @@
     color: #fff;
     border: none;
     border-radius: 2px;
-    background: #7fbfff;
+    background: #ffb74c;
 }
 
 #search-btn:hover
 {
-    color: #7fbfff;
+    color: #ffb74c;
     background: #eee;
+}
+
+.menu
+{
+    position: relative;
+
+    overflow: hidden;
+
+    max-width: 600px;
+
+    -webkit-transition: .3s;
+            transition: .3s;
+
+    border-radius: 8px;
+    background: black;
+
+    .menu-image
+    {
+        opacity: .7;
+    }
+}
+
+.swiper-button-prev,
+.swiper-button-next
+{
+    z-index: 2;
+
+    width: 32px;
+    height: 32px;
+    margin-top: -16px;
+}
+
+.swiper-button-prev
+{
+    background: image-url('left-arrow.png') no-repeat center center / contain;
+}
+
+.swiper-button-prev::after
+{
+    content: '' !important;
+}
+
+.swiper-button-next
+{
+    background: image-url('right-arrow.png') no-repeat center center / contain;
+}
+
+.swiper-button-next::after
+{
+    content: '' !important;
+}
+
+.recently-comment
+{
+    position: relative;
+
+    overflow: hidden;
+
+    max-width: 600px;
+
+    -webkit-transition: .3s;
+            transition: .3s;
+
+    border-radius: 8px;
+    background: black;
+
+    .recently-comment-image
+    {
+        opacity: .7;
+    }
+
+    .card-content
+    {
+        background: white;
+    }
+
+    .user-image
+    {
+        padding-right: 10px;
+    }
+
+    .ago
+    {
+        float: right;
+    }
 }
 
 .shop
 {
     position: relative;
+
+    overflow: hidden;
+
+    max-width: 600px;
+
+    -webkit-transition: .3s;
+            transition: .3s;
+
+    border-radius: 20px;
+    background: black;
+
+    .shop-image
+    {
+        opacity: .7;
+    }
 
     .card-title
     {
@@ -58,7 +184,7 @@
     {
         position: absolute;
         z-index: 1;
-        top: 10px;
+        top: -50px;
         right: 10px;
     }
 
@@ -66,7 +192,7 @@
     {
         position: absolute;
         z-index: 1;
-        top: 10px;
+        top: -50px;
         right: 10px;
     }
 
@@ -74,7 +200,7 @@
     {
         position: absolute;
         z-index: 1;
-        bottom: 10px;
+        top: -50px;
         left: 10px;
     }
 
@@ -83,7 +209,10 @@
         position: absolute;
         z-index: 1;
         right: 10px;
-        bottom: 0;
+        bottom: -50px;
+
+        -webkit-transition: .3s;
+                transition: .3s;
 
         img
         {
@@ -93,12 +222,15 @@
         }
     }
 
-    .commented-person
+    .favorite-person
     {
         position: absolute;
         z-index: 1;
-        top: 10px;
+        bottom: -50px;
         left: 10px;
+
+        -webkit-transition: .3s;
+                transition: .3s;
 
         img
         {
@@ -109,16 +241,62 @@
             border-radius: 50%;
         }
     }
-}
 
-.number-of-comments
-{
-    font-size: 14px;
+    .number-of-comments
+    {
+        font-size: 14px;
 
-    position: absolute;
-    z-index: 1;
-    right: 10px;
-    bottom: 15px;
+        position: absolute;
+        z-index: 1;
+        right: 10px;
+        bottom: -50px;
+
+        -webkit-transition: .3s;
+                transition: .3s;
+    }
+
+    &:hover
+    {
+        -webkit-transform: translateY(-5px);
+            -ms-transform: translateY(-5px);
+                transform: translateY(-5px);
+
+        .favorite-btn
+        {
+            top: 10px;
+            right: 10px;
+        }
+
+        .favorited-btn
+        {
+            top: 10px;
+            right: 10px;
+        }
+
+        .congestion-status
+        {
+            top: 10px;
+            left: 10px;
+        }
+
+        .star-rate
+        {
+            right: 10px;
+            bottom: 0;
+        }
+
+        .favorite-person
+        {
+            bottom: 10px;
+            left: 10px;
+        }
+
+        .number-of-comments
+        {
+            right: 10px;
+            bottom: 20px;
+        }
+    }
 }
 
 .preview
@@ -171,5 +349,15 @@
     .divider
     {
         margin: .5em 0;
+    }
+}
+
+.search-shop .card
+{
+    border-radius: 8px;
+
+    img
+    {
+        border-radius: 8px;
     }
 }

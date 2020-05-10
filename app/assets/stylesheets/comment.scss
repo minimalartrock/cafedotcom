@@ -1,11 +1,41 @@
+.card-comment
+{
+    margin: 0;
+}
+
+.like-btn
+{
+    display: inline-block;
+
+    margin: 0 0 10px auto;
+}
+
+.liked-btn
+{
+    display: inline-block;
+
+    margin: 0 0 10px auto;
+}
+
 .comment-menu
 {
-    display: block;
-
-    text-align: right;
+    float: right;
 }
 
 #comment-dialog
 {
     height: 70%;
+}
+
+.card-action-buttons
+{
+    position: relative;
+    bottom: -35px;
+
+    text-align: right;
+
+    li
+    {
+        display: inline;
+    }
 }
