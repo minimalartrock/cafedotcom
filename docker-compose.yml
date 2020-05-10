@@ -11,6 +11,8 @@ services:
       - log-data:/cafedotcom/log
     depends_on:
       - db
+    environment:
+      RAILS_ENV: production
   db:
     image: postgres
     volumes:
