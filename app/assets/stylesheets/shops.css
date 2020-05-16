@@ -1,6 +1,6 @@
 .search-container {
   position: relative;
-  height: 500px;
+  height: 700px;
   background-image: image-url("/images/top-image.jpg");
   background-size: cover;
 }
@@ -21,12 +21,8 @@
   left: 50%;
   width: 100%;
   padding: 20%;
-  -webkit-transform: translateY(-50%) translateX(-50%);
-  transform: translateY(-50%) translateX(-50%);
-}
-
-.search-form .title {
-  text-align: center;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 
 #search-text {
@@ -45,12 +41,35 @@
   color: #fff;
   border: none;
   border-radius: 2px;
-  background: #ffb74c;
+  background: #000;
 }
 
 #search-btn:hover {
-  color: #ffb74c;
+  color: #000;
   background: #eee;
+}
+
+.top-page-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.5rem;
+  max-width: 48rem;
+  text-align: center;
+  color: #fff;
+}
+
+@media screen and (max-width: 480px) {
+  .top-page-title {
+    font-size: 1.0rem;
+    font-weight: 600;
+    line-height: 1.0rem;
+    max-width: 48rem;
+    text-align: center;
+    color: #fff;
+  }
+  .search-icon {
+    font-size: 1.0rem !important;
+  }
 }
 
 .menu {
@@ -91,6 +110,10 @@
   content: '' !important;
 }
 
+#recently-commented-shop {
+  background-color: #fff;
+}
+
 .recently-comment {
   position: relative;
   overflow: hidden;
@@ -109,15 +132,11 @@
   background: white;
 }
 
-.recently-comment .user-image {
-  padding-right: 10px;
-}
-
 .recently-comment .ago {
   float: right;
 }
 
-.shop {
+.shop-quickview {
   position: relative;
   overflow: hidden;
   max-width: 600px;
@@ -127,36 +146,36 @@
   background: black;
 }
 
-.shop .shop-image {
+.shop-quickview .shop-image {
   opacity: .7;
 }
 
-.shop .card-title {
+.shop-quickview .card-title {
   padding-bottom: 60px !important;
 }
 
-.shop .favorite-btn {
+.shop-quickview .favorite-btn {
   position: absolute;
   z-index: 1;
   top: -50px;
   right: 10px;
 }
 
-.shop .favorited-btn {
+.shop-quickview .favorited-btn {
   position: absolute;
   z-index: 1;
   top: -50px;
   right: 10px;
 }
 
-.shop .congestion-status {
+.shop-quickview .congestion-status {
   position: absolute;
   z-index: 1;
   top: -50px;
   left: 10px;
 }
 
-.shop .star-rate {
+.shop-quickview .star-rate {
   position: absolute;
   z-index: 1;
   right: 10px;
@@ -165,12 +184,12 @@
   transition: .3s;
 }
 
-.shop .star-rate img {
+.shop-quickview .star-rate img {
   display: inline-block;
   width: auto;
 }
 
-.shop .favorite-person {
+.shop-quickview .favorite-person {
   position: absolute;
   z-index: 1;
   bottom: -50px;
@@ -179,13 +198,13 @@
   transition: .3s;
 }
 
-.shop .favorite-person img {
+.shop-quickview .favorite-person img {
   display: inline-block;
   width: unset;
   border-radius: 50%;
 }
 
-.shop .number-of-comments {
+.shop-quickview .number-of-comments {
   font-size: 14px;
   position: absolute;
   z-index: 1;
@@ -195,38 +214,38 @@
   transition: .3s;
 }
 
-.shop:hover {
+.shop-quickview:hover {
   -webkit-transform: translateY(-5px);
   -ms-transform: translateY(-5px);
   transform: translateY(-5px);
 }
 
-.shop:hover .favorite-btn {
+.shop-quickview:hover .favorite-btn {
   top: 10px;
   right: 10px;
 }
 
-.shop:hover .favorited-btn {
+.shop-quickview:hover .favorited-btn {
   top: 10px;
   right: 10px;
 }
 
-.shop:hover .congestion-status {
+.shop-quickview:hover .congestion-status {
   top: 10px;
   left: 10px;
 }
 
-.shop:hover .star-rate {
+.shop-quickview:hover .star-rate {
   right: 10px;
   bottom: 0;
 }
 
-.shop:hover .favorite-person {
+.shop-quickview:hover .favorite-person {
   bottom: 10px;
   left: 10px;
 }
 
-.shop:hover .number-of-comments {
+.shop-quickview:hover .number-of-comments {
   right: 10px;
   bottom: 20px;
 }

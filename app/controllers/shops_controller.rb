@@ -4,6 +4,11 @@ class ShopsController < ApplicationController
   def index
     @q = Shop.ransack(params[:q])
     @shops = @q.result(distinct: true).page(params[:page])
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def show

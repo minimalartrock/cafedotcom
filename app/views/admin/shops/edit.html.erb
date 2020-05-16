@@ -1,4 +1,4 @@
-<nav>
+<nav class="breadcrumbs-container">
 	<div class="nav-wrapper">
 		<div class="col s12">
 			<%= link_to root_path, class: 'breadcrumb' do %>
@@ -13,7 +13,7 @@
 <%= render 'layouts/error_messages', model: @shop %>
 
 <div class="container">
-	<h2>店舗編集</h2>
+	<h2 class="title">店舗編集</h2>
   <div class="card devise-card">
     <div class="form-wrap">
 			<%= form_with model: @shop, local: true, url: {action: :update} do |f| %>

@@ -1,4 +1,4 @@
-<nav>
+<nav class="breadcrumbs-container">
 	<div class="nav-wrapper">
 		<div class="col s12">
 			<%= link_to root_path, class: 'breadcrumb' do %>
@@ -10,7 +10,7 @@
 </nav>
 
 <div class="container">
-	<h2>お気に入りのお店</h2>
+	<h2 class="title">お気に入りのお店</h2>
 	<div class="row">
 		<% if @favorite_shops.present? %>
 			<div>
@@ -26,7 +26,6 @@
 						<span class="error-title">気になるお店を登録してみましょう</span>
 					<% end %>
 				</div>
-				<%= link_to 'トップページへ', root_path %>
 			</div>
 		<% end %>
 	</div>
