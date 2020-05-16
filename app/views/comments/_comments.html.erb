@@ -21,10 +21,11 @@
 <% else %>
 	<div class="error-page">
 		<div class="card-image">
-			<%= image_tag '/images/no_records_found.png' %>
-			<span class="error-title">コメントがありません</span>
+			<%= link_to root_path do %>
+				<%= image_tag '/images/no_records_found.png' %>
+				<span class="error-title">コメントがありません</span>
+			<% end %>
 		</div>
-		<%= link_to 'トップページへ', root_path %>
 	</div>
 <% end %>
 

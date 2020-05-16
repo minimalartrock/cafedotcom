@@ -1,15 +1,15 @@
-<div id="contents">
+<div id="content">
 	<div class="search-container"></div>
 		<div class="search-form">
 			<div class="row">
-				<h2 class="title white-text">お店を検索してみましょう</h2>
-				<%= search_form_for @q do |f| %>
+				<h2 class="top-page-title">お店を検索してみましょう</h2>
+				<%= search_form_for @q, url: '#search-result' do |f| %>
 					<div class="col s10 m10">
 						<%= f.search_field :address_cont, id: 'search-text' %>
 					</div>
 					<div class="col s2 m2">
 						<%= button_tag type: 'submit', id: 'search-btn', class: 'search-btn btn waves-effect waves-light search-btn' do %>
-							<i class="fa fa-search"></i>
+							<i class="fa fa-search search-icon"></i>
 						<% end %>
 					</div>
 				<% end %>
@@ -29,17 +29,20 @@
 
 	<div class="divider"></div>
 
-	<section id="search_result">
+	<div id="search_result">
 		<%= render partial: 'search_result', locals: {shops: @shops} %>
-	</section>
+	</div>
 
 	<div id="page_top"><a href="#top"></a></div>
 </div>
 
 <script>
 	$(document).ready(function(){
+		// navigation
 		$('.shops-link').addClass('active')
+		// parallax
     $('.parallax').parallax();
+		// carousel
 		$('.carousel.carousel-slider').carousel({
 			dist: 0,
 			shift: 10,

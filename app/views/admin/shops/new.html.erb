@@ -1,7 +1,7 @@
 <%= render 'layouts/error_messages', model: @shop %>
 
 <div class="container">
-	<h2>お店を登録する</h2>
+	<h2 class="title">お店を登録する</h2>
   <div class="card devise-card">
     <div class="form-wrap">
 			<%= form_with model: @shop, local: true, url: {action: :create} do |f| %>

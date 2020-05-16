@@ -2,7 +2,7 @@
 {
     position: relative;
 
-    height: 500px;
+    height: 700px;
 
     background-image: image-url('/images/top-image.jpg');
     background-size: cover;
@@ -30,14 +30,8 @@
     width: 100%;
     padding: 20%;
 
-    -webkit-transform: translateY(-50%) translateX(-50%);
-            transform: translateY(-50%) translateX(-50%);
-
-    .title
-    {
-        text-align: center;
-    }
-
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
     ;
 }
 
@@ -62,13 +56,47 @@
     color: #fff;
     border: none;
     border-radius: 2px;
-    background: #ffb74c;
+    background: #000;
 }
 
 #search-btn:hover
 {
-    color: #ffb74c;
+    color: #000;
     background: #eee;
+}
+
+.top-page-title
+{
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.5rem;
+
+    max-width: 48rem;
+
+    text-align: center;
+
+    color: #fff;
+}
+
+@media screen and (max-width: 480px)
+{
+    .top-page-title
+    {
+        font-size: 1.0rem;
+        font-weight: 600;
+        line-height: 1.0rem;
+
+        max-width: 48rem;
+
+        text-align: center;
+
+        color: #fff;
+    }
+
+    .search-icon
+    {
+        font-size: 1.0rem !important;
+    }
 }
 
 .menu
@@ -121,6 +149,11 @@
     content: '' !important;
 }
 
+#recently-commented-shop
+{
+    background-color: #fff;
+}
+
 .recently-comment
 {
     position: relative;
@@ -145,10 +178,7 @@
         background: white;
     }
 
-    .user-image
-    {
-        padding-right: 10px;
-    }
+
 
     .ago
     {
@@ -156,7 +186,7 @@
     }
 }
 
-.shop
+.shop-quickview
 {
     position: relative;
 

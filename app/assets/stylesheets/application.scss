@@ -2,33 +2,17 @@
 @import 'https://fonts.googleapis.com/icon?family=Material+Icons';
 @import 'materialize/components/color-variables';
 
-$primary-color: color('teal', 'lighten-1') !default;
-$primary-color-light: false !default;
-$primary-color-dark: false !default;
+$primary-color: #000 !default;
+$primary-color-light: #e9e9e9 !default;
+$primary-color-dark: #9da5a0 !default;
 
-@if not $primary-color-light {
-	$primary-color-light: lighten($primary-color, 15%);
-}
-
-@if not $primary-color-dark {
-	$primary-color-dark: darken($primary-color, 15%);
-}
-
-$secondary-color: color('orange', 'lighten-2') !default;
+$secondary-color: #60caad !default;
 $success-color: color('green', 'base') !default;
 $error-color: color('red', 'base') !default;
 
 $link-color: color('blue-grey', 'darken-1') !default;
 
 @import 'materialize';
-
-.ilike-blue-container {
-	@extend .blue,
-}
-
-.ilike-blue-container {
-	@extend .blue-text,
-}
 
 @import 'font-awesome-sprockets';
 @import 'font-awesome';

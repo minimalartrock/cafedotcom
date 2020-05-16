@@ -1,4 +1,4 @@
-<nav>
+<nav class="breadcrumbs-container">
 	<div class="nav-wrapper">
 		<div class="col s12">
 			<%= link_to root_path, class: 'breadcrumb' do %>
@@ -15,7 +15,7 @@
 			<div class="col l8 s12">
 				<div class="row">
 					<div>
-						<h2><%= @shop.name %></h2>
+						<h2 class="title"><%= @shop.name %></h2>
 						<div class="shop">
 							<%= image_tag shop_for(@shop), class: 'materialboxed animated fadeIn' %>
 							<div id="favorite-shop-<%= @shop.id.to_s %>">
@@ -32,7 +32,7 @@
 						</div>
 					</div>
 					<div class="row">
-						<table>
+						<table class="highlight centered responsive-table">
 							<tr>
 								<th>お店の設備</th>
 								<td>
@@ -115,14 +115,14 @@
 	<div class="row">
 		<div class="col l12">
 			<%= render partial: "comments/form", locals: {shop: @shop} %>
-			<h4>コメント（<%= @shop.comments.size %>件）</h4>
+			<h4 class="title">コメント（<%= @shop.comments.size %>件）</h4>
 			<%= render 'comments/comments' %>
 		</div>
 	</div>
 </div>
 
 <div class="fixed-action-btn">
-	<a class="btn-floating btn-large waves-effect waves-light modal-trigger" href="#comment-dialog">
+	<a class="btn-floating btn-large waves-effect waves-light modal-trigger tooltipped" href="#comment-dialog" data-position="top" data-tooltip="コメントを投稿してみましょう">
 		<i class="large material-icons">mode_edit</i>
 	</a>
 </div>

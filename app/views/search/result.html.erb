@@ -1,4 +1,4 @@
-<nav>
+<nav class="breadcrumbs-container">
 	<div class="nav-wrapper">
 		<div class="col s12">
 			<%= link_to root_path, class: 'breadcrumb' do %>
@@ -7,9 +7,6 @@
 			<% name = controller.action_name %>
 			<% if name == 'location' %>
 				<a class="breadcrumb active">近くのお店</a>
-			<% end %>
-			<% if name == 'outret' %>
-				<a class="breadcrumb active">電源あり</a>
 			<% end %>
 			<% if name == 'outret' %>
 				<a class="breadcrumb active">電源あり</a>

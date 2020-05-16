@@ -1,5 +1,5 @@
-.breadcrumbs-nav {
-  margin-bottom: 40px;
+.breadcrumbs-container {
+  background-color: #9da5a0;
 }
 
 .breadcrumbs a:first-child:before {
