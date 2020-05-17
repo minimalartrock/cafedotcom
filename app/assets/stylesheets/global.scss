@@ -30,6 +30,11 @@ body
     vertical-align: middle;
 }
 
+.nav-wrapper
+{
+    padding-left: 10px;
+}
+
 .field_with_errors
 {
     display: contents;
@@ -396,4 +401,10 @@ section
     color: #000;
 
     @extend .title;
+}
+
+.card .card-title
+{
+    font-size: 1.0rem;
+    font-weight: 300;
 }
