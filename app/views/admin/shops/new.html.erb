@@ -1,7 +1,17 @@
-<%= render 'layouts/error_messages', model: @shop %>
+<nav class="breadcrumbs-container">
+	<div class="nav-wrapper">
+		<div class="col s12">
+			<%= link_to root_path, class: 'breadcrumb' do %>
+				<i class="material-icons before">home</i>HOME
+			<% end %>
+			<%= link_to '店舗一覧', admin_shops_path, class: "breadcrumb" %>
+			<a class="breadcrumb active">店舗登録</a>
+		</div>
+	</div>
+</nav>
 
 <div class="container">
-	<h2 class="title">お店を登録する</h2>
+	<h2 class="title">【管理者】店舗登録</h2>
   <div class="card devise-card">
     <div class="form-wrap">
 			<%= form_with model: @shop, local: true, url: {action: :create} do |f| %>
