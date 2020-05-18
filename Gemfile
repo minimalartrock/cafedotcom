@@ -44,6 +44,10 @@ group :development, :test do
   gem 'factory_bot_rails', '~> 4.11'
   gem 'meta_request'
   gem 'pry-rails'
+	gem 'capistrano'
+	gem 'capistrano-bundler'
+	gem 'capistrano-rails'
+	gem 'capistrano-rbenv'
 end
 
 group :development do
