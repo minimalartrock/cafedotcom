@@ -32,4 +32,3 @@ postgresql/data
 tmp-data
 logfile
 *.tmp
-public/images
