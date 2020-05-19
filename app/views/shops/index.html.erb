@@ -17,21 +17,17 @@
 		</div>
 	</div>
 
-	<section class="search-menu">
-		<%= render partial: 'search_menu' %>
-	</section>
-
-	<div class="divider"></div>
-
 	<section id="recently-commented-shop">
 		<%= render partial: 'recently_commented' %>
 	</section>
 
-	<div class="divider"></div>
+	<section class="search-menu">
+		<%= render partial: 'search_menu' %>
+	</section>
 
-	<div id="search_result">
+	<section id="search_result">
 		<%= render partial: 'search_result', locals: {shops: @shops} %>
-	</div>
+	</section>
 
 	<div id="page_top"><a href="#top"></a></div>
 </div>

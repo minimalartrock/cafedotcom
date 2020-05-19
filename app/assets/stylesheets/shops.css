@@ -50,10 +50,12 @@
 }
 
 .top-page-title {
-  font-size: 1.5rem;
+  font-size: 3.0rem;
   font-weight: 600;
   line-height: 1.5rem;
   max-width: 48rem;
+  margin: 0 auto;
+  padding: 1rem;
   text-align: center;
   color: #fff;
 }
@@ -85,11 +87,6 @@
   -webkit-transition: .3s;
   transition: .3s;
   border-radius: 50%;
-  background: black;
-}
-
-.menu .menu-image {
-  opacity: .3;
 }
 
 .menu .card-title {
@@ -127,7 +124,7 @@
 }
 
 #recently-commented-shop {
-  background-color: #fff;
+  background-color: #000;
 }
 
 .recently-comment {
@@ -152,13 +149,27 @@
   float: right;
 }
 
+.search-menu {
+  background-color: #fff;
+}
+
+.search-menu .card {
+  -webkit-transition: .3s;
+  transition: .3s;
+}
+
+.search-menu .card:hover {
+  -webkit-transform: translateY(-5px);
+  -ms-transform: translateY(-5px);
+  transform: translateY(-5px);
+}
+
 .shop-quickview {
   position: relative;
   overflow: hidden;
   max-width: 600px;
   -webkit-transition: .3s;
   transition: .3s;
-  border-radius: 20px;
   background: black;
 }
 

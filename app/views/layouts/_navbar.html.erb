@@ -56,39 +56,41 @@
 </ul>
 <div class="navbar-fixed">
   <nav>
-    <div class="nav-wrapper animated slideInDown">
-      <%= link_to root_path, class: 'brand-logo' do %>
-        <% image_tag '/images/logo.png' %>
-      <% end %>
-      <a href="#" data-target="mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-      <ul class="right hide-on-med-and-down">
-        <% if user_signed_in? %>
-					<li class="favorites-menu">
-						<%= link_to user_favorites_path(current_user) do %>
-							お気に入りのお店
-							<i class="material-icons left">favorite</i>
-						<% end %>
-					</li>
-					<% if current_user.admin? %>
-						<li>
-							<a class="dropdown-trigger" href="#" data-target="admin-menu">
-								管理者メニュー
-								<i class="material-icons left">supervisor_account</i>
-								<i class="material-icons right">arrow_drop_down</i>
-							</a>
-						</li>
-					<% end %>
-					<li>
-						<a class="dropdown-trigger avatar-menu" href="#" data-target="user-menu"><%= image_tag avatar_for(current_user), class: 'avatar-small' %></a>
-					</li>
-				<% else %>
-					<%= link_to login_path, class: 'btn waves-effect waves-light btn-small' do %>
-						ログイン
-						<i class="material-icons right">lock_open</i>
-					<% end %>
+		<div class="container">
+			<div class="nav-wrapper animated slideInDown">
+				<%= link_to root_path, class: 'brand-logo' do %>
+					<% image_tag '/images/logo.png' %>
 				<% end %>
-      </ul>
-    </div>
+				<a href="#" data-target="mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+				<ul class="right hide-on-med-and-down">
+					<% if user_signed_in? %>
+						<li class="favorites-menu">
+							<%= link_to user_favorites_path(current_user) do %>
+								お気に入りのお店
+								<i class="material-icons left">favorite</i>
+							<% end %>
+						</li>
+						<% if current_user.admin? %>
+							<li>
+								<a class="dropdown-trigger" href="#" data-target="admin-menu">
+									管理者メニュー
+									<i class="material-icons left">supervisor_account</i>
+									<i class="material-icons right">arrow_drop_down</i>
+								</a>
+							</li>
+						<% end %>
+						<li>
+							<a class="dropdown-trigger avatar-menu" href="#" data-target="user-menu"><%= image_tag avatar_for(current_user), class: 'avatar-small' %></a>
+						</li>
+					<% else %>
+						<%= link_to login_path, class: 'btn waves-effect waves-light btn-small' do %>
+							ログイン
+							<i class="material-icons right">lock_open</i>
+						<% end %>
+					<% end %>
+				</ul>
+			</div>
+		</div>
   </nav>
 </div>
 

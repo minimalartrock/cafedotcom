@@ -1,10 +1,10 @@
 <nav class="breadcrumbs-container">
-	<div class="nav-wrapper">
+	<div class="nav-wrapper container">
 		<div class="col s12">
 			<%= link_to root_path, class: 'breadcrumb' do %>
-				<span><i class="fas fa-home"></i>HOME</span>
+				<i class="material-icons before">home</i>HOME
 			<% end %>
-			<a class="breadcrumb active"><%= @shop.name %></a>
+			<a class="breadcrumb active"><%= @shop.name.truncate(19) %></a>
 		</div>
 	</div>
 </nav>
