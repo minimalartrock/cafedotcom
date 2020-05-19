@@ -299,11 +299,16 @@
         -webkit-transition: .3s;
                 transition: .3s;
 
-        img
+        .user-image
         {
-            display: inline-block;
+            line-height: 24px;
 
-            width: unset;
+            position: absolute;
+            left: 10px;
+
+            width: 24px;
+            min-width: 24px;
+            height: 24px;
 
             border-radius: 50%;
         }

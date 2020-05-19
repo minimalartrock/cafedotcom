@@ -225,9 +225,13 @@
   transition: .3s;
 }
 
-.shop-quickview .favorite-person img {
-  display: inline-block;
-  width: unset;
+.shop-quickview .favorite-person .user-image {
+  line-height: 24px;
+  position: absolute;
+  left: 10px;
+  width: 24px;
+  min-width: 24px;
+  height: 24px;
   border-radius: 50%;
 }
 
