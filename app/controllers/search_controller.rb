@@ -1,6 +1,14 @@
 # frozen_string_literal: true
 
 class SearchController < ApplicationController
+  include CongestionsHelper
+
+  def vacant
+    @q = get_vacant_shops
+    @shops = @q.page(params[:page])
+    render 'result'
+  end
+
   def location
     latitude = params[:latitude].to_f
     longitude = params[:longitude].to_f
@@ -17,12 +25,6 @@ class SearchController < ApplicationController
 
   def wifi
     @q = Shop.where(wifi: true)
-    @shops = @q.page(params[:page])
-    render 'result'
-  end
-
-  def smoking
-    @q = Shop.where(smoking: true)
     @shops = @q.page(params[:page])
     render 'result'
   end

@@ -6,6 +6,11 @@ body
     background-color: #000;
 }
 
+section
+{
+    padding: 40px 0 !important;
+}
+
 #page-loading
 {
     position: fixed;
@@ -401,10 +406,4 @@ section
     color: #000;
 
     @extend .title;
-}
-
-.card .card-title
-{
-    font-size: 1.0rem;
-    font-weight: 300;
 }

@@ -1,5 +1,5 @@
 <div class="container">
-  <h2 class="title-white">最近コメントされたお店</h2>
+  <h2 class="title">COMMENT</h2>
   <div class="swiper-container">
     <div class="swiper-wrapper recently-comments">
       <% Comment.includes(:shop).order(created_at: :desc).limit(5).each do |recently| %>
