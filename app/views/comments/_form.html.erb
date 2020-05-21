@@ -1,6 +1,6 @@
 <div id="comment-dialog" class="modal modal-fixed-footer">
 	<div class="modal-content">
-		<h4 class="title-white">コメント</h4>
+		<h4 class="title black-text">コメント</h4>
 			<% if user_signed_in? %>
 				<div class="row">
 					<%= form_with model: [shop, comment = Comment.new], id: "comment-form", class: 'col s12' do |f| %>
@@ -8,7 +8,7 @@
 						</div>
 						<div class="row">
 							<div class="col s12">
-								<h5 class="title-white">お店は混んでましたか？</h5>
+								<h5 class="title black-text">お店は混んでましたか？</h5>
 								<%= f.fields_for :congestion, comment.build_congestion do |congestion| %>
 									<p>
 										<%= congestion.radio_button :status, :vacant, id: 'input-vacant', class: "with-gap validate" %>
@@ -29,13 +29,13 @@
 						</div>
 						<div class="row">
 							<div id="star" class="col s12">
-								<h5 class="title-white">お店は満足できましたか？</h5>
+								<h5 class="title black-text">お店は満足できましたか？</h5>
 								<%= f.hidden_field :rate, id: :review_star %>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col s12">
-								<h5 class="title-white">お店の様子をみんなにシェアしよう！</h5>
+								<h5 class="title black-text">お店の様子をみんなにシェアしよう！</h5>
 								<div class="input-field">
 									<i class="material-icons prefix">question_answer</i>
 									<%= f.label :comment, class: 'active' %>
