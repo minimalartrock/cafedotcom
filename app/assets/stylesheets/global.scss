@@ -1,6 +1,6 @@
 body
 {
-    font-family: -apple-system, BlinkMacSystemFont, Helvetica Neue, Segoe UI, Hiragino Kaku Gothic ProN, Hiragino Sans, ヒラギノ角ゴ ProN W3, Arial, メイリオ, Meiryo, sans-serif;
+    font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
 
     color: #9da5a0;
     background-color: #000;
@@ -399,11 +399,4 @@ section
     text-transform: uppercase;
 
     color: #fff;
-}
-
-.title-white
-{
-    color: #000;
-
-    @extend .title;
 }
