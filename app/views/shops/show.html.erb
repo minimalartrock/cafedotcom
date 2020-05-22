@@ -38,19 +38,19 @@
 								<td>
 									<% if @shop.outret? %>
 										<div class="chip">
-											<i class="material-icons left">power</i>
+											<i class="tiny material-icons">power</i>
 											電源あり
 										</div>
 									<% end %>
 									<% if @shop.wifi? %>
 										<div class="chip">
-											<i class="material-icons left">wifi</i>
+											<i class="tiny material-icons">wifi</i>
 											Wi-Fiあり
 										</div>
 									<% end %>
 									<% if @shop.smoking? %>
 										<div class="chip">
-											<i class="material-icons left">smoking_rooms</i>
+											<i class="tiny material-icons">smoking_rooms</i>
 											喫煙席あり
 										</div>
 									<% end %>
@@ -64,7 +64,7 @@
 										<% if congestion.vacant? %>
 											<span class="new badge blue" data-badge-caption="<%= Congestion.statuses_i18n[:vacant] %>"></span>
 										<% elsif congestion.usually? %>
-											<span class="new badge" data-badge-caption="<%= Congestion.statuses_i18n[:usually] %>"></span>
+											<span class="new badge grey" data-badge-caption="<%= Congestion.statuses_i18n[:usually] %>"></span>
 										<% elsif congestion.crowded? %>
 											<span class="new badge red" data-badge-caption="<%= Congestion.statuses_i18n[:crowded] %>"></span>
 										<% end %>
@@ -87,16 +87,16 @@
 				<div class="card-panel detail">
 					<h6>詳細</h6>
 					<div class="divider"></div>
-					<span class="detail-title"><i class="material-icons before">location_on</i>住所</span>
+					<span class="detail-title"><i class="tiny material-icons">location_on</i>住所</span>
 					<span><%= @shop.address %></span>
 					<div class="divider"></div>
-					<span class="detail-title"><i class="material-icons before">error_outline</i>おすすめ</span>
+					<span class="detail-title"><i class="tiny material-icons">error_outline</i>おすすめ</span>
 					<span><%= @shop.pr_short %></span>
 					<div class="divider"></div>
-					<span class="detail-title"><i class="material-icons before">access_time</i>営業時間</span>
+					<span class="detail-title"><i class="tiny material-icons">access_time</i>営業時間</span>
 					<span><%= @shop.opentime %></span>
 					<div class="divider"></div>
-					<span class="detail-title"><i class="material-icons before">map</i>地図</span>
+					<span class="detail-title"><i class="tiny material-icons">map</i>地図</span>
 					<%= render partial: "map" %>
 				</div>
 			</div>

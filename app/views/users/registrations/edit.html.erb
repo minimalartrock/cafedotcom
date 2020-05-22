@@ -23,7 +23,7 @@
 							<%= form_with url: user_registration_path, method: :put, scope: @user, local: true do |f| %>
 								<%= render partial: 'form', locals: {f: f, user: @user} %>
 							<% end %>
-							<%= link_to user_path(@user), class: "btn waves-effect waves-light login-link teal" do %>
+							<%= link_to user_path(@user), class: "btn waves-effect waves-light login-link grey" do %>
 								<i class="material-icons right">keyboard_return</i>
 								キャンセル
 							<% end %>
