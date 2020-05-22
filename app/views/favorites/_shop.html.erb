@@ -23,28 +23,28 @@
 			<span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
 			<div class="shop-detail">
 				<p>
-					<i class="material-icons before">location_on</i>
+					<i class="tiny material-icons">location_on</i>
 					住所
 				</p>
 				<p><%= shop.address %></p>
 				<p>
-					<i class="material-icons before">phone</i>
+					<i class="tiny material-icons">phone</i>
 					電話番号
 				</p>
 				<p><%= shop.tel %></p>
 				<p>
-					<i class="material-icons before">access_time</i>
+					<i class="tiny material-icons">access_time</i>
 					営業時間
 				</p>
 				<%= shop.opentime %></p>
 				<p>
-					<i class="material-icons before">power</i>
+					<i class="tiny material-icons">power</i>
 					設備
 				</p>
 				<% if shop.outret? %>
 					<div class="chip">
 						<p>
-							<i class="material-icons before">power</i>
+							<i class="tiny material-icons">power</i>
 							電源あり
 						</p>
 					</div>
@@ -52,7 +52,7 @@
 				<% if shop.wifi? %>
 					<div class="chip">
 						<p>
-							<i class="material-icons before">wifi</i>
+							<i class="tiny material-icons">wifi</i>
 							Wi-Fiあり
 						</p>
 					</div>
@@ -60,18 +60,18 @@
 				<% if shop.smoking? %>
 					<div class="chip">
 						<p>
-							<i class="material-icons before">smoking_rooms</i>
+							<i class="material-icons">smoking_rooms</i>
 							喫煙席あり
 						</p>
 					</div>
 				<% end %>
 				 <p>
-				 	<i class="material-icons before">star_half</i>
+				 	<i class="tiny material-icons">star_half</i>
 					評価
 				</p>
 				<p class="star-rate" id="star-rate-<%= shop.id %>"></p>
 				<p>
-					<i class="material-icons before">question_answer</i>
+					<i class="tiny material-icons">question_answer</i>
 					コメント
 				</p>
 				<% if has_new_comment?(shop.id) %>

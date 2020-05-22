@@ -3,7 +3,7 @@
 		<div class="search-form">
 			<div class="row">
 				<h2 class="top-page-title">お店を検索してみましょう</h2>
-				<%= search_form_for @q, url: '#search-result' do |f| %>
+				<%= search_form_for @q, url: '#search_result' do |f| %>
 					<div class="col s10 m10">
 						<%= f.search_field :address_cont, id: 'search-text' %>
 					</div>

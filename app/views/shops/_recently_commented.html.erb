@@ -1,7 +1,6 @@
 <div class="container">
   <h2 class="title black-text">COMMENT</h2>
-	<p class="description">新着コメントです。</p>
-	<p class="description">もしかすると耳寄りな情報があるかも...</p>
+	<p class="description">新着コメントがあったお店です</p>
   <div class="swiper-container">
     <div class="swiper-wrapper recently-comments">
       <% Comment.includes(:shop).order(created_at: :desc).limit(5).each do |recently| %>

@@ -56,12 +56,12 @@
     color: #fff;
     border: none;
     border-radius: 2px;
-    background: #000;
+    background: $secondary-color;
 }
 
 #search-btn:hover
 {
-    color: #000;
+    color: $secondary-color;
     background: #eee;
 }
 
@@ -245,7 +245,7 @@
 
     .card-title
     {
-        padding-bottom: 60px !important;
+        // padding: 1rem !important;
     }
 
     .favorite-btn
@@ -268,7 +268,7 @@
     {
         position: absolute;
         z-index: 1;
-        top: -50px;
+        top: 10px;
         left: 10px;
     }
 
@@ -347,12 +347,6 @@
             right: 10px;
         }
 
-        .congestion-status
-        {
-            top: 10px;
-            left: 10px;
-        }
-
         .star-rate
         {
             right: 10px;
@@ -408,7 +402,7 @@
 
     .detail-title
     {
-        font-weight: bold;
+        font-weight: 700;
 
         display: block;
     }
