@@ -3,6 +3,16 @@
     vertical-align: middle;
 }
 
+@media screen and (max-width: 480px)
+{
+    .brand-logo img
+    {
+        width: 95%;
+
+        vertical-align: middle;
+    }
+}
+
 .avatar-menu
 {
     img
