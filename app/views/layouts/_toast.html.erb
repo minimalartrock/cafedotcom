@@ -1,8 +1,8 @@
 <% unless flash.empty? %>
   <script>
     <% flash.each do |type, msg| %>
-    	<% color = 'light-blue lighten-3' if type == 'notice' %>
-    	<% color = 'pink lighten-1' if type == 'alert' %>
+    	<% color = 'light-blue lighten-2' if type == 'notice' %>
+    	<% color = 'pink lighten-2' if type == 'alert' %>
     			M.toast({html: '<%= msg %>', classes: '<%= color %>'})
     		<% end %>
   </script>
