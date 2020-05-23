@@ -1,5 +1,7 @@
 .breadcrumbs-container
 {
+    overflow: hidden;
+
     padding-left: 1.0rem;
 
     background-color: lighten($primary-color, 15%);

@@ -93,6 +93,20 @@
         background-size: cover;
     }
 
+    .search-form
+    {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+
+        width: 100%;
+        padding: 0;
+
+        -webkit-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+        ;
+    }
+
     .top-page-title
     {
         font-size: 1.0rem;
@@ -106,9 +120,24 @@
         color: #fff;
     }
 
-    .search-icon
+    #search-btn
     {
-        font-size: 1.0rem !important;
+        font-weight: bold;
+
+        width: 100%;
+        height: 50px;
+        padding: 0;
+
+        color: #fff;
+        border: none;
+        border-radius: 2px;
+        background: $secondary-color;
+    }
+
+    #search-btn:hover
+    {
+        color: $secondary-color;
+        background: #eee;
     }
 }
 
