@@ -14,6 +14,7 @@
 .devise-card
 {
     border: none;
+    background-color: $primary-color-dark;
 }
 
 .form-wrap
@@ -28,7 +29,7 @@
     width: 100%;
     height: 56px;
 
-    background-image: image-url('/images/logo-black.png');
+    background-image: image-url('/images/logo.png');
     background-repeat: no-repeat;
     background-size: 100%;
 }
@@ -99,10 +100,5 @@
     .main
     {
         padding: 75px 0;
-    }
-
-    .devise-card
-    {
-        background-color: #fafafa;
     }
 }

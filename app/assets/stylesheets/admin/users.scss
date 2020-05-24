@@ -1,4 +1,29 @@
+.user-tab
+{
+    background-color: $primary-color-dark;
+
+    .active
+    {
+        color: #fff !important;
+
+        @extend .active;
+    }
+}
+
 .user-menu
 {
     width: 100%;
+}
+
+.user-list
+{
+    .collection-item
+    {
+        background-color: $primary-color-dark;
+    }
+
+    .user-name
+    {
+        color: #fff;
+    }
 }

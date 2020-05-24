@@ -2,13 +2,24 @@ body
 {
     font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
 
-    color: #9da5a0;
-    background-color: #000;
+    color: $primary-color-light;
+    background-color: $primary-color;
 }
 
 section
 {
     padding: 40px 0 !important;
+}
+
+input
+{
+    color: #fff;
+}
+
+textarea
+{
+    color: #fff;
+    ;
 }
 
 #page-loading
@@ -194,7 +205,7 @@ section
 
     opacity: .8;
     border-radius: 50%;
-    background: #546e7a;
+    background: $secondary-color;
 }
 
 #page_top a
