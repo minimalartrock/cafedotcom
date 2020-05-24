@@ -1,28 +1,31 @@
 <div id="content">
-	<div class="search-container"></div>
-		<div class="search-form">
-			<div class="row">
-				<h2 class="top-page-title">お店を検索してみましょう</h2>
-				<%= search_form_for @q, url: '#search_result' do |f| %>
-					<div class="col s10 m10">
-						<%= f.search_field :address_cont, id: 'search-text' %>
-					</div>
-					<div class="col s2 m2">
-						<%= button_tag type: 'submit', id: 'search-btn', class: 'search-btn btn waves-effect waves-light search-btn' do %>
-							<i class="fa fa-search search-icon"></i>
-						<% end %>
-					</div>
-				<% end %>
-			</div>
+	<div class="parallax-container search-container">
+	<div class="parallax"><img src="images/top-image.jpg"></div>
+	<div class="search-form">
+		<div class="row">
+			<h2 class="top-page-title">お店を検索してみましょう</h2>
+			<%= search_form_for @q, url: '#search_result' do |f| %>
+				<div class="col s10 m10">
+					<%= f.search_field :address_cont, id: 'search-text' %>
+				</div>
+				<div class="col s2 m2">
+					<%= button_tag type: 'submit', id: 'search-btn', class: 'search-btn btn waves-effect waves-light search-btn' do %>
+						<i class="fa fa-search search-icon"></i>
+					<% end %>
+				</div>
+			<% end %>
 		</div>
 	</div>
+</div>
 
-	<section id="recently-commented-shop">
-		<%= render partial: 'recently_commented' %>
-	</section>
+	</div>
 
 	<section class="search-menu">
 		<%= render partial: 'search_menu' %>
+	</section>
+
+	<section id="recently-commented-shop">
+		<%= render partial: 'recently_commented' %>
 	</section>
 
 	<section id="search_result">

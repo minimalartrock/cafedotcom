@@ -1,6 +1,11 @@
 .card-comment
 {
     margin: 0;
+
+    .card-content
+    {
+        background-color: $primary-color-dark;
+    }
 }
 
 .like-btn
@@ -24,7 +29,12 @@
 
 .comment-user-name
 {
-    color: black;
+    color: #fff;
+}
+
+.congestion-status
+{
+    display: block;
 }
 
 #comment-dialog

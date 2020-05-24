@@ -1,11 +1,6 @@
 .search-container
 {
-    position: relative;
-
     height: 700px;
-
-    background-image: image-url('/images/top-image.jpg');
-    background-size: cover;
 }
 
 .search-container::before
@@ -199,11 +194,6 @@
     content: '' !important;
 }
 
-#recently-commented-shop
-{
-    background-color: #f5f5f5;
-}
-
 .recently-comment
 {
     position: relative;
@@ -225,7 +215,7 @@
 
     .card-content
     {
-        background: white;
+        background: $primary-color-dark;
     }
 
 

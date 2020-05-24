@@ -13,19 +13,19 @@
 	<h2 class="title">ユーザー一覧</h2>
 	<div class="row">
     <div class="col s12">
-      <ul class="tabs">
+      <ul class="tabs user-tab">
         <li class="tab col s6"><a class="active" href="#users">一般ユーザー</a></li>
         <li class="tab col s6"><a href="#administrators">管理者</a></li>
       </ul>
     </div>
-    <div id="users" class="col s12">
+    <div id="users" class="col s12 user-list">
 			<ul class="collection">
 				<% @users.each do |user| %>
 					<li class="collection-item avatar">
 						<%= image_tag avatar_for(user), class: 'circle' %>
-						<p><%= link_to user.name, edit_admin_user_path(user) %></p>
-						<p><i class="material-icons">email</i><%= user.email %></p>
-						<p><i class="material-icons">card_membership</i><%= user.created_at.strftime("%Y年%-m月%-d日") %></p>
+						<p><%= link_to user.name, edit_admin_user_path(user), class: 'user-name' %></p>
+						<p><i class="material-icons tiny">email</i><%= user.email %></p>
+						<p><i class="material-icons tiny">card_membership</i><%= user.created_at.strftime("%Y年%-m月%-d日") %></p>
 						<p class="secondary-content">
 							<%= link_to admin_user_path(user), method: :delete, class: 'trash-btn', data: { confirm: "ユーザー「#{user.name}」を削除します。よろしいですか？" } do %>
 								<i class="material-icons">delete</i>
@@ -35,14 +35,14 @@
 				<% end %>
 			</ul>
 		</div>
-    <div id="administrators" class="col s12">
+    <div id="administrators" class="col s12 user-list">
 			<ul class="collection">
 				<% @administrators.each do |admin| %>
 					<li class="collection-item avatar">
 						<%= image_tag avatar_for(admin), class: 'circle' %>
-						<p><%= link_to admin.name, edit_admin_user_path(admin) %></p>
-						<p><i class="material-icons">email</i><%= admin.email %></p>
-						<p><i class="material-icons">card_membership</i><%= admin.created_at.strftime("%Y年%-m月%-d日") %></p>
+						<p><%= link_to admin.name, edit_admin_user_path(admin), class: 'user-name' %></p>
+						<p><i class="material-icons tiny">email</i><%= admin.email %></p>
+						<p><i class="material-icons tiny">card_membership</i><%= admin.created_at.strftime("%Y年%-m月%-d日") %></p>
 						<p class="secondary-content">
 							<%= link_to admin_user_path(admin), method: :delete, class: 'trash-btn', data: { confirm: "ユーザー「#{admin.name}」を削除します。よろしいですか？" } do %>
 								<i class="material-icons">delete</i>

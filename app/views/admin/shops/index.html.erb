@@ -12,12 +12,12 @@
 <div class="container">
 	<h2 class="title">店舗一覧</h2>
 	<div class="row">
-    <div id="shops" class="col s12">
+    <div id="shops" class="col s12 shop-list">
 			<ul class="collection">
 				<% @shops.each do |shop| %>
 					<li class="collection-item avatar">
 						<%= image_tag shop_for(shop), class: 'circle' %>
-						<p><%= link_to shop.name, edit_admin_shop_path(shop) %></p>
+						<p><%= link_to shop.name, edit_admin_shop_path(shop), class: 'shop-name' %></p>
 						<p class="secondary-content">
 							<%= link_to admin_shop_path(shop), method: :delete, class: 'trash-btn', data: { confirm: "店舗「#{shop.name}」を削除します。よろしいですか？" } do %>
 								<i class="material-icons">delete</i>

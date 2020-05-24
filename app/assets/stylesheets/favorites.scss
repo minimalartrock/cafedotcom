@@ -1,3 +1,26 @@
+.favorite-shop
+{
+    .card-content
+    {
+        background-color: $primary-color-dark;
+    }
+
+    .card-title
+    {
+        color: #fff !important;
+    }
+
+    .card-reveal
+    {
+        background-color: $primary-color-dark;
+
+        .shop-detail
+        {
+            color: #fff;
+        }
+    }
+}
+
 .like
 {
     position: absolute;
