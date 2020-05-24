@@ -3,6 +3,22 @@
     vertical-align: middle;
 }
 
+#mobile
+{
+    color: #fff;
+    background-color: $primary-color-dark;
+
+    li > a
+    {
+        color: #fff;
+    }
+
+    i
+    {
+        color: #fff;
+    }
+}
+
 @media screen and (max-width: 480px)
 {
     .brand-logo img
