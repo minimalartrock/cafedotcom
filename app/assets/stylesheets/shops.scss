@@ -36,6 +36,7 @@
     height: 50px;
     padding: 0 10px;
 
+    color: #000;
     border-radius: 2px;
     outline: 0;
     background: #eee;
@@ -148,20 +149,6 @@
             transition: .3s;
 
     border-radius: 50%;
-
-    .card-title
-    {
-        top: 50%;
-        left: 0;
-
-        display: inline-block;
-
-        width: 100%;
-
-        -webkit-transform: translateY(-50%);
-                transform: translateY(-50%);
-        text-align: center;
-    }
 }
 
 .swiper-button-prev,

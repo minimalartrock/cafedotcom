@@ -4,7 +4,32 @@
 
     .card-content
     {
+        border-bottom: 1px solid rgba(160, 160, 160, .2);
         background-color: $primary-color-dark;
+
+        .congestion-status
+        {
+            margin-bottom: 8px;
+
+            .badge
+            {
+                float: unset !important;
+
+                margin-left: 0 !important;
+
+                @extend .badge;
+            }
+        }
+
+        .comment-text
+        {
+            margin-bottom: 8px;
+        }
+
+        .star-rate
+        {
+            margin-bottom: 8px;
+        }
     }
 }
 
@@ -30,11 +55,6 @@
 .comment-user-name
 {
     color: #fff;
-}
-
-.congestion-status
-{
-    display: block;
 }
 
 #comment-dialog
