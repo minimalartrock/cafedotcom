@@ -6,7 +6,7 @@
 			<div class="col s6 m3">
 				<div class="card hoverable menu">
 					<div class="card-image">
-						<%= link_to search_vacant_path, class: "waves-effect waves-light" do %>
+						<%= link_to root_path(category: 'vacant'), url: '#search_result', class: "waves-effect waves-light", remote: true do %>
 							<%= image_tag '/images/search/vacant.jpg', class: 'menu-image' %>
 						<% end %>
 					</div>
@@ -16,7 +16,7 @@
 			<div class="col s6 m3">
 				<div class="card hoverable menu">
 					<div class="card-image">
-						<%= link_to '', class: "waves-effect waves-light location-search", onclick: 'findNearbyShops();return false;' do %>
+						<%= link_to '', class: "waves-effect waves-light location-search", onclick: 'findNearbyShops();return false;', remote: true do %>
 							<%= image_tag '/images/search/location.jpg', class: 'menu-image' %>
 						<% end %>
 					</div>
@@ -26,7 +26,7 @@
 			<div class="col s6 m3">
 				<div class="card hoverable menu">
 					<div class="card-image">
-						<%= link_to search_outret_path, class: "waves-effect waves-light" do %>
+						<%= link_to root_path(category: 'outret'), class: "waves-effect waves-light", remote: true do %>
 							<%= image_tag '/images/search/outret.jpg', class: 'menu-image' %>
 						<% end %>
 					</div>
@@ -36,7 +36,7 @@
 			<div class="col s6 m3">
 				<div class="card hoverable menu">
 					<div class="card-image">
-						<%= link_to search_wifi_path, class: "waves-effect waves-light" do %>
+						<%= link_to root_path(category: 'wifi'), class: "waves-effect waves-light", remote: true do %>
 							<%= image_tag '/images/search/wifi.jpg', class: 'menu-image' %>
 						<% end %>
 					</div>
@@ -63,9 +63,20 @@
 
 		var geoSuccess = function(position) {
 			startPos = position;
-			position.coords.latitude
-			position.coords.longitude
-			window.location.href = "/search/location?latitude="+position.coords.latitude+"&longitude="+position.coords.longitude
+			latitude = position.coords.latitude
+			longitude = position.coords.longitude
+			$.ajax({
+				url: "<%= root_path %>?category=location",
+				type: "GET",
+				data: {latitude: position.coords.latitude, longitude: position.coords.longitude},
+				datatype: "script",
+				// success: function(data){
+				// 	//成功時の処理
+				// },
+				// error: function(data){
+				// 	//失敗時の処理
+				// }
+			});
 		};
 		var geoError = function(error) {
 			console.log('Error occurred. Error code: ' + error.code);
