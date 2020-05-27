@@ -5,23 +5,20 @@ class ShopsController < ApplicationController
 
   def index
     case params[:category]
-    when 'vacant'
+    when "vacant"
       @q = get_vacant_shops
       @shops = @q.page(params[:page])
-    when 'location'
-      latitude = params[:latitude].to_f
-      longitude = params[:longitude].to_f
-      @q = Shop.within_box(0.310686, latitude, longitude)
-      @shops = @q.page(params[:page])
-    when 'outret'
+    when "outret"
       @q = Shop.where(outret: true)
       @shops = @q.page(params[:page])
-    when 'wifi'
+    when "wifi"
       @q = Shop.where(wifi: true)
       @shops = @q.page(params[:page])
     else
       @q = Shop.ransack(params[:q])
       @shops = @q.result(distinct: true).page(params[:page])
+
+      @popular_shops = Shop.find(Comment.group(:shop_id).order("count(shop_id) desc").limit(5).pluck(:shop_id))
     end
 
     respond_to do |format|

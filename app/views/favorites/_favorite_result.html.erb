@@ -1,0 +1,26 @@
+<div class="row">
+	<div class="pagination center-align">
+		<%= paginate @favorite_shops, remote: true %>
+	</div>
+</div>
+<div class="row">
+	<% if @favorite_shops.present? %>
+		<div>
+			<% @favorite_shops.each do |favorite_shop| %>
+				<%= render partial: "shop", locals: {shop: favorite_shop} %>
+			<% end %>
+		</div>
+	<% else %>
+		<div class="error-page">
+			<div class="card-image">
+				<%= link_to root_path do %>
+					<%= image_tag '/images/no_records_found.png' %>
+					<span class="error-title">気になるお店を登録してみましょう</span>
+				<% end %>
+			</div>
+		</div>
+	<% end %>
+</div>
+<div class="pagination center-align">
+	<%= paginate @favorite_shops, remote: true %>
+</div>

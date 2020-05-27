@@ -8,7 +8,7 @@
 					<%= link_to 'いいねする', shop_comment_likes_path(@shop.id, comment.id), method: :post, remote: true, class: 'like-btn hide-text' %>
 				<% end %>
 			</div>
-			<ul id='sns-share' class='dropdown-content'>
+			<ul id='sns-share-<%= comment.id %>' class='dropdown-content'>
 				<li>
 					<%= link_to "https://twitter.com/share?url=#{request.url}&text=#{comment.comment}%0a#{@shop.name}の口コミ - カフェどっと混む&hashtags=カフェどっと混む", target: '_blank' do %>
 						<i class="fab fa-twitter-square">twitter</i>
@@ -37,7 +37,7 @@
 		<p class="star-rate"><span id="star-rate-<%= comment.id %>"></span></p>
 		<p><small><%= comment.created_at.strftime("%Y/%-m/%-d %-H:%-M ") %></small></p>
 		<ul class="card-action-buttons">
-			<li><a class="dropdown-trigger btn-floating waves-effect waves-light tooltipped green accent-4", href='#' data-position="bottom", data-tooltip="コメントをSNSでシェアしてみましょう", data-target='sns-share'><i class="material-icons">share</i></a>
+			<li><a class="dropdown-trigger btn-floating waves-effect waves-light tooltipped green accent-4", href='#' data-position="left", data-tooltip="コメントをSNSでシェアしてみましょう", data-target='sns-share-<%= comment.id %>'><i class="material-icons">share</i></a>
 			</li>
 			<% if commented_by(comment, current_user) %>
 				<li>

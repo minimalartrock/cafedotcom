@@ -11,24 +11,11 @@
 
 <div class="container">
 	<h2 class="title">お気に入りのお店</h2>
-	<div class="row">
-		<% if @favorite_shops.present? %>
-			<div>
-				<% @favorite_shops.each do |favorite_shop| %>
-					<%= render partial: "shop", locals: {shop: favorite_shop} %>
-				<% end %>
-			</div>
-		<% else %>
-			<div class="error-page">
-				<div class="card-image">
-					<%= link_to root_path do %>
-						<%= image_tag '/images/no_records_found.png' %>
-						<span class="error-title">気になるお店を登録してみましょう</span>
-					<% end %>
-				</div>
-			</div>
-		<% end %>
-	</div>
+
+	<section id="favorite_result">
+		<%= render partial: 'favorite_result', locals: {favorite_shops: @favorite_shops} %>
+	</section>
+
 </div>
 
 <div id="page_top"><a href="#top"></a></div>

@@ -1,0 +1,22 @@
+<div>
+  <div class="container">
+    <h2 class="title">POPULAR</h2>
+    <div class="row">
+      <div>
+        <% @popular_shops.each.with_index(1) do |shop, i| %>
+          <div class="col s12 m12">
+            <div class="card popular-shop hoverable animated fadeIn">
+              <div class="card-image">
+                <%= link_to shop_path(shop.id), class: "waves-effect waves-light" do %>
+                  <%= image_tag shop_for(shop), class: 'shop-image' %>
+                  <span class="ranking-<%= i %>"><%= i %></span>
+                  <span class="card-title"><%= shop.name  %></span>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

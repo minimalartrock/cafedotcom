@@ -6,6 +6,11 @@ body
     background-color: $primary-color;
 }
 
+.container
+{
+    width: 90%;
+}
+
 section
 {
     padding: 40px 0 !important;
@@ -20,6 +25,11 @@ textarea
 {
     color: #fff;
     ;
+}
+
+.dropdown-content li > a
+{
+    padding: 20px 16px;
 }
 
 #page-loading
