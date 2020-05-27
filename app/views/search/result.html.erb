@@ -1,0 +1,12 @@
+<nav class="breadcrumbs-container">
+	<div class="nav-wrapper container">
+		<div class="col s12">
+			<%= link_to root_path, class: 'breadcrumb' do %>
+				<i class="material-icons before">home</i>HOME
+			<% end %>
+			<a class="breadcrumb active">近くのお店</a>
+		</div>
+	</div>
+</nav>
+
+<%= render partial: 'shops/search_result', locals: {shops: @shops} %>

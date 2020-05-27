@@ -11,7 +11,7 @@ $(document).ready(function () {
 		},
 		breakpoints: {
 			991: {
-				slidesPerView: 3,
+				slidesPerView: 4,
 				spaceBetween: 20,
 			},
 			767: {

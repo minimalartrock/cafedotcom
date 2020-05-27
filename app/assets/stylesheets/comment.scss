@@ -59,9 +59,13 @@
 
 #comment-dialog
 {
-    height: 70%;
+    width: 90%;
+    max-width: 90%;
+    height: 90%;
+    max-height: 90%;
 
     background-color: $primary-color-dark;
+    ;
 }
 
 .card-action-buttons

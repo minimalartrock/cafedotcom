@@ -3,7 +3,11 @@ class FavoritesController < ApplicationController
 
   def index
     favorites = Favorite.joins(:user).where(user_id: params[:user_id]).select(:shop_id)
-    @favorite_shops = Shop.where(id: favorites)
+    @favorite_shops = Shop.where(id: favorites).page(params[:page]).per(10)
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def create

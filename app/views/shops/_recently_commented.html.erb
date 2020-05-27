@@ -1,6 +1,5 @@
 <div class="container">
-  <h2 class="title">COMMENT</h2>
-	<p class="description">新着コメントがあったお店です</p>
+  <h2 class="title">NEW COMMENT</h2>
   <div class="swiper-container">
     <div class="swiper-wrapper recently-comments">
       <% Comment.includes(:shop).order(created_at: :desc).limit(5).each do |recently| %>
@@ -9,7 +8,7 @@
             <div class="card-image">
               <%= link_to shop_path(recently.shop.id), class: "waves-effect waves-light" do %>
                 <%= image_tag shop_for(recently.shop), class: 'recently-comment-image' %>
-                <span class="card-title"><%= recently.shop.name %></span>
+                <span class="card-title"><%= recently.comment.truncate(30) %></span>
               <% end %>
             </div>
             <div class="card-content">
@@ -24,7 +23,7 @@
 								<% elsif congestion.crowded? %>
 									<p><span class="new badge red congestion-status" data-badge-caption="<%= Congestion.statuses_i18n[:crowded] %>"></span></p>
 								<% end %>
-								<span><%= recently.comment.truncate(10) %></span>
+								<span><%= recently.shop.name %></span>
 							</p>
             </div>
           </div>

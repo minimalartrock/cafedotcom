@@ -18,22 +18,29 @@
 	</div>
 </div>
 
-	</div>
-
+<div class="row">
 	<section id="recently-commented-shop">
 		<%= render partial: 'recently_commented' %>
 	</section>
-
-	<section class="search-menu">
-		<%= render partial: 'search_menu' %>
-	</section>
-
-	<section id="search_result">
-		<%= render partial: 'search_result', locals: {shops: @shops} %>
-	</section>
-
-	<div id="page_top"><a href="#top"></a></div>
 </div>
+<div class="row">
+	<div class="col s12 m9">
+		<section class="search-menu">
+			<%= render partial: 'search_menu' %>
+		</section>
+
+		<section id="search_result">
+			<%= render partial: 'search_result', locals: {shops: @shops} %>
+		</section>
+	</div>
+	<div class="col s12 m3">
+		<section id="popular-shop">
+			<%= render partial: 'popular' %>
+		</section>
+	</div>
+</div>
+
+<div id="page_top"><a href="#top"></a></div>
 
 <script>
 	$(document).ready(function(){
