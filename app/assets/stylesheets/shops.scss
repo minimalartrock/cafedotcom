@@ -27,7 +27,6 @@
 
     -webkit-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%);
-    ;
 }
 
 #search-text
@@ -37,7 +36,6 @@
     padding: 0 10px;
 
     color: #000;
-    // border-radius: 2px;
     outline: 0;
     background: #eee;
 }
@@ -63,7 +61,7 @@
 
 .top-page-title
 {
-    font-size: 3.0rem;
+    font-size: 3rem;
     font-weight: 600;
     line-height: 1.5rem;
 
@@ -100,14 +98,13 @@
 
         -webkit-transform: translate(-50%, -50%);
                 transform: translate(-50%, -50%);
-        ;
     }
 
     .top-page-title
     {
-        font-size: 1.0rem;
+        font-size: 1rem;
         font-weight: 600;
-        line-height: 1.0rem;
+        line-height: 1rem;
 
         max-width: 48rem;
 
@@ -204,8 +201,6 @@
     {
         background: $primary-color-dark;
     }
-
-
 
     .ago
     {
@@ -441,6 +436,7 @@
 
 #popular-shop
 {
+    padding-top: 0 !important;
     .card-title
     {
         font-size: 1rem;

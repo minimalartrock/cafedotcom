@@ -1,3 +1,8 @@
+<% provide :title, @shop.name %>
+<% provide :og_url, url_for(only_path: false) %>
+<% provide :og_title, @shop.name %>
+<% provide :og_description, @shop.pr_short %>
+<% provide :og_image, URI.join(root_url(only_path: false), url_for(shop_for(@shop))) %>
 <nav class="breadcrumbs-container">
 	<div class="nav-wrapper container">
 		<div class="col s12">
