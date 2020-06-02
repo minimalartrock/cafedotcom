@@ -1,24 +1,92 @@
-# README
+# カフェどっと混む
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+![トップ画像](.resources/top.png)
 
-Things you may want to cover:
+## 概要
 
-* Ruby version
+- せっかく入ったカフェが満席だった...
+- 今すぐ入れるカフェが知りたい
+- カフェの口コミが知りたい
 
-* System dependencies
+そんな方のために「カフェどっと混む」を製作しました。
+もうカフェ難民にはしません。
 
-* Configuration
+## URL
 
-* Database creation
+https://cafedotcom.jp/
 
-* Database initialization
+## 使用技術
 
-* How to run the test suite
+### バックエンド
 
-* Services (job queues, cache servers, search engines, etc.)
+- Ruby 2.6.5
+- Rails 5.2.4
 
-* Deployment instructions
+### フロントエンド
 
-* ...
+- HTML5 + CSS3 + JavaScript
+- jQuery
+- Sass
+- Materialize
+
+### データベース
+
+- PostgreSQL 11.5
+
+### インフラ環境
+
+- Nginx
+- Unicorn
+- Docker
+- Docker Compose
+- AWS（VPC、EC2、RDS、ELB、Route53、ACM、S3）
+
+### CI/CD
+
+- GitHub
+- Capistrano
+- CircleCI
+
+### 外部 API
+
+- Google Maps API
+- ぐるなび API
+
+## アプリケーション構成図
+
+![トップ画像](.resources/application_diagram.png)
+
+## 機能一覧
+
+### ログイン機能
+
+- ログイン／ログアウト機能（Twitter アカウントによるログイン可）
+- サインアップ機能
+
+### ユーザー情報管理機能
+
+- ユーザー情報一覧／詳細／編集／削除
+
+### 店舗情報情報管理機能
+
+- 店舗情報一覧／詳細／編集／削除
+- お気に入り登録機能
+
+### 店舗情報検索機能
+
+- キーワード検索
+- 今空いているお店
+- 近くのお店
+- 電源があるお店
+- Wi-Fi があるお店
+
+### リアルタイム表示機能
+
+- ランキング別表示機能
+- 新着コメント表示機能
+
+### コメント機能
+
+- コメント（お店の混雑状況／満足度）登録
+- いいね登録
+- SNS シェア
