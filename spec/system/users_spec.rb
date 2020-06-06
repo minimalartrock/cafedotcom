@@ -20,7 +20,7 @@ describe 'ユーザー情報管理機能', type: :system do
 
       it 'トップページへ遷移する' do
         # トップページへ遷移することを確認する
-        expect(page).to have_current_path '/'
+        expect(page).to have_current_path root_path
       end
     end
   end
