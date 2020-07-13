@@ -241,6 +241,8 @@
 
     .shop-image
     {
+        max-height: 200px;
+
         opacity: .7;
     }
 
@@ -437,6 +439,7 @@
 #popular-shop
 {
     padding-top: 0 !important;
+
     .card-title
     {
         font-size: 1rem;
